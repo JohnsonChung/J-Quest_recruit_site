@@ -1,0 +1,317 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view1">
+    <template>
+        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
+            :host {
+                display: block;
+                @apply(--layout-vertical);
+                @apply(--layout-center);
+            }
+
+            header {
+                height: calc(430px);
+                width: 100%;
+                padding: 20px 45px;
+                margin: 0;
+                margin-bottom: 40px;
+                box-sizing: border-box;
+                background-image: url('http://lorempixel.com/760/480/nature/');
+                backgrond-repeat: no-repeat;
+                background-size: cover;
+                color: white;
+                text-align: right;
+            }
+
+            header > h2 {
+                font-size: 56px;
+                font-weight: 300;
+                margin: 0;
+            }
+
+            .card.skyblue {
+                background: #E7F9FB;
+            }
+
+            paper-button.cube {
+                border-radius: 5px;
+                border-bottom: 4px solid var(--paper-pink-900);
+            }
+
+            paper-button.border.slashed {
+                /* temp should replace with css image border */
+                border: 4px dashed var(--paper-blue-grey-800);
+                border-image: repeating-linear-gradient(-70deg, rgb(160, 160, 160), rgb(160, 160, 160) 1%, transparent 1%, transparent 2%) 10;
+            }
+
+            paper-button.clip {
+                background-clip: padding-box; /* support: IE9+ */
+                border-radius: 0;
+                padding: 0;
+                line-height: 4;
+                font-size: 13px;
+                width: 235px;
+                margin-right: 10px;
+            }
+
+            paper-button.anchor {
+                position: relative;
+            }
+
+            paper-button.anchor::after {
+                content: "↘";
+                position: absolute;
+                color: rgb(100, 100, 100);
+                right: 2px;
+                bottom: -18.5px;
+                font-weight: bold;
+            }
+
+            paper-button.pink {
+                background-color: var(--paper-pink-a200);
+            }
+
+            paper-button.yellow {
+                background-color: var(--paper-yellow-400);
+                color: var(--paper-grey-900);
+            }
+            paper-item {
+                border-bottom: 1px solid #29b8e4;
+            }
+            a {
+                text-decoration: none;
+            }
+            .img-thumbnail {
+                @apply(--layout-vertical);
+                @apply(--layout-center-center);
+                @apply(--layout-flex);
+                height: 276px;
+                background-position: center center;
+                background-image: url(http://via.placeholder.com/500x276);
+                background-size: 100% auto;
+                transition: background ease 0.5s ;
+            }
+            .img-thumbnail:hover {
+                background-size: 120%;
+            }
+            #company-info {
+                position: relative;
+                padding: 80px 0;
+            }
+            #company-info table {
+                font-size: 13px;
+                margin-top: 35px;
+            }
+            #company-info td:first-child {
+                width: 135px;
+            }
+            #company-info:after {
+                content : "";
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                background-image: url(http://via.placeholder.com/100x100);
+                background-size: cover;
+                background-position: center center;
+                width: 100%;
+                height: 100%;
+                opacity : 0.5;
+                z-index: -1;
+            }
+        </style>
+        <header>
+            <h2 class="wf-sawarabimincho" style="font-style: italic">J-Questで働こう</h2>
+            <p class="wf-sawarabimincho">Made with App Layout Elements</p>
+            <hr></hr>
+            <div class="underline" width="100%"></div>
+            <paper-button raised class="pink cube">応募はこちら</paper-button>
+        </header>
+
+        <div class="card skyblue">
+            <div class="layout horizontal center-center">
+                <h4 class="wf-mplus1p " style="font-weight: 400; font-size: 25px;"><span style="font-size: 1.4em">\ </span>各種ご応募はこちらから <span style="font-size: 1.4em"> /</span></h4>
+            </div>
+            <div class="layout horizontal center-center wrap">
+                <a name="view1" href="[[rootPath]]view1">
+                    <paper-button class="border slashed yellow clip anchor">
+                        <iron-icon icon="group-work"></iron-icon>
+                        中途採用
+                    </paper-button>
+                </a>
+                <a name="view2" href="[[rootPath]]view2">
+                    <paper-button class="border slashed yellow clip anchor">
+                        <iron-icon icon="home"></iron-icon>
+                        新卒採用
+                    </paper-button>
+                </a>
+                <a name="view3" href="[[rootPath]]view3">
+                    <paper-button class="border slashed yellow clip anchor">
+                        <iron-icon icon="image:timelapse"></iron-icon>
+                        パート・アルバイト
+                    </paper-button>
+                </a></div>
+        </div>
+        <!--
+        --  新着情報
+        -->
+        <div class="card layout vertical">
+            <h3>NEWS</h3>
+            <p class="subtitle">新着情報</p>
+            <div role="listbox">
+                <template is="dom-repeat" items="{{news}}">
+                    <paper-item>
+                        <label>NEW</label>
+                        <span>[[item.date]]</span>
+                        [[item.store]] [[item.content]]
+                    </paper-item>
+                </template>
+            </div>
+        </div>
+        <div class="container layout horizontal" style="height: 276px">
+            <div class="img-thumbnail">
+                <p>mid-career recruitment</p>
+                <h1>中途採用はこちら</h1>
+            </div>
+            <div class="img-thumbnail">
+                <p>New graduate</p>
+                <h1>新卒採用はこちら</h1>
+            </div>
+            <div class="img-thumbnail">
+                <p>part time employee</p>
+                <h1>パートタイマースタッフ</h1>
+            </div>
+        </div>
+
+        <!--
+        --  会社情報
+        -->
+        <div id="company-info" class="container layout vertical center">
+            <h3>COMPANY</h3>
+            <p class="subtitle">会社情報</p>
+            <div>
+                <table>
+                    <tr>
+                        <td>社名</td>
+                        <td>J-Quest</td>
+                    </tr>
+                    <tr>
+                        <td>設立</td>
+                        <td>年月</td>
+                    </tr>
+                    <tr>
+                        <td>所在地</td>
+                        <td>東京都中央区新川1-10-14</td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>https://www.j-quest.jp/</td>
+                    </tr>
+                    <tr>
+                        <td>電話番号</td>
+                        <td>00-0000-0000</td>
+                    </tr>
+                    <tr>
+                        <td>役員</td>
+                        <td>代表</td>
+                    </tr>
+                    <tr>
+                        <td>従業員</td>
+                        <td>０００人（2016年1月現在</td>
+                    </tr>
+                    <tr>
+                        <td>資本金</td>
+                        <td>０億円</td>
+                    </tr>
+                    <tr>
+                        <td>株主</td>
+                        <td>株式会社ABC<br>三菱東京UFJ銀行</td>
+                    </tr>
+                    <tr>
+                        <td>法人番号</td>
+                        <td>00000000000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container layout horizontal" style="height: 460px">
+            <google-map
+                    language="ja"
+                    fit-to-markers
+                    zoom="16"
+                    class="flex"
+                    latitude="35.676961"
+                    disable-zoom
+                    disable-default-ui
+                    draggable="false"
+                    longitude="139.781841">
+                <google-map-marker
+                        icon="../images/jquest_mark.gif"
+                        z-index="1"
+                        latitude="35.676961"
+                        longitude="139.781841">
+                    <b>J-Quest</b>
+                    <p>東京都中央区新川1-10-14　FORECAST茅場町 6階</p>
+                    <a target="_blank" href="https://www.google.com/maps/place/1+Chome-10-14+Shinkawa,+Ch%C5%AB%C5%8D-ku,+T%C5%8Dky%C5%8D-to+104-0033%E6%97%A5%E6%9C%AC/@35.676961,139.781841,16z/data=!4m5!3m4!1s0x6018895ba4e3615f:0xda3f224f7c861879!8m2!3d35.6769612!4d139.7818412?hl=ja">グーグルマップで表示</a>
+                </google-map-marker>
+            </google-map>
+        </div>
+        <div class="card layout horizontal center-center around-justified">
+            <img src="http://via.placeholder.com/152x46" alt="">
+            <img src="http://via.placeholder.com/152x46" alt="">
+            <img src="http://via.placeholder.com/152x46" alt="">
+        </div>
+        <div class="card">
+            <marked-element>
+                <div slot="markdown-html"></div>
+                <script type="text/markdown" src="../md/news.md"></script>
+            </marked-element>
+        </div>
+        <div class="card">
+            Copyright @ 2017 J-Quest Corporation
+        </div>
+    </template>
+
+    <script>
+        class MyView1 extends Polymer.Element {
+            static get is() {
+                return 'my-view1';
+            }
+
+            static get properties() {
+                return {
+                    news: {
+                        type: Array,
+                        value() {
+                            return [
+                                {store: 'Bob店', content: 'サイト更新しました。', date: "2017/09/10"},
+                                {store: 'Sally店', content: '掲示板書き込まれました。', date: "2017/09/10"},
+                            ];
+                        }
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(MyView1.is, MyView1);
+    </script>
+</dom-module>
