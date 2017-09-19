@@ -18,157 +18,222 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="my-icons.html">
 
 <link rel="lazy-import" href="my-view1.html">
 <link rel="lazy-import" href="my-view2.html">
 <link rel="lazy-import" href="my-view3.html">
 <link rel="lazy-import" href="my-view404.html">
-<link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet"/>
 
 <dom-module id="my-app">
-  <template>
-    <style>
-      :host {
-        --app-primary-color: #14a65f;
-        --app-secondary-color: black;
-        display: block;
-      }
+    <template>
+        <style is="custom-style" include="iron-flex iron-flex-alignment">
+            :host {
+                --app-primary-color: #14a65f;
+                --app-secondary-color: #29b8e4;
+                display: block;
+            }
 
-      app-drawer-layout:not([narrow]) [drawer-toggle] {
-        display: none;
-      }
+            app-drawer-layout:not([narrow]) [drawer-toggle] {
+                display: none;
+            }
 
-      app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
-      }
+            app-header {
+                color: var(--app-primary-color);
+                background-color: rgba(255,255,255,0.7);
+            }
 
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
-      }
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: white;
+            }
 
-      .drawer-list {
-        margin: 0 20px;
-      }
+            .drawer-list {
+                margin: 0 20px;
+            }
 
-      .drawer-list a {
-        display: block;
-        padding: 0 16px;
-        text-decoration: none;
-        color: var(--app-secondary-color);
-        line-height: 40px;
-      }
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                text-decoration: none;
+                color: var(--app-secondary-color);
+                line-height: 40px;
+            }
 
-      .drawer-list a.iron-selected {
-        color: black;
-        font-weight: bold;
-      }
-    </style>
+            .drawer-list a.iron-selected {
+                color: black;
+                font-weight: bold;
+            }
 
-    <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="[[rootPath]]:page"
-        data="{{routeData}}"
-        tail="{{subroute}}"></app-route>
+            .tabs a {
+                font-size: 15px;
+                text-decoration: none;
+                color: black;
+                text-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+            }
 
-    <app-drawer-layout drawer fullbleed narrow="{{narrow}}">
-      <!-- Drawer content -->
-      <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-        <app-toolbar>J-Quest Recruitment 採用情報</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="[[rootPath]]view1">中途採用</a>
-          <a name="view2" href="[[rootPath]]view2">新卒採用</a>
-          <a name="view3" href="[[rootPath]]view3">パート・アルバイト</a>
-        </iron-selector>
-      </app-drawer>
+            .tabs a.iron-selected {
+                font-weight: bold;
+            }
 
-      <!-- Main content -->
-      <app-header-layout has-scrolling-region>
+            .tabs a:not(:last-child):after {
+                content: '|';
+                padding: 0px 0px;
+            }
+            #brandLogo {
+                margin-right: 18px;
+            }
+            #brandTitle{
+                font-size: 12px;
+                text-align: center;
+                letter-spacing: 0px;
+                line-height: 1.3;
+                font-weight: bold;
+            }
+            #brandTitle > span{
+                display: block;
+            }
+            #brandTitle > span:last-child {
+                font-size: 18px;
+                letter-spacing: 0.5px;
+            }
+            #footer {
+                @apply(--layout-vertical);
+                @apply(--layout-center-center);
+                min-height: 80px;
+                background-color: var(--paper-grey-700);
+                color: #fff;
+                text-align: center;
+            }
+        </style>
 
-        <app-header slot="header"  reveals effects="waterfall" slot="header">
-          <app-toolbar class="toolbar">
-            <h1>
-              <app-toolbar>J-Quest Recruitment 採用情報</app-toolbar>
-            </h1>
-            <div class="tabs">
-              <a name="view1" href="[[rootPath]]view1">中途採用</a>
-              <a name="view2" href="[[rootPath]]view2">新卒採用</a>
-              <a name="view3" href="[[rootPath]]view3">パート・アルバイト</a>
-            </div>
-          </app-toolbar>
-        </app-header>
+        <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+        <app-route
+                route="{{route}}"
+                pattern="[[rootPath]]:page"
+                data="{{routeData}}"
+                tail="{{subroute}}"></app-route>
 
-        <iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="view404"
-            role="main">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
-          <my-view404 name="view404"></my-view404>
-        </iron-pages>
-      </app-header-layout>
-    </app-drawer-layout>
-  </template>
+        <app-drawer-layout drawer fullbleed force-narrow>
+            <!-- Drawer content -->
+            <app-drawer id="drawer" slot="drawer" swipe-open>
+                <app-toolbar>J-Quest</app-toolbar>
+                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <a name="view1" href="[[rootPath]]view1">中途採用</a>
+                    <a name="view2" href="[[rootPath]]view2">新卒採用</a>
+                    <a name="view3" href="[[rootPath]]view3">パート・アルバイト</a>
+                    <a name="view1" href="[[rootPath]]">TOP</a>
+                </iron-selector>
+            </app-drawer>
 
-  <script>
-    class MyApp extends Polymer.Element {
-      static get is() { return 'my-app'; }
+            <!-- Main content -->
+            <app-header-layout has-scrolling-region>
 
-      static get properties() {
-        return {
-          page: {
-            type: String,
-            reflectToAttribute: true,
-            observer: '_pageChanged',
-          },
-          routeData: Object,
-          subroute: String,
-          // This shouldn't be neccessary, but the Analyzer isn't picking up
-          // Polymer.Element#rootPath
-          rootPath: String,
-        };
-      }
+                <app-header slot="header" reveals effects="waterfall" slot="header">
+                    <app-toolbar class="toolbar">
+                        <paper-icon-button drawer-toggle icon="menu"></paper-icon-button>
+                        <div class="layout horizontal center" main-title>
+                            <img id="brandLogo" src="../images/jquest_logo.png" alt="j-quest">
+                            <div id="brandTitle">
+                                <span>Recruitment</span>
+                                <span>採用情報</span>
+                            </div>
+                        </div>
+                        <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
+                            <a name="view1" href="[[rootPath]]view1">
+                                <paper-button>中途採用</paper-button>
+                            </a>
+                            <a name="view2" href="[[rootPath]]view2">
+                                <paper-button>新卒採用</paper-button>
+                            </a>
+                            <a name="view3" href="[[rootPath]]view3">
+                                <paper-button>パート・アルバイト</paper-button>
+                            </a>
+                            <a name="view1" href="[[rootPath]]">
+                                <paper-button>TOP</paper-button>
+                            </a>
+                        </iron-selector>
+                    </app-toolbar>
+                </app-header>
 
-      static get observers() {
-        return [
-          '_routePageChanged(routeData.page)',
-        ];
-      }
+                <iron-pages
+                        selected="[[page]]"
+                        attr-for-selected="name"
+                        fallback-selection="view404"
+                        role="main">
+                    <my-view1 name="view1"></my-view1>
+                    <my-view2 name="view2"></my-view2>
+                    <my-view3 name="view3"></my-view3>
+                    <my-view404 name="view404"></my-view404>
+                </iron-pages>
 
-      _routePageChanged(page) {
-        // If no page was found in the route data, page will be an empty string.
-        // Deault to 'view1' in that case.
-        this.page = page || 'view1';
+                <div id="footer">
+                    <div>Copyright @ 2017 J-Quest Corporation</div>
+                </div>
+            </app-header-layout>
+        </app-drawer-layout>
+    </template>
 
-        // Close a non-persistent drawer when the page & route are changed.
-        if (!this.$.drawer.persistent) {
-          this.$.drawer.close();
+    <script>
+        class MyApp extends Polymer.Element {
+            static get is() {
+                return 'my-app';
+            }
+
+            static get properties() {
+                return {
+                    page: {
+                        type: String,
+                        reflectToAttribute: true,
+                        observer: '_pageChanged',
+                    },
+                    routeData: Object,
+                    subroute: String,
+                    // This shouldn't be neccessary, but the Analyzer isn't picking up
+                    // Polymer.Element#rootPath
+                    rootPath: String,
+                };
+            }
+
+            static get observers() {
+                return [
+                    '_routePageChanged(routeData.page)',
+                ];
+            }
+
+            _routePageChanged(page) {
+                // If no page was found in the route data, page will be an empty string.
+                // Deault to 'view1' in that case.
+                this.page = page || 'view1';
+
+                // Close a non-persistent drawer when the page & route are changed.
+                if (!this.$.drawer.persistent) {
+                    this.$.drawer.close();
+                }
+            }
+
+            _pageChanged(page) {
+                // Load page import on demand. Show 404 page if fails
+                var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+                Polymer.importHref(
+                    resolvedPageUrl,
+                    null,
+                    this._showPage404.bind(this),
+                    true);
+            }
+
+            _showPage404() {
+                this.page = 'view404';
+            }
         }
-      }
 
-      _pageChanged(page) {
-        // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
-        Polymer.importHref(
-            resolvedPageUrl,
-            null,
-            this._showPage404.bind(this),
-            true);
-      }
-
-      _showPage404() {
-        this.page = 'view404';
-      }
-    }
-
-    window.customElements.define(MyApp.is, MyApp);
-  </script>
+        window.customElements.define(MyApp.is, MyApp);
+    </script>
 </dom-module>

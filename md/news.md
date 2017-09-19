@@ -1,10 +1,14 @@
-Check out my markdown!
+* __2017.9.8__
+**さくら氏家店** お客様大感謝祭開催！！
+詳しくは、→ キャンペーン情報にてご確認下さい。
 
-We can even embed elements without fear of the HTML parser mucking up their
-textual representation:
+* __2017.8.25__
+**三好店** お客様感謝イベント開催！！
+詳しくは、→ キャンペーン情報にてご確認下さい。
 
-```html
-<awesome-sauce>
-  <div>Oops, I'm about to forget to close this div.
-</awesome-sauce>
-```
+* __2017.8.25__
+**前橋岩神店** ご愛顧感謝イベント開催！！
+詳しくは、→ キャンペーン情報にてご確認下さい。
+
+* __2017.4.3__
+2017年9月までのTポイントお得情報対象店舗等詳しくは、**[キャンペーン情報](https://www.google.com)**にてご確認下さい。
