@@ -1,0 +1,265 @@
+/* 新規CSS */
+
+body {
+    font-family: "メイリオ",Meiryo,"MS Pゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+
+section	{
+	margin-bottom: 30px;
+}
+p	{
+	line-height: 1.5;
+}
+
+.row	{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+
+header	{
+	margin-top: 20px;
+}
+
+.logo img	{
+	width: 300px;
+}
+
+
+@media (max-width: 767px) {
+	.logo img	{
+		width: 200px;
+	}
+}
+
+
+/* add by KY */
+
+
+.col-sm-6 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+.table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+    background-color: #339999;
+    color: #fff;
+text-align:center;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #339999;
+    border-color: #2e6da4;
+}
+
+button.btn.btn-default.btn-lg.btn-block {
+    color: #339999;
+    background-color: #E6FFE9;
+}
+
+
+p.chiku {
+    border-bottom: 1px solid #dedcdc;
+    border-left: 8px solid #dee1f1;
+    padding-left: 7px;
+    margin-bottom: 5px;
+}
+
+span.chiku_s {
+    margin-left: 5px;
+    font-size: 10px;
+    font-size: 15px;
+
+}
+
+.btn {
+ border-radius: 0px; 
+}
+
+
+img.footerimg {
+    margin-bottom: 10px;
+}
+
+#mainmap {
+padding:0;
+margin:0;
+	margin-left: auto;
+    margin-right: auto; 
+}
+
+span.glyphicon.glyphicon-download {
+    font-size: 14px;
+margin-right: 10px;
+}
+
+img#hanyou {
+    width: 43%;
+    float: left;
+}
+
+
+img#map {
+   width: 100%; 
+    padding: 0;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+h1 {
+    border-bottom: 2px solid #666;
+    font-size: 20px;
+    text-align: right;
+    height: 40px;
+/*    margin-bottom: 50px; */
+    font-weight: bold;
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-size: 9%;
+    background-position-y: -2px;
+	width: 100%;
+}
+
+.container-fluid {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+
+ul.clearFix {
+	font-size: 0;
+	text-align: center;
+padding: 0;
+}
+
+li {  
+	display: inline-block;
+	font-size: 12px;
+	padding: 0 10px;
+
+}
+
+.footer {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+td.here {
+    font-size: 12px;
+}
+
+p#maplink {
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 50px;
+
+
+}
+
+p.pageTop {
+    margin: 0;
+    text-align: right;
+}
+
+@media (max-width: 767px) {
+
+p#maplink {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 50px;
+}
+
+
+
+
+img#map {
+    width: 100%;
+    padding: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+
+	img#hanyou {
+	    width: 100%;
+	    /* float: left; */
+	}
+
+	h1 {
+	    background-size: 20%;
+	}
+
+
+
+}
+
+
+/*PC用TOPへ戻る*/
+@media (max-width: 991px) {
+	#page-top {
+		display: none!important;
+	}
+}
+@media (min-width: 992px) {
+	#page-top {
+		display: block;
+		position: fixed;
+		bottom: 20px;
+	    right: 20px;
+		font-size: 10px;
+	}
+	#page-top a {
+		background: #665e53;
+		text-decoration: none;
+		color: #fff;
+		width: 80px;
+		padding: 10px 5px;
+		text-align: center;
+		display: block;
+		border-radius: 3px;     /* CSS3 */
+	    -moz-border-radius: 3px;    /* Firefox */
+	    -webkit-border-radius: 3px; /* Safari,Chrome */
+	}
+	#page-top a:hover {
+		text-decoration: none;
+		background: #d6cdc0;
+	        color:#665e53;
+	}
+}
+
+
+
+
+
+/*20170913追加*/
+.snsImgArea	{
+  position: relative;
+  width: 100%;/*　トリミングしたい枠の幅（固定にしたい場合はサイズを入力）　*/
+ /* padding-top: 75%;/*　トリミングしたい枠の高さ（固定にしたい場合はサイズを入力）　*/
+  padding-top: 100%;
+  overflow: hidden;/*　画像が枠からはみ出た部分はトリミング（非表示）する　*/
+  margin: 0 auto;
+}
+img.snsImginner	{
+/* 画像を上下左右に中央配置する（絶対指定） */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /* 画像の最大サイズは枠の1.5倍まで */
+  max-width: 150%;
+  max-height: 150%;
+}
+
