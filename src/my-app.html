@@ -25,9 +25,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="my-icons.html">
 
-<link rel="lazy-import" href="my-view1.html">
-<link rel="lazy-import" href="my-view2.html">
-<link rel="lazy-import" href="my-view3.html">
 <link rel="lazy-import" href="my-view404.html">
 <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet"/>
@@ -119,6 +116,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: #fff;
                 text-align: center;
             }
+            [hidden] {
+                display: none;
+            }
         </style>
 
         <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
@@ -127,6 +127,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 pattern="[[rootPath]]:page"
                 data="{{routeData}}"
                 tail="{{subroute}}"></app-route>
+        <app-route
+                route="{{subroute}}"
+                pattern="/:subPage"
+                active="{{subRouteActive}}"
+                data="{{subRouteData}}"></app-route>
 
         <app-drawer-layout drawer fullbleed force-narrow>
             <!-- Drawer content -->
@@ -168,6 +173,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </a>
                         </iron-selector>
                     </app-toolbar>
+                    <app-toolbar class="toolbar toolbar-sub" hidden$="{{!subRouteActive}}">
+                        <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
+                            <a name="parttime-works" href="[[rootPath]]parttime/works">
+                                <paper-button>どんな仕事なの？</paper-button>
+                            </a>
+                            <a name="parttime-voice" href="[[rootPath]]parttime/voice">
+                                <paper-button>先輩たちの声</paper-button>
+                            </a>
+                            <a name="parttime-merit" href="[[rootPath]]parttime/merit">
+                                <paper-button>働くメリット</paper-button>
+                            </a>
+                            <a name="parttime-dangerous" href="[[rootPath]]parttime/dangerous">
+                                <paper-button>乙四について</paper-button>
+                            </a>
+                            <a name="top" href="[[rootPath]]parttime/quizanswer">
+                                <paper-button>よくある質問</paper-button>
+                            </a>
+                        </iron-selector>
+                    </app-toolbar>
                 </app-header>
 
                 <iron-pages
@@ -179,6 +203,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <my-view2 name="view2"></my-view2>
                     <my-view3 name="view3"></my-view3>
                     <my-parttime name="parttime"></my-parttime>
+                    <my-parttime-dangerous name="parttime-dangerous"></my-parttime-dangerous>
+                    <my-parttime-merit name="parttime-merit"></my-parttime-merit>
+                    <my-parttime-quizanswer name="parttime-quizanswer"></my-parttime-quizanswer>
+                    <my-parttime-voice name="parttime-voice"></my-parttime-voice>
+                    <my-parttime-works name="parttime-works"></my-parttime-works>
+                    <my-recruitform name="recruitform"></my-recruitform>
                     <my-view404 name="view404"></my-view404>
                 </iron-pages>
                 <div id="banner-sm" class="card layout horizontal center-center around-justified wrap">
@@ -205,9 +235,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     page: {
                         type: String,
                         reflectToAttribute: true,
-                        observer: '_pageChanged',
+                        observer: '_pageChanged'
+                    },
+                    subPage: {
+                        type: String
                     },
                     routeData: Object,
+                    subRouteData: Object,
                     subroute: String,
                     // This shouldn't be neccessary, but the Analyzer isn't picking up
                     // Polymer.Element#rootPath
@@ -218,18 +252,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             static get observers() {
                 return [
                     '_routePageChanged(routeData.page)',
+                    '_subRoutePageChanged(subRouteData.subPage)'
                 ];
             }
 
             _routePageChanged(page) {
-                // If no page was found in the route data, page will be an empty string.
-                // Deault to 'view1' in that case.
+                // If subRoute is actived we will not change page by this observer.
+                if ( this.subRouteActive ) return;
                 this.page = page || 'top';
 
                 // Close a non-persistent drawer when the page & route are changed.
                 if (!this.$.drawer.persistent) {
                     this.$.drawer.close();
                 }
+            }
+
+            _subRoutePageChanged(subPage) {
+                this.page = this.routeData.page + '-' + subPage;
+                this.subPage = subPage;
             }
 
             _pageChanged(page) {

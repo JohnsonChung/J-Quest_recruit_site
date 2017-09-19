@@ -13,7 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-parttime">
+<dom-module id="my-parttime-voice">
     <template>
         <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
             :host {
@@ -24,28 +24,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
 
         <div class="card">
+            <div class="container">
+                <h3>VOICE</h3>
+            </div>
             <div class="card">
-                <h3>パートタイマースタッフ採用</h3>
+
             </div>
             <div class="card">
                 <h3>どんな仕事なの？</h3>
-                <a href="[[rootPath]]parttime/works">どんな仕事なの？</a>
-                <a href="[[rootPath]]parttime/voice">先輩たちの声</a>
-                <a href="[[rootPath]]parttime/merit">働くメリット</a>
-                <a href="[[rootPath]]parttime/quizanswer">よくある質問</a>
-                <a href="[[rootPath]]parttime/dangerous">乙四について</a>
-                <paper-button>募集ページはこちら</paper-button>
+                <a href="[[rootPath]]">先輩たちの声</a>
+                <a href="[[rootPath]]">働くメリット</a>
+                <a href="[[rootPath]]">よくある質問</a>
+                <a href="[[rootPath]]">乙四について</a>
             </div>
+
         </div>
     </template>
 
     <script>
-        class MyParttime extends Polymer.Element {
+        class MyParttimeVoice extends Polymer.Element {
             static get is() {
-                return 'my-parttime';
+                return 'my-parttime-voice';
             }
         }
 
-        window.customElements.define(MyParttime.is, MyParttime);
+        window.customElements.define(MyParttimeVoice.is, MyParttimeVoice);
     </script>
 </dom-module>
