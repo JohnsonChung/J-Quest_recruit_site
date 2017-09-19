@@ -104,6 +104,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 font-size: 18px;
                 letter-spacing: 0.5px;
             }
+            #banner-sm {
+                 padding: 80px 0;
+                 margin: 0;
+             }
+            #banner-sm img{
+                @apply(--shadow-elevation-12dp);
+            }
             #footer {
                 @apply(--layout-vertical);
                 @apply(--layout-center-center);
@@ -128,8 +135,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
                     <a name="view1" href="[[rootPath]]view1">中途採用</a>
                     <a name="view2" href="[[rootPath]]view2">新卒採用</a>
-                    <a name="view3" href="[[rootPath]]view3">パート・アルバイト</a>
-                    <a name="view1" href="[[rootPath]]">TOP</a>
+                    <a name="parttime" href="[[rootPath]]parttime">パート・アルバイト</a>
+                    <a name="top" href="[[rootPath]]top">TOP</a>
                 </iron-selector>
             </app-drawer>
 
@@ -153,10 +160,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <a name="view2" href="[[rootPath]]view2">
                                 <paper-button>新卒採用</paper-button>
                             </a>
-                            <a name="view3" href="[[rootPath]]view3">
+                            <a name="parttime" href="[[rootPath]]parttime">
                                 <paper-button>パート・アルバイト</paper-button>
                             </a>
-                            <a name="view1" href="[[rootPath]]">
+                            <a name="top" href="[[rootPath]]top">
                                 <paper-button>TOP</paper-button>
                             </a>
                         </iron-selector>
@@ -168,12 +175,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         attr-for-selected="name"
                         fallback-selection="view404"
                         role="main">
-                    <my-view1 name="view1"></my-view1>
+                    <my-top name="top"></my-top>
                     <my-view2 name="view2"></my-view2>
                     <my-view3 name="view3"></my-view3>
+                    <my-parttime name="parttime"></my-parttime>
                     <my-view404 name="view404"></my-view404>
                 </iron-pages>
-
+                <div id="banner-sm" class="card layout horizontal center-center around-justified wrap">
+                    <img src="../images/banner_sm_biogus.jpg" alt="">
+                    <img src="../images/banner_sm_eneosdenki.gif" alt="">
+                    <img src="../images/banner_sm_keeper.gif" alt="">
+                    <img src="../images/banner_sm_vigo.jpg" alt="">
+                </div>
                 <div id="footer">
                     <div>Copyright @ 2017 J-Quest Corporation</div>
                 </div>
@@ -211,7 +224,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             _routePageChanged(page) {
                 // If no page was found in the route data, page will be an empty string.
                 // Deault to 'view1' in that case.
-                this.page = page || 'view1';
+                this.page = page || 'top';
 
                 // Close a non-persistent drawer when the page & route are changed.
                 if (!this.$.drawer.persistent) {

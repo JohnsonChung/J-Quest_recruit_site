@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-view1">
+<dom-module id="my-top">
     <template>
         <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
             :host {
@@ -206,13 +206,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: #fff;
                 vertical-align: 1px;
             }
-            #banner-sm {
-                padding: 80px 0;
-                margin: 0;
-            }
-            #banner-sm img{
-                @apply(--shadow-elevation-12dp);
-            }
 
         </style>
         <header class=" layout vertical center-center">
@@ -365,19 +358,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </google-map-marker>
             </google-map>
         </div>
-        <div id="banner-sm" class="card layout horizontal center-center around-justified wrap">
-            <img src="../images/banner_sm_biogus.jpg" alt="">
-            <img src="../images/banner_sm_eneosdenki.gif" alt="">
-            <img src="../images/banner_sm_keeper.gif" alt="">
-            <img src="../images/banner_sm_vigo.jpg" alt="">
-        </div>
-
     </template>
 
     <script>
-        class MyView1 extends Polymer.Element {
+        class MyTop extends Polymer.Element {
             static get is() {
-                return 'my-view1';
+                return 'my-top';
             }
 
             static get properties() {
@@ -385,6 +371,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         }
 
-        window.customElements.define(MyView1.is, MyView1);
+        window.customElements.define(MyTop.is, MyTop);
     </script>
 </dom-module>
