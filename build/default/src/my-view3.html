@@ -8,10 +8,10 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 --><dom-module id="my-view3">
   <template>
-    <style include="shared-styles">
+    <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
       :host {
-        display: block;
-
+        @apply(--layout-vertical);
+        @apply(--layout-center);
         padding: 10px;
       }
     </style>
