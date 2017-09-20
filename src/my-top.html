@@ -137,10 +137,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: #fff;
                 vertical-align: 1px;
             }
-
+            @media (max-width: 640px) {
+                #headerContent {
+                    display: none;
+                }
+            }
         </style>
         <header class=" layout vertical center-center">
-            <div class="container">
+            <div id="headerContent" class="container">
                 <h2 id="slogan" class="wf-sawarabimincho" style="font-style: italic">J-Questで働こう</h2>
                 <p id="subSlogan" class="wf-sawarabimincho">お客様から期待された以上の価値を提供する</p>
                 <hr></hr>

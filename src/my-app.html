@@ -111,6 +111,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             #brandLogo {
                 margin-right: 18px;
+                max-width: 25vw;
             }
 
             #brandTitle {
@@ -222,6 +223,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         @apply(--layout-flex);
                     }
                      */
+            @media (max-width: 640px) {
+                .toolbar .tabs {
+                    display: none;
+                }
+            }
         </style>
 
         <app-location route="{{route}}" url-space-regex="^[[rootPath]]" ></app-location>
@@ -350,7 +356,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <p>中途採用はこちら</p>
                         </div>
                     </a>
-                    <a class="">
+                    <a class="https://www.j-quest.jp/" target="_blank">
                         <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(../images/jquest_logo.png)">
                             <p>J-Quest Homepage</p>
                             <p>ホームページ</p>
