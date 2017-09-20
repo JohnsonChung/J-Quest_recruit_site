@@ -39,6 +39,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 display: block;
             }
 
+            iron-pages > * {
+                padding-top: 64px;
+            }
+
             app-drawer-layout:not([narrow]) [drawer-toggle] {
                 display: none;
             }
@@ -68,7 +72,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: black;
                 font-weight: bold;
             }
-
+            .drawer-list a[name*="-"] {
+                font-size: 0.8em;
+                text-indent: 0.5em;
+                color: var(--paper-grey-800);
+            }
+            .toolbar {}
             .tabs a {
                 font-size: 15px;
                 text-decoration: none;
@@ -83,6 +92,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .tabs a:not(:last-child):after {
                 content: '|';
                 padding: 0px 0px;
+            }
+
+            .toolbar-sub {
+                top: 64px;
+                right: 0;
+                left: 0;
+                position: absolute;
+                height: 43px;
+                background-color: #fff;
+            }
+            .toolbar-sub .tabs a{
+                color: var(--paper-grey-600);
             }
 
             #brandLogo {
@@ -125,10 +146,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: #fff;
                 text-align: center;
             }
-
             [hidden] {
                 display: none !important;
             }
+
+            /* Trying to vertical flex the iron pages. Follow the header-layout demo:footer
+                    app-header-layout {
+                        @apply(--layout-vertical);
+                    }
+                    iron-pages {
+                        @apply(--layout-flex);
+                    }
+                     */
         </style>
 
         <app-location route="{{route}}" url-space-regex="^[[rootPath]]" ></app-location>
@@ -150,6 +179,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <a name="view1" href="[[rootPath]]view1">中途採用</a>
                     <a name="view2" href="[[rootPath]]view2">新卒採用</a>
                     <a name="parttime" href="[[rootPath]]parttime">パート・アルバイト</a>
+                    <a name="parttime-stores" href="[[rootPath]]parttime/stores">募集店舗</a>
+                    <a name="parttime-works" href="[[rootPath]]parttime/works">どんな仕事なの？</a>
+                    <a name="parttime-voice" href="[[rootPath]]parttime/voice">先輩たちの声</a>
+                    <a name="parttime-dangerous" href="[[rootPath]]parttime/dangerous">乙四について</a>
+                    <a name="parttime-quizanswer" href="[[rootPath]]parttime/quizanswer">よくある質問</a>
                     <a name="top" href="[[rootPath]]top">TOP</a>
                 </iron-selector>
             </app-drawer>
@@ -157,9 +191,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!-- Main content -->
             <app-header-layout has-scrolling-region>
 
-                <app-header slot="header" reveals effects="waterfall" slot="header">
+                <app-header  slot="header" reveals effects="waterfall">
                     <app-toolbar class="toolbar">
-                        <paper-icon-button drawer-toggle icon="menu"></paper-icon-button>
+                        <paper-icon-button drawer-toggle icon="menu" ></paper-icon-button>
                         <div class="layout horizontal center" main-title>
                             <img id="brandLogo" src="../images/jquest_logo.png" alt="j-quest">
                             <div id="brandTitle">
@@ -167,8 +201,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <span>採用情報</span>
                             </div>
                         </div>
-                        <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
-                            <a name="view1" href="[[rootPath]]view1">
+                        <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation" >
+                            <a name="view1" href="[[rootPath]]view1" >
                                 <paper-button>中途採用</paper-button>
                             </a>
                             <a name="view2" href="[[rootPath]]view2">
@@ -210,7 +244,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         selected="[[page]]"
                         attr-for-selected="name"
                         fallback-selection="view404"
-                        role="main">
+                        role="main"
+                        on-iron-select="_ironPagesChanged">
                     <my-top name="top"></my-top>
                     <my-view2 name="view2"></my-view2>
                     <my-view3 name="view3"></my-view3>
@@ -232,9 +267,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <img src="../images/banner_sm_vigo.jpg" alt="">
                     </div>
                 </div>
-                <div id="footer">
+                <footer id="footer">
                     <div>Copyright @ 2017 J-Quest Corporation</div>
-                </div>
+                </footer>
             </app-header-layout>
         </app-drawer-layout>
     </template>
@@ -270,7 +305,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     '_subRoutePageChanged(subRouteActive, subRouteData.subPage)'
                 ];
             }
-
             _routePageChanged(page) {
                 // If subRoute is actived we will not change page by this observer.
                 if (this.subRouteActive) return;
@@ -303,6 +337,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             _showPage404() {
                 this.page = 'view404';
             }
+            _ironPagesChanged (target) {
+                // When page changed reset contentContainer back to Top
+                var layout = this.shadowRoot.querySelector("app-header-layout");
+                layout.shadowRoot.querySelector('#contentContainer').scrollTop = 0;
+            };
         }
 
         window.customElements.define(MyApp.is, MyApp);

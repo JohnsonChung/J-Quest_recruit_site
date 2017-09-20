@@ -63,7 +63,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         transform: scaleX(1.2);
       }
       p {
-        margin: 0;
+        margin: 0 15px;
+
       }
       p.subtitle {
         font-size: 15px;
@@ -75,6 +76,70 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       table {
         font-size: 14px;
       }
+
+      paper-button.padding {
+        padding-right: 4.5em;
+        padding-left: 4.5em;
+      }
+      paper-button.cube {
+        margin-top: 0;
+        border-radius: 5px;
+        box-shadow: 0 4px 0 var(--paper-pink-900);
+        transition: 0.1s ease;
+        transition-property: box-shadow, transform;
+      }
+      paper-button.cube:hover {
+        border-bottom-width: 0;
+        box-shadow: 0 1px 0 var(--paper-pink-100), 0 -1px 0 var(--paper-pink-900);
+        transform: translateY(4px);
+      }
+
+      paper-button.shining:hover {
+        text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 25px rgba(255,255,255,1);
+      }
+
+      paper-button.border.slashed {
+        /* temp should replace with css image border */
+        border: 4px dashed var(--paper-blue-grey-800);
+        border-image: repeating-linear-gradient(-70deg, rgb(160, 160, 160), rgb(160, 160, 160) 1%, transparent 1%, transparent 2%) 10;
+      }
+
+      paper-button.clip {
+        background-clip: padding-box; /* support: IE9+ */
+        border-radius: 0;
+        padding: 0;
+        line-height: 4;
+        font-size: 13px;
+        width: 235px;
+        margin-right: 10px;
+        transition: box-shadow 0.3s ease;
+      }
+      paper-button.clip:hover {
+        @apply(--shadow-elevation-6dp);
+      }
+
+      paper-button.anchor {
+        position: relative;
+      }
+
+      paper-button.anchor::after {
+        content: "↘";
+        position: absolute;
+        color: rgb(100, 100, 100);
+        right: 2px;
+        bottom: -18.5px;
+        font-weight: bold;
+      }
+
+      paper-button.pink {
+        background-color: var(--paper-pink-a200);
+      }
+
+      paper-button.yellow {
+        background-color: var(--paper-yellow-400);
+        color: var(--paper-grey-900);
+      }
+
       @media (max-width: 960px) {
         .card {
           max-width: 90%;
