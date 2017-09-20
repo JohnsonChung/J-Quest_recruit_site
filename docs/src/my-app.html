@@ -6,10 +6,7 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><link rel="lazy-import" href="my-view1.html">
-<link rel="lazy-import" href="my-view2.html">
-<link rel="lazy-import" href="my-view3.html">
-<link rel="lazy-import" href="my-view404.html">
+--><link rel="lazy-import" href="my-view404.html">
 <div hidden="" by-polymer-bundler=""><!--
 @license
 Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
@@ -22321,6 +22318,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 --app-secondary-color: #29b8e4;
                 display: block;
             }
+            iron-pages > * {
+                padding-top: 64px;
+            }
 
             app-drawer-layout:not([narrow]) [drawer-toggle] {
                 display: none;
@@ -22328,11 +22328,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             app-header {
                 color: var(--app-primary-color);
-                background-color: rgba(255,255,255,0.7);
+                background-color: rgba(255, 255, 255, 0.7);
             }
 
             app-header paper-icon-button {
                 --paper-icon-button-ink-color: white;
+            }
+
+            [hidden] {
+                display: none !important;
             }
 
             .drawer-list {
@@ -22351,12 +22355,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: black;
                 font-weight: bold;
             }
-
+            .drawer-list a[name*="-"] {
+                font-size: 0.8em;
+                text-indent: 0.5em;
+                color: var(--paper-grey-800);
+            }
+            .toolbar {}
             .tabs a {
                 font-size: 15px;
                 text-decoration: none;
                 color: black;
-                text-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+                text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
             }
 
             .tabs a.iron-selected {
@@ -22367,23 +22376,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 content: '|';
                 padding: 0px 0px;
             }
+
+            .toolbar-sub {
+                top: 64px;
+                right: 0;
+                left: 0;
+                position: absolute;
+                height: 43px;
+                background-color: #fff;
+            }
+            .toolbar-sub .tabs a{
+                color: var(--paper-grey-600);
+            }
+
             #brandLogo {
                 margin-right: 18px;
+                max-width: 25vw;
             }
-            #brandTitle{
+
+            #brandTitle {
                 font-size: 12px;
                 text-align: center;
                 letter-spacing: 0px;
                 line-height: 1.3;
                 font-weight: bold;
             }
-            #brandTitle > span{
+
+            #brandTitle > span {
                 display: block;
             }
+
             #brandTitle > span:last-child {
                 font-size: 18px;
                 letter-spacing: 0.5px;
             }
+
+            /* little banner before footer*/
+            #banner-sm {
+                padding: 80px 0;
+                background-color: #fff;
+            }
+
+            #banner-sm img {
+                @apply(--shadow-elevation-12dp);
+                margin: 15px;
+            }
+
             #footer {
                 @apply(--layout-vertical);
                 @apply(--layout-center-center);
@@ -22392,20 +22430,103 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: #fff;
                 text-align: center;
             }
+
+            .img-thumbnail {
+                @apply(--layout-vertical);
+                @apply(--layout-center-center);
+                @apply(--layout-flex);
+                position: relative;
+                transition: background ease 0.5s;
+                background-size: auto 100%;
+                background-position: center center;
+                color: #fff;
+            }
+
+            .img-thumbnail:hover {
+                background-size: auto 110%;
+            }
+
+            /* label with thumbnail */
+            .img-thumbnail p {
+                z-index: 1;
+                text-shadow: 0 1px 2px #000;
+            }
+
+            .img-thumbnail p:first-child {
+                font-size: 15px;
+            }
+
+            .img-thumbnail p:last-child {
+                font-weight: bold;
+            }
+
+            /* transparent black overlay*/
+            #img-thumbnail-circle {
+                background-color: rgba(0,0,0,0.25);
+            }
+            .img-thumbnail::after {
+                content: '';
+                position: absolute;
+                display: block;
+                right: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.2);
+                transition: background 1s ease;
+                z-index: 0;
+            }
+
+            .img-thumbnail:hover::after {
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+            /* circle */
+            .img-thumbnail-circle{
+                border-radius: 120px;
+                width: 240px;
+                height: 240px;
+                margin: 1em 1em;
+            }
+            .img-thumbnail-circle::after {
+                border-radius: 120px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            /* Trying to vertical flex the iron pages. Follow the header-layout demo:footer
+                    app-header-layout {
+                        @apply(--layout-vertical);
+                    }
+                    iron-pages {
+                        @apply(--layout-flex);
+                    }
+                     */
+            @media (max-width: 640px) {
+                .toolbar .tabs {
+                    display: none;
+                }
+            }
         </style>
 
         <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
         <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-
+        <app-route route="{{subroute}}" pattern="/:subPage" active="{{subRouteActive}}" data="{{subRouteData}}"></app-route>
         <app-drawer-layout drawer="" fullbleed="" force-narrow="">
             <!-- Drawer content -->
             <app-drawer id="drawer" slot="drawer" swipe-open="">
                 <app-toolbar>J-Quest</app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a name="view1" href="[[rootPath]]view1">中途採用</a>
+                    <a name="parttime" href="[[rootPath]]parttime">パート・アルバイト</a>
+                    <a name="parttime-stores" href="[[rootPath]]parttime/stores">募集店舗</a>
+                    <a name="parttime-works" href="[[rootPath]]parttime/works">どんな仕事なの？</a>
+                    <a name="parttime-voice" href="[[rootPath]]parttime/voice">先輩たちの声</a>
+                    <a name="parttime-dangerous" href="[[rootPath]]parttime/dangerous">乙四について</a>
+                    <a name="parttime-quizanswer" href="[[rootPath]]parttime/quizanswer">よくある質問</a>
                     <a name="view2" href="[[rootPath]]view2">新卒採用</a>
-                    <a name="view3" href="[[rootPath]]view3">パート・アルバイト</a>
-                    <a name="view1" href="[[rootPath]]">TOP</a>
+                    <a name="view1" href="[[rootPath]]view1">中途採用</a>
+                    <a name="top" href="[[rootPath]]top">TOP</a>
                 </iron-selector>
             </app-drawer>
 
@@ -22423,32 +22544,95 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </div>
                         </div>
                         <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
-                            <a name="view1" href="[[rootPath]]view1">
-                                <paper-button>中途採用</paper-button>
+                            <a name="parttime" href="[[rootPath]]parttime">
+                                <paper-button>パート・アルバイト</paper-button>
                             </a>
                             <a name="view2" href="[[rootPath]]view2">
                                 <paper-button>新卒採用</paper-button>
                             </a>
-                            <a name="view3" href="[[rootPath]]view3">
-                                <paper-button>パート・アルバイト</paper-button>
+                            <a name="view1" href="[[rootPath]]view1">
+                                <paper-button>中途採用</paper-button>
                             </a>
-                            <a name="view1" href="[[rootPath]]">
+                            <a name="top" href="[[rootPath]]top">
                                 <paper-button>TOP</paper-button>
+                            </a>
+                        </iron-selector>
+                    </app-toolbar>
+                    <app-toolbar class="toolbar toolbar-sub layout horizontal end-justified" hidden$="{{!subRouteActive}}">
+                        <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
+                            <a name="parttime-stores" href="[[rootPath]]parttime/stores">
+                                <paper-button>募集店舗</paper-button>
+                            </a>
+                            <a name="parttime-works" href="[[rootPath]]parttime/works">
+                                <paper-button>どんな仕事なの？</paper-button>
+                            </a>
+                            <a name="parttime-voice" href="[[rootPath]]parttime/voice">
+                                <paper-button>先輩たちの声</paper-button>
+                            </a>
+                            <a name="parttime-merit" href="[[rootPath]]parttime/merit">
+                                <paper-button>働くメリット</paper-button>
+                            </a>
+                            <a name="parttime-dangerous" href="[[rootPath]]parttime/dangerous">
+                                <paper-button>乙四について</paper-button>
+                            </a>
+                            <a name="top" href="[[rootPath]]parttime/quizanswer">
+                                <paper-button>よくある質問</paper-button>
                             </a>
                         </iron-selector>
                     </app-toolbar>
                 </app-header>
 
-                <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
-                    <my-view1 name="view1"></my-view1>
+                <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main" on-iron-select="_ironPagesChanged">
+                    <my-top name="top"></my-top>
                     <my-view2 name="view2"></my-view2>
                     <my-view3 name="view3"></my-view3>
+                    <my-parttime name="parttime"></my-parttime>
+                    <my-parttime-dangerous name="parttime-dangerous"></my-parttime-dangerous>
+                    <my-parttime-merit name="parttime-merit"></my-parttime-merit>
+                    <my-parttime-quizanswer name="parttime-quizanswer"></my-parttime-quizanswer>
+                    <my-parttime-stores name="parttime-stores"></my-parttime-stores>
+                    <my-parttime-voice name="parttime-voice"></my-parttime-voice>
+                    <my-parttime-works name="parttime-works"></my-parttime-works>
+                    <my-recruitform name="recruitform"></my-recruitform>
                     <my-view404 name="view404"></my-view404>
                 </iron-pages>
-
-                <div id="footer">
-                    <div>Copyright @ 2017 J-Quest Corporation</div>
+                <div class="container layout horizontal">
+                    <div id="banner-sm" class="layout flex horizontal center-center center-justified wrap">
+                        <img src="../images/banner_sm_biogus.jpg" alt="">
+                        <img src="../images/banner_sm_eneosdenki.gif" alt="">
+                        <img src="../images/banner_sm_keeper.gif" alt="">
+                        <img src="../images/banner_sm_vigo.jpg" alt="">
+                    </div>
                 </div>
+                <div id="img-thumbnail-circle" class="container layout horizontal around-justified wrap ">
+                    <a class="" href="[[rootPath]]parttime">
+                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(../images/photo/sm_160107-16.jpg)">
+                            <p>part time employee</p>
+                            <p>パートタイマースタッフ</p>
+                        </div>
+                    </a>
+                    <a class="" href="">
+                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(../images/photo/sm_160107-88.jpg)">
+                            <p>New graduate</p>
+                            <p>新卒採用はこちら</p>
+                        </div>
+                    </a>
+                    <a class="">
+                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(../images/photo/02-3.jpg)">
+                            <p>mid-career recruitment</p>
+                            <p>中途採用はこちら</p>
+                        </div>
+                    </a>
+                    <a class="https://www.j-quest.jp/" target="_blank">
+                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(../images/jquest_logo.png)">
+                            <p>J-Quest Homepage</p>
+                            <p>ホームページ</p>
+                        </div>
+                    </a>
+                </div>
+                <footer id="footer">
+                    <div>Copyright @ 2017 J-Quest Corporation</div>
+                </footer>
             </app-header-layout>
         </app-drawer-layout>
     </template>
@@ -22464,9 +22648,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     page: {
                         type: String,
                         reflectToAttribute: true,
-                        observer: '_pageChanged',
+                        observer: '_pageChanged'
+                    },
+                    subPage: {
+                        type: String
                     },
                     routeData: Object,
+                    subRouteData: Object,
                     subroute: String,
                     // This shouldn't be neccessary, but the Analyzer isn't picking up
                     // Polymer.Element#rootPath
@@ -22477,18 +22665,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             static get observers() {
                 return [
                     '_routePageChanged(routeData.page)',
+                    '_subRoutePageChanged(subRouteActive, subRouteData.subPage)'
                 ];
             }
-
             _routePageChanged(page) {
-                // If no page was found in the route data, page will be an empty string.
-                // Deault to 'view1' in that case.
-                this.page = page || 'view1';
+                // If subRoute is actived we will not change page by this observer.
+                if (this.subRouteActive) return;
+                // debug log: console.log('[PAGE]');
+                this.page = page || 'top';
 
                 // Close a non-persistent drawer when the page & route are changed.
                 if (!this.$.drawer.persistent) {
                     this.$.drawer.close();
                 }
+            }
+
+            _subRoutePageChanged(active, subPage) {
+                if (!active || subPage === undefined) return;
+                // debug log: console.log('[SUBPAGE] ' + subPage + ' active: ' + active);
+                this.page = this.routeData.page + '-' + this.subRouteData.subPage;
+                this.subPage = this.subRouteData.subPage;
             }
 
             _pageChanged(page) {
@@ -22504,6 +22700,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             _showPage404() {
                 this.page = 'view404';
             }
+            _ironPagesChanged (target) {
+                // When page changed reset contentContainer back to Top
+                var layout = this.shadowRoot.querySelector("app-header-layout");
+                layout.shadowRoot.querySelector('#contentContainer').scrollTop = 0;
+            };
         }
 
         window.customElements.define(MyApp.is, MyApp);
@@ -22546,10 +22747,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         line-height: 64px;
       }
 
+      /*
+           * Image thumbnail with hover zoom.
+           */
+      .img-thumbnail {
+        @apply(--layout-vertical);
+        @apply(--layout-center-center);
+        @apply(--layout-flex);
+        position: relative;
+        height: 276px;
+        background: url(http://via.placeholder.com/500x276);
+        background-position: center center;
+        background-size: 100% auto;
+        transition: background ease 0.5s;
+        min-width: calc(276px * (4 / 3));
+        color: #fff;
+      }
+
+      .img-thumbnail::after {
+        content: '';
+        position: absolute;
+        display: block;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        transition: background 1s ease;
+        z-index: 0;
+      }
+
+      .img-thumbnail:hover {
+        background-size: 110%;
+      }
+      .img-thumbnail:hover::after {
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .img-thumbnail p {
+        z-index: 1;
+        text-shadow: 0 1px 2px #000;
+      }
+
+      .img-thumbnail p:first-child {
+        font-size: 15px;
+      }
+
+      .img-thumbnail p:last-child {
+        font-weight: bold;
+      }
+
+      /**
+          * Google web font Japanese
+          **/
+
       .wf-kokoro { font-family: "Kokoro"; }
       .wf-mplus1p { font-family: "Mplus 1p"; }
       .wf-sawarabimincho { font-family: "Sawarabi Mincho"; }
-
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
       h1 {
         margin: 16px 0;
         color: #212121;
@@ -22557,17 +22814,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       h3 /* section title */ {
         color: #29b8e4;
-        margin: 0px;
+        margin: 25px 0 15px 0;
         text-align: center;
         font-weight: 400;
         font-size: 36px;
         letter-spacing: 10px;
-        margin-left: 10px;
         transform-origin: center;
-        transform: scaleX(1.2);
+      }
+      h3.scale {
+        /* ScaleX 對 手機板會造成多餘的寬度  */
+        /*transform: scaleX(1.2);        */
       }
       p {
-        margin: 0;
+        margin: 0 15px;
       }
       p.subtitle {
         font-size: 15px;
@@ -22579,6 +22838,71 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       table {
         font-size: 14px;
       }
+
+      paper-button.padding {
+        padding-right: 4.5em;
+        padding-left: 4.5em;
+      }
+      paper-button.cube {
+        margin-top: 0;
+        border-radius: 5px;
+        box-shadow: 0 4px 0 var(--paper-pink-900);
+        transition: 0.1s ease;
+        transition-property: box-shadow, transform;
+      }
+      paper-button.cube:hover {
+        border-bottom-width: 0;
+        box-shadow: 0 1px 0 var(--paper-pink-100), 0 -1px 0 var(--paper-pink-900);
+        transform: translateY(4px);
+      }
+
+      paper-button.shining:hover {
+        text-shadow: 0 0 8px rgba(255,255,255,0.8), 0 0 25px rgba(255,255,255,1);
+      }
+
+      paper-button.border.slashed {
+        /* temp should replace with css image border */
+        border: 4px dashed var(--paper-blue-grey-800);
+        border-image: repeating-linear-gradient(-70deg, rgb(160, 160, 160), rgb(160, 160, 160) 1%, transparent 1%, transparent 2%) 10;
+      }
+
+      paper-button.clip {
+        background-clip: padding-box; /* support: IE9+ */
+        border-radius: 0;
+        padding: 0;
+        line-height: 4;
+        font-size: 13px;
+        width: 235px;
+        margin-right: 10px;
+        transition: box-shadow 0.3s ease;
+      }
+      paper-button.clip:hover {
+        @apply(--shadow-elevation-6dp);
+      }
+
+      paper-button.anchor {
+        position: relative;
+      }
+
+      paper-button.anchor::after {
+        content: "↘";
+        position: absolute;
+        color: rgb(100, 100, 100);
+        right: 2px;
+        bottom: -18.5px;
+        font-weight: bold;
+      }
+
+      paper-button.pink {
+        background-color: var(--paper-pink-a200);
+        color: #fff;
+      }
+
+      paper-button.yellow {
+        background-color: var(--paper-yellow-400);
+        color: var(--paper-grey-900);
+      }
+
       @media (max-width: 960px) {
         .card {
           max-width: 90%;
