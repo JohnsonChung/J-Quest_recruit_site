@@ -2,7 +2,7 @@
   "entrypoint": "index.html",
   "shell": "src/my-app.html",
   "fragments": [
-    "src/my-view1.html",
+    "src/my-top.html",
     "src/my-view2.html",
     "src/my-view3.html",
     "src/my-view404.html"
@@ -14,7 +14,18 @@
   ],
   "extraDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/*.js"
+    "md/*.md",
+    "bower_components/webcomponentsjs/*.js",
+    "bower_components/iron-resizable-behavior/*.html",
+    "bower_components/iron-jsonp-library/*.html",
+    "bower_components/iron-resizable-behavior/*.html",
+    "bower_components/iron-icons/*.html",
+    "bower_components/iron-image/*.html",
+    "bower_components/google-apis/*.html",
+    "bower_components/google-map/*.html",
+    "bower_components/marked-element/*.html",
+    "bower_components/marked/lib/*.js",
+    "bower_components/granite-bootstrap/*.html"
   ],
   "lint": {
     "rules": ["polymer-2"]
