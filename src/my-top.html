@@ -37,8 +37,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 margin: 0;
                 margin-bottom: 40px;
                 box-sizing: border-box;
-                background-position: center center;
-                background-image: url('http://lorempixel.com/760/480/food/');
+                background-position: center 25%;
+                background-image: url('../images/hero_unit.jpg');
                 backgrond-repeat: no-repeat;
                 background-size: cover;
                 color: white;
@@ -50,42 +50,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 padding-left: 490px;
                 box-sizing: border-box;
             }
+
             header #slogan {
                 font-size: 56px;
                 font-weight: 300;
                 margin: 0;
                 text-shadow: 0 4px 6px rgba(0, 0, 0, 0.68);
             }
+
             header #slogan::first-letter {
                 font-size: 78px;
                 vertical-align: -20px;
             }
+
             header #subSlogan {
                 text-shadow: 0 4px 6px rgba(0, 0, 0, 0.68);
             }
+
             .card.skyblue {
                 background: #E7F9FB;
             }
 
             a {
                 text-decoration: none;
-            }
-
-            .img-thumbnail {
-                @apply(--layout-vertical);
-                @apply(--layout-center-center);
-                @apply(--layout-flex);
-                height: 276px;
-                background-position: center center;
-                background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(http://via.placeholder.com/500x276);
-                background-size: 100% auto;
-                transition: background ease 0.5s;
-                min-width: calc( 276px * ( 4 / 3 ) );
-                color: #fff;
-            }
-
-            .img-thumbnail:hover {
-                background-size: 120%;
             }
 
             #company-info {
@@ -116,25 +103,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 opacity: 0.5;
                 z-index: -1;
             }
+
             #md-news [slot="markdown-html"] {
                 font-size: 15px;
             }
+
             #md-news [slot="markdown-html"] strong {
                 padding: 0 14px 0 0;
             }
+
             #md-news [slot="markdown-html"] p {
                 display: inline;
             }
+
             #md-news [slot="markdown-html"] ul {
                 padding: 0;
                 margin: 0;
             }
-            #md-news [slot="markdown-html"] li{
+
+            #md-news [slot="markdown-html"] li {
                 padding: 14px 0;
                 list-style-type: none;
                 border-bottom: 1px solid #29b8e4;
             }
-            #md-news [slot="markdown-html"] li:before{
+
+            #md-news [slot="markdown-html"] li:before {
                 content: 'news';
                 padding: 0 20px;
                 margin-right: 10px;
@@ -152,7 +145,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <p id="subSlogan" class="wf-sawarabimincho">お客様から期待された以上の価値を提供する</p>
                 <hr></hr>
                 <div class="underline" width="100%"></div>
-                <a href="[[rootPath]]recruitform"><paper-button raised class="pink cube padding shining wf-mplus1p">応募はこちら</paper-button></a>
+                <a href="[[rootPath]]recruitform">
+                    <paper-button raised class="pink cube padding shining wf-mplus1p">応募はこちら</paper-button>
+                </a>
             </div>
         </header>
 
@@ -162,10 +157,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         style="font-size: 1.4em">\ </span>各種ご応募はこちらから <span style="font-size: 1.4em"> /</span></h4>
             </div>
             <div class="layout horizontal center-center wrap">
-                <a name="view1" href="[[rootPath]]view1">
+
+                <a name="parttime" href="[[rootPath]]parttime">
                     <paper-button class="border slashed yellow clip anchor">
-                        <iron-icon icon="group-work"></iron-icon>
-                        中途採用
+                        <iron-icon icon="image:timelapse"></iron-icon>
+                        パート・アルバイト
                     </paper-button>
                 </a>
                 <a name="view2" href="[[rootPath]]view2">
@@ -174,18 +170,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         新卒採用
                     </paper-button>
                 </a>
-                <a name="parttime" href="[[rootPath]]parttime">
+                <a name="view1" href="[[rootPath]]view1">
                     <paper-button class="border slashed yellow clip anchor">
-                        <iron-icon icon="image:timelapse"></iron-icon>
-                        パート・アルバイト
+                        <iron-icon icon="group-work"></iron-icon>
+                        中途採用
                     </paper-button>
-                </a></div>
+                </a>
+            </div>
         </div>
         <!--
         --  新着情報
         -->
         <div class="card layout vertical">
-            <h3>NEWS</h3>
+            <h3 class="scale">NEWS</h3>
             <p class="subtitle">新着情報</p>
             <div class="card">
                 <marked-element id="md-news">
@@ -195,25 +192,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
         </div>
         <div class="container layout horizontal wrap">
-            <div class="img-thumbnail">
-                <p>mid-career recruitment</p>
-                <h1>中途採用はこちら</h1>
-            </div>
-            <div class="img-thumbnail">
-                <p>New graduate</p>
-                <h1>新卒採用はこちら</h1>
-            </div>
-            <div class="img-thumbnail">
-                <p>part time employee</p>
-                <h1>パートタイマースタッフ</h1>
-            </div>
+            <a class="flex" href="[[rootPath]]parttime">
+                <div class="img-thumbnail" style="background-image: url(../images/photo/sm_160107-16.jpg)">
+                    <p>part time employee</p>
+                    <p>パートタイマースタッフ</p>
+                </div>
+            </a>
+            <a  class="flex" href="">
+                <div class="img-thumbnail" style="background-image: url(../images/photo/sm_160107-88.jpg)">
+                    <p>New graduate</p>
+                    <p>新卒採用はこちら</p>
+                </div>
+            </a>
+            <a class="flex">
+                <div class="img-thumbnail" style="background-image: url(../images/photo/02-3.jpg)">
+                    <p>mid-career recruitment</p>
+                    <p>中途採用はこちら</p>
+                </div>
+            </a>
         </div>
 
         <!--
         --  会社情報
         -->
         <div id="company-info" class="container layout vertical center">
-            <h3>COMPANY</h3>
+            <h3 class="scale">COMPANY</h3>
             <p class="subtitle">会社情報</p>
             <div>
                 <table>
@@ -305,7 +308,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             static get properties() {
-                return { };
+                return {};
             }
         }
 

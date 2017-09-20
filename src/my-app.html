@@ -38,7 +38,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 --app-secondary-color: #29b8e4;
                 display: block;
             }
-
             iron-pages > * {
                 padding-top: 64px;
             }
@@ -54,6 +53,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             app-header paper-icon-button {
                 --paper-icon-button-ink-color: white;
+            }
+
+            [hidden] {
+                display: none !important;
             }
 
             .drawer-list {
@@ -127,10 +130,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 letter-spacing: 0.5px;
             }
 
+            /* little banner before footer*/
             #banner-sm {
                 padding: 80px 0;
-                margin: 0;
-                max-width: 960px;
+                background-color: #fff;
             }
 
             #banner-sm img {
@@ -146,8 +149,69 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: #fff;
                 text-align: center;
             }
-            [hidden] {
-                display: none !important;
+
+            .img-thumbnail {
+                @apply(--layout-vertical);
+                @apply(--layout-center-center);
+                @apply(--layout-flex);
+                position: relative;
+                transition: background ease 0.5s;
+                background-size: auto 100%;
+                background-position: center center;
+                color: #fff;
+            }
+
+            .img-thumbnail:hover {
+                background-size: auto 110%;
+            }
+
+            /* label with thumbnail */
+            .img-thumbnail p {
+                z-index: 1;
+                text-shadow: 0 1px 2px #000;
+            }
+
+            .img-thumbnail p:first-child {
+                font-size: 15px;
+            }
+
+            .img-thumbnail p:last-child {
+                font-weight: bold;
+            }
+
+            /* transparent black overlay*/
+            #img-thumbnail-circle {
+                background-color: rgba(0,0,0,0.25);
+            }
+            .img-thumbnail::after {
+                content: '';
+                position: absolute;
+                display: block;
+                right: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.2);
+                transition: background 1s ease;
+                z-index: 0;
+            }
+
+            .img-thumbnail:hover::after {
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+            /* circle */
+            .img-thumbnail-circle{
+                border-radius: 120px;
+                width: 240px;
+                height: 240px;
+                margin: 1em 1em;
+            }
+            .img-thumbnail-circle::after {
+                border-radius: 120px;
+            }
+
+            a {
+                text-decoration: none;
             }
 
             /* Trying to vertical flex the iron pages. Follow the header-layout demo:footer
@@ -176,14 +240,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <app-drawer id="drawer" slot="drawer" swipe-open>
                 <app-toolbar>J-Quest</app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a name="view1" href="[[rootPath]]view1">中途採用</a>
-                    <a name="view2" href="[[rootPath]]view2">新卒採用</a>
                     <a name="parttime" href="[[rootPath]]parttime">パート・アルバイト</a>
                     <a name="parttime-stores" href="[[rootPath]]parttime/stores">募集店舗</a>
                     <a name="parttime-works" href="[[rootPath]]parttime/works">どんな仕事なの？</a>
                     <a name="parttime-voice" href="[[rootPath]]parttime/voice">先輩たちの声</a>
                     <a name="parttime-dangerous" href="[[rootPath]]parttime/dangerous">乙四について</a>
                     <a name="parttime-quizanswer" href="[[rootPath]]parttime/quizanswer">よくある質問</a>
+                    <a name="view2" href="[[rootPath]]view2">新卒採用</a>
+                    <a name="view1" href="[[rootPath]]view1">中途採用</a>
                     <a name="top" href="[[rootPath]]top">TOP</a>
                 </iron-selector>
             </app-drawer>
@@ -202,14 +266,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </div>
                         </div>
                         <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation" >
-                            <a name="view1" href="[[rootPath]]view1" >
-                                <paper-button>中途採用</paper-button>
+                            <a name="parttime" href="[[rootPath]]parttime">
+                                <paper-button>パート・アルバイト</paper-button>
                             </a>
                             <a name="view2" href="[[rootPath]]view2">
                                 <paper-button>新卒採用</paper-button>
                             </a>
-                            <a name="parttime" href="[[rootPath]]parttime">
-                                <paper-button>パート・アルバイト</paper-button>
+                            <a name="view1" href="[[rootPath]]view1" >
+                                <paper-button>中途採用</paper-button>
                             </a>
                             <a name="top" href="[[rootPath]]top">
                                 <paper-button>TOP</paper-button>
@@ -259,13 +323,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <my-recruitform name="recruitform"></my-recruitform>
                     <my-view404 name="view404"></my-view404>
                 </iron-pages>
-                <div class="container layout horizontal center-center">
-                    <div id="banner-sm" class="layout horizontal center-center around-justified wrap">
+                <div class="container layout horizontal">
+                    <div id="banner-sm" class="layout flex horizontal center-center center-justified wrap">
                         <img src="../images/banner_sm_biogus.jpg" alt="">
                         <img src="../images/banner_sm_eneosdenki.gif" alt="">
                         <img src="../images/banner_sm_keeper.gif" alt="">
                         <img src="../images/banner_sm_vigo.jpg" alt="">
                     </div>
+                </div>
+                <div id="img-thumbnail-circle" class="container layout horizontal around-justified wrap ">
+                    <a class="" href="[[rootPath]]parttime">
+                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(../images/photo/sm_160107-16.jpg)">
+                            <p>part time employee</p>
+                            <p>パートタイマースタッフ</p>
+                        </div>
+                    </a>
+                    <a  class="" href="">
+                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(../images/photo/sm_160107-88.jpg)">
+                            <p>New graduate</p>
+                            <p>新卒採用はこちら</p>
+                        </div>
+                    </a>
+                    <a class="">
+                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(../images/photo/02-3.jpg)">
+                            <p>mid-career recruitment</p>
+                            <p>中途採用はこちら</p>
+                        </div>
+                    </a>
+                    <a class="">
+                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(../images/jquest_logo.png)">
+                            <p>J-Quest Homepage</p>
+                            <p>ホームページ</p>
+                        </div>
+                    </a>
                 </div>
                 <footer id="footer">
                     <div>Copyright @ 2017 J-Quest Corporation</div>
