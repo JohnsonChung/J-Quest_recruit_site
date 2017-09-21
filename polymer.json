@@ -25,7 +25,8 @@
     "bower_components/google-map/*.html",
     "bower_components/marked-element/*.html",
     "bower_components/marked/lib/*.js",
-    "bower_components/granite-bootstrap/*.html"
+    "bower_components/granite-bootstrap/*.html",
+    "bower_components/grain-masonry/*.html"
   ],
   "lint": {
     "rules": ["polymer-2"]

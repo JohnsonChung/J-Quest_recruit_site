@@ -60,6 +60,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 padding: 1.1em 2em;
                 z-index: 1;
             }
+
+            .twin-cards {
+                @apply(--layout-horizontal);
+                outline: 1px solid red;
+                margin: 0;
+                width: 50%;
+            }
+            .twin-cards .card{
+                background-size: cover;
+            }
+            .twin-cards p {
+                margin: 0;
+                height: 100%;
+                width: 100%;
+            }
             @media(max-width: 960px) {
                 #slogan p {
                     @apply(--paper-font-body2);
@@ -90,12 +105,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
         <div class="container">
             <div class="layout horizontal around-justified wrap">
-                <a href="[[rootPath]]parttime/stores">
-                    <paper-button class="border slashed yellow clip anchor">募集店舗</paper-button>
-                </a>
-                <a href="[[rootPath]]parttime/works">
-                    <paper-button class="border slashed yellow clip anchor">どんな仕事なの？</paper-button>
-                </a>
+
+                <div class="twin-cards">
+                    <div class="card" style="background-image: url(../images/photo/sm_160107-2.jpg)">
+                        <p>J-Questであなたにしていただきたい仕事はお客様への「最高のおもてなし」。</p>
+                    </div>
+                    <div class="card">
+                        <a href="[[rootPath]]parttime/works">
+                            <paper-button class="border slashed yellow clip anchor">どんな仕事なの？</paper-button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="twin-cards">
+                    <div class="card" style="background-image: url(../images/photo/sm_160107-2.jpg)">
+                        <p>募集中店舗情報集め、簡単にサーチ！</p>
+                    </div>
+                    <div class="card">
+                        <a href="[[rootPath]]parttime/stores">
+                            <paper-button class="border slashed yellow clip anchor">募集店舗</paper-button>
+                        </a>
+                    </div>
+                </div>
+
                 <a href="[[rootPath]]parttime/voice">
                     <paper-button class="border slashed yellow clip anchor">先輩たちの声</paper-button>
                 </a>
