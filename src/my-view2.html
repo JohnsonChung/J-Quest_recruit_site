@@ -9,31 +9,186 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
+<link rel="import" href="../bower_components/grain-masonry/grain-masonry.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view2">
-  <template>
-    <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
-      :host {
-        @apply(--layout-vertical);
-        @apply(--layout-center);
-        padding: 10px;
-      }
-    </style>
+    <template>
+        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
+            :host {
+                @apply(--layout-vertical);
+                @apply(--layout-center);
+                margin-top: -64px;
+            }
 
-    <div class="card">
-      <div class="circle">新</div>
-      <h1>新卒採用</h1>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
-      <p>Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio natum malorum, tibique copiosae expetenda mel ea.</p>
-    </div>
-  </template>
+            header {
+                position: relative;
+                height: 768px;
+                width: 100%;
+                overflow: hidden;
+                background-color: var(--paper-yellow-300);
+            }
 
-  <script>
-    class MyView2 extends Polymer.Element {
-      static get is() { return 'my-view2'; }
-    }
+            header img {
+                width: 14.28571428571429%;
+                margin: 0;
+                line-height: 0;
+                font-size: 0;
+            }
+            header img:nth-child(8n+1) {
+                width: calc( 14.28571428571429% * 1.5);
+            }
+            #recrutingHero {
+                position: absolute;
+                top: 0;
+                right: 13vw;
+                background-image: url("../images/recruiting_graduates_hero.png");
+                width: 440px;
+                height: 768px;
+                background-size: covor;
+                background-position: center center;
+                opacity: 0;
+                filter: blur(8px);
+                animation-delay: 0.5s;
+                animation-fill-mode: forwards;
+                animation-name: cd-bounce-left;
+                animation-duration: 0.6s;
+            }
+            @keyframes cd-bounce-left {
+                0% {
+                    opacity: .2;
+                    transform: translateX(200px);
+                }
+                60% {
+                    opacity: .7;
+                    transform: translateX(-15px);
+                }
+                100% {
+                    filter:blur(0px);
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
 
-    window.customElements.define(MyView2.is, MyView2);
-  </script>
+            #md-crecruit-content [slot="markdown-html"] {
+                font-size: 18px;
+            }
+            #md-crecruit-content [slot="markdown-html"] ul{
+                @apply(--layout-horizontal);
+                padding-left: 0;
+            }
+            #md-crecruit-content [slot="markdown-html"] > ul > li{
+                background-color: var(--app-primary-color);
+                color: #fff;
+                padding: 0 10px;
+                margin-right: 6px;
+                font-size: 15px;
+                list-style: none;
+            }
+            #md-crecruit-content [slot="markdown-html"] > ol  {
+                padding-left: 0;
+            }
+            #md-crecruit-content [slot="markdown-html"] > ol li {
+                border-bottom: 1px solid var(--paper-blue-grey-200);
+                padding: 0.6em 0;
+                list-style: none;
+            }
+            #md-crecruit-content [slot="markdown-html"] table {
+                font-size: 18px;
+            }
+            #md-crecruit-content [slot="markdown-html"] table td {
+                min-width: 6em;
+                border-bottom: 1px solid var(--paper-blue-grey-200);
+                padding: 0.7em 0;
+            }
+            #md-crecruit-content [slot="markdown-html"] h4 , h4{
+                border-bottom: 3px solid var(--app-primary-color);
+                font-size: 25px;
+                margin-top: 45px;
+                margin-bottom: 15px;
+                padding: 6px 0;
+            }
+        </style>
+        <header>
+            <!--img[src="./images/photo/tiles/$$.jpg"]*31-->
+            <grain-masonry transition-duration="150" item-selector="img" horizontal-order>
+                <template is="dom-repeat" items="{{imgs}}">
+                    <img src="./images/photo/tiles/[[item.id]].jpg" alt="">
+                </template>
+            </grain-masonry>
+            <div id="recrutingHero"></div>
+        </header>
+        <div class="container layout horizontal center-center">
+            <a >
+                <paper-button class="">選考プロセス</paper-button>
+            </a>
+            <a >
+                <paper-button>キャリアプラン・育成制度</paper-button>
+            </a>
+            <a >
+                <paper-button>先輩インタビュー</paper-button>
+            </a>
+            <a >
+                <paper-button>採用担当ブログ</paper-button>
+            </a>
+        </div>
+        <div class="card">
+            <pre>
+                私たちの仕事は、ガソリンスタンドやコンビニでの仕事をイメージされがちです・・・
+
+                ですが実際はまったく異なります！
+
+                車検やオイル交換・タイヤ交換は一切ありません！
+
+                制服はエプロンで清潔感のある身だしなみ。
+                接客だけでなくお客様が満足されるサービスは何か？
+                また訪れたくなる環境を作るにはどうしたらいいか？
+                ・・・考え実行することが主な仕事です。
+
+                例えば、女性のお客様が多い店舗では、トイレに綿棒やコットン等のアメニティーグッズを用意したり、お花を生けてみたり・・・
+
+                お陰様で、ご来店されるお客様は・・・
+                業界平均のなんと４倍以上！！
+
+                「おもてなしでお客様に支持される」店舗を目指し頑張っています★☆★☆
+            </pre>
+        </div>
+        <div class="card">
+            <marked-element id="md-crecruit-content">
+                <div slot="markdown-html"></div>
+                <script type="text/markdown" src="./md/gra-recruit-table.md"></script>
+            </marked-element>
+        </div>
+    </template>
+
+    <script>
+        class MyView2 extends Polymer.Element {
+            static get is() {
+                return 'my-view2';
+            }
+
+            static get properties() {
+                return {
+                    imgs: {
+                        type: Array,
+                        value() {
+                            let arr = Array.from(Array(31).keys());
+                            let twodigi = (arr) => {
+                                let newarr = [];
+                                for (let n of arr) {
+                                    newarr.push({"id": n > 9 ? "" + n : "0" + n});
+                                }
+                                return newarr;
+                            };
+                            return twodigi(arr);
+                        }
+                    },
+                }
+            }
+        }
+        window.customElements.define(MyView2.is, MyView2);
+    </script>
 </dom-module>
