@@ -22,6 +22,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-vertical);
                 @apply(--layout-center);
                 margin-top: -64px;
+                position: relative;
             }
 
             header {
@@ -51,7 +52,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 background-size: covor;
                 background-position: center center;
                 opacity: 0;
-                filter: blur(8px);
                 animation-delay: 0.5s;
                 animation-fill-mode: forwards;
                 animation-name: cd-bounce-left;
@@ -67,7 +67,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     transform: translateX(-15px);
                 }
                 100% {
-                    filter:blur(0px);
                     opacity: 1;
                     transform: translateX(0);
                 }
@@ -111,6 +110,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 margin-bottom: 15px;
                 padding: 6px 0;
             }
+            #shape_bg_left {
+                position: absolute;
+                left: 0;
+                top: 10em;
+                width: 10em;
+                z-index: 10;
+                background-image: url("/images/recruit_shape_bg_1.png");
+                height: 100%;
+            }
+            #shape_bg_right {
+                position: absolute;
+                right: 0;
+                top: 10em;
+                width: 10em;
+                z-index: 10;
+                background-image: url("/images/recruit_shape_bg_2.png");
+                height: 100%;
+            }
         </style>
         <header>
             <!--img[src="./images/photo/tiles/$$.jpg"]*31-->
@@ -121,6 +138,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </grain-masonry>
             <div id="recrutingHero"></div>
         </header>
+        <div id="shape_bg_left" src="./images/recruit_shape_bg_1.png" alt=""></div>
+        <div id="shape_bg_right"  alt=""></div>
         <div class="container layout horizontal center-center">
             <a >
                 <paper-button class="">選考プロセス</paper-button>
