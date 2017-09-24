@@ -17,6 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-route/app-route-converter.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
@@ -230,31 +231,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         </style>
 
-        <app-location route="{{route}}" url-space-regex="^[[rootPath]]" ></app-location>
+        <app-location route="{{route}}" url-space-regex="^[[rootPath]]" query-params="{{queryParams}}"></app-location>
         <app-route
                 route="{{route}}"
                 pattern="[[rootPath]]:page"
                 data="{{routeData}}"
                 tail="{{subroute}}"></app-route>
-        <app-route
-                route="{{subroute}}"
-                pattern="/:subPage"
-                active="{{subRouteActive}}"
-                data="{{subRouteData}}"></app-route>
+
         <app-drawer-layout drawer fullbleed force-narrow>
             <!-- Drawer content -->
             <app-drawer id="drawer" slot="drawer" swipe-open>
                 <app-toolbar>J-Quest</app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a name="parttime" href="[[rootPath]]parttime">パート・アルバイト</a>
-                    <a name="parttime-stores" href="[[rootPath]]parttime/stores">募集店舗</a>
-                    <a name="parttime-works" href="[[rootPath]]parttime/works">どんな仕事なの？</a>
-                    <a name="parttime-voice" href="[[rootPath]]parttime/voice">先輩たちの声</a>
-                    <a name="parttime-dangerous" href="[[rootPath]]parttime/dangerous">乙四について</a>
-                    <a name="parttime-quizanswer" href="[[rootPath]]parttime/quizanswer">よくある質問</a>
-                    <a name="view2" href="[[rootPath]]view2">新卒採用</a>
-                    <a name="view1" href="[[rootPath]]view1">中途採用</a>
-                    <a name="top" href="[[rootPath]]top">TOP</a>
+                    <a name="parttime" href="[[rootPath]]?p=parttime">パート・アルバイト</a>
+                    <a name="parttime-stores" href="[[rootPath]]?p=parttime/stores">募集店舗</a>
+                    <a name="parttime-works" href="[[rootPath]]?p=parttime/works">どんな仕事なの？</a>
+                    <a name="parttime-voice" href="[[rootPath]]?p=parttime/voice">先輩たちの声</a>
+                    <a name="parttime-dangerous" href="[[rootPath]]?p=parttime/dangerous">乙四について</a>
+                    <a name="parttime-quizanswer" href="[[rootPath]]?p=parttime/quizanswer">よくある質問</a>
+                    <a name="view2" href="[[rootPath]]?p=view2">新卒採用</a>
+                    <a name="view1" href="[[rootPath]]?p=view1">中途採用</a>
+                    <a name="top" href="[[rootPath]]">TOP</a>
                 </iron-selector>
             </app-drawer>
 
@@ -272,38 +269,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </div>
                         </div>
                         <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation" >
-                            <a name="parttime" href="[[rootPath]]parttime">
+                            <a name="parttime" href="[[rootPath]]?p=parttime">
                                 <paper-button>パート・アルバイト</paper-button>
                             </a>
-                            <a name="view2" href="[[rootPath]]view2">
+                            <a name="view2" href="[[rootPath]]?p=view2">
                                 <paper-button>新卒採用</paper-button>
                             </a>
-                            <a name="view1" href="[[rootPath]]view1" >
+                            <a name="view1" href="[[rootPath]]?p=view1" >
                                 <paper-button>中途採用</paper-button>
                             </a>
-                            <a name="top" href="[[rootPath]]top">
+                            <a name="top" href="[[rootPath]]">
                                 <paper-button>TOP</paper-button>
                             </a>
                         </iron-selector>
                     </app-toolbar>
                     <app-toolbar class="toolbar toolbar-sub layout horizontal end-justified" hidden$="{{!subRouteActive}}">
                         <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
-                            <a name="parttime-stores" href="[[rootPath]]parttime/stores">
+                            <a name="parttime-stores" href="[[rootPath]]?p=parttime/stores">
                                 <paper-button>募集店舗</paper-button>
                             </a>
-                            <a name="parttime-works" href="[[rootPath]]parttime/works">
+                            <a name="parttime-works" href="[[rootPath]]?p=parttime/works">
                                 <paper-button>どんな仕事なの？</paper-button>
                             </a>
-                            <a name="parttime-voice" href="[[rootPath]]parttime/voice">
+                            <a name="parttime-voice" href="[[rootPath]]?p=parttime/voice">
                                 <paper-button>先輩たちの声</paper-button>
                             </a>
-                            <a name="parttime-merit" href="[[rootPath]]parttime/merit">
+                            <a name="parttime-merit" href="[[rootPath]]?p=parttime/merit">
                                 <paper-button>働くメリット</paper-button>
                             </a>
-                            <a name="parttime-dangerous" href="[[rootPath]]parttime/dangerous">
+                            <a name="parttime-dangerous" href="[[rootPath]]?p=parttime/dangerous">
                                 <paper-button>乙四について</paper-button>
                             </a>
-                            <a name="top" href="[[rootPath]]parttime/quizanswer">
+                            <a name="top" href="[[rootPath]]?p=parttime/quizanswer">
                                 <paper-button>よくある質問</paper-button>
                             </a>
                         </iron-selector>
@@ -397,27 +394,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             static get observers() {
                 return [
-                    '_routePageChanged(routeData.page)',
-                    '_subRoutePageChanged(subRouteActive, subRouteData.subPage)'
+                    '_pageParamsChanged(queryParams.p)',
                 ];
             }
-            _routePageChanged(page) {
-                // If subRoute is actived we will not change page by this observer.
-                if (this.subRouteActive) return;
-                // debug log: console.log('[PAGE]');
-                this.page = page || 'top';
+
+            _pageParamsChanged(page) {
+                let parts = page ? page.split("/") : '';
+                let main = parts[0] || undefined;
+                let subPage = parts[1] || undefined;
+
+                if(main && !subPage) {
+                    // no subPage query meters
+                    this.page = main;
+                    this.subRouteActive = false;
+                } else
+                if(main && subPage) {
+                    // has subPage query meters
+                    this.page = main + '-' + subPage;
+                    this.subRouteActive = true;
+                } else {
+                    // no match
+                    this.page = 'top';
+                    this.subRouteActive = false;
+                }
 
                 // Close a non-persistent drawer when the page & route are changed.
                 if (!this.$.drawer.persistent) {
                     this.$.drawer.close();
                 }
-            }
-
-            _subRoutePageChanged(active, subPage) {
-                if (!active || subPage === undefined) return;
-                // debug log: console.log('[SUBPAGE] ' + subPage + ' active: ' + active);
-                this.page = this.routeData.page + '-' + this.subRouteData.subPage;
-                this.subPage = this.subRouteData.subPage;
             }
 
             _pageChanged(page) {
