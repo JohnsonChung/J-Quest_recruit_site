@@ -17218,6 +17218,80 @@ the `app-route` will update `route.path`. This in-turn will update the
 </script>
 <!--
 @license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><!--
+`app-route-converter` provides a means to convert a path and query
+parameters into a route object and vice versa. This produced route object
+is to be fed into route-consuming elements such as `app-route`.
+
+> n.b. This element is intended to be a primitive of the routing system and for
+creating bespoke routing solutions from scratch. To simply include routing in
+an app, please refer to [app-location](https://github.com/PolymerElements/app-route/blob/master/app-location.html)
+and [app-route](https://github.com/PolymerElements/app-route/blob/master/app-route.html).
+
+An example of a route object that describes
+`https://elements.polymer-project.org/elements/app-route-converter?foo=bar&baz=qux`
+and should be passed to other `app-route` elements:
+
+    {
+      prefix: '',
+      path: '/elements/app-route-converter',
+      __queryParams: {
+        foo: 'bar',
+        baz: 'qux'
+      }
+    }
+
+`__queryParams` is private to discourage directly data-binding to it. This is so
+that routing elements like `app-route` can intermediate changes to the query
+params and choose whether to propagate them upstream or not. `app-route` for
+example will not propagate changes to its `queryParams` property if it is not
+currently active. A public queryParams object will also be produced in which you
+should perform data-binding operations.
+
+Example Usage:
+
+    <iron-location path="{{path}}" query="{{query}}"></iron-location>
+    <iron-query-params
+        params-string="{{query}}"
+        params-object="{{queryParams}}">
+    </iron-query-params>
+    <app-route-converter
+        path="{{path}}"
+        query-params="{{queryParams}}"
+        route="{{route}}">
+    </app-route-converter>
+    <app-route route='{{route}}' pattern='/:page' data='{{data}}'>
+    </app-route>
+
+This is a simplified implementation of the `app-location` element. Here the
+`iron-location` produces a path and a query, the `iron-query-params` consumes
+the query and produces a queryParams object, and the `app-route-converter`
+consumes the path and the query params and converts it into a route which is in
+turn is consumed by the `app-route`.
+
+@element app-route-converter
+@demo demo/index.html
+-->
+
+<script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'app-route-converter',
+
+      behaviors: [Polymer.AppRouteConverterBehavior]
+    });
+  })();
+</script>
+<!--
+@license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
 The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
@@ -22510,23 +22584,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         </style>
 
-        <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+        <app-location route="{{route}}" url-space-regex="^[[rootPath]]" query-params="{{queryParams}}"></app-location>
         <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-        <app-route route="{{subroute}}" pattern="/:subPage" active="{{subRouteActive}}" data="{{subRouteData}}"></app-route>
+
         <app-drawer-layout drawer="" fullbleed="" force-narrow="">
             <!-- Drawer content -->
             <app-drawer id="drawer" slot="drawer" swipe-open="">
                 <app-toolbar>J-Quest</app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a name="parttime" href="[[rootPath]]parttime">パート・アルバイト</a>
-                    <a name="parttime-stores" href="[[rootPath]]parttime/stores">募集店舗</a>
-                    <a name="parttime-works" href="[[rootPath]]parttime/works">どんな仕事なの？</a>
-                    <a name="parttime-voice" href="[[rootPath]]parttime/voice">先輩たちの声</a>
-                    <a name="parttime-dangerous" href="[[rootPath]]parttime/dangerous">乙四について</a>
-                    <a name="parttime-quizanswer" href="[[rootPath]]parttime/quizanswer">よくある質問</a>
-                    <a name="view2" href="[[rootPath]]view2">新卒採用</a>
-                    <a name="view1" href="[[rootPath]]view1">中途採用</a>
-                    <a name="top" href="[[rootPath]]top">TOP</a>
+                    <a name="parttime" href="[[rootPath]]?p=parttime">パート・アルバイト</a>
+                    <a name="parttime-stores" href="[[rootPath]]?p=parttime/stores">募集店舗</a>
+                    <a name="parttime-works" href="[[rootPath]]?p=parttime/works">どんな仕事なの？</a>
+                    <a name="parttime-voice" href="[[rootPath]]?p=parttime/voice">先輩たちの声</a>
+                    <a name="parttime-dangerous" href="[[rootPath]]?p=parttime/dangerous">乙四について</a>
+                    <a name="parttime-quizanswer" href="[[rootPath]]?p=parttime/quizanswer">よくある質問</a>
+                    <a name="view2" href="[[rootPath]]?p=view2">新卒採用</a>
+                    <a name="view1" href="[[rootPath]]?p=view1">中途採用</a>
+                    <a name="top" href="[[rootPath]]">TOP</a>
                 </iron-selector>
             </app-drawer>
 
@@ -22544,38 +22618,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </div>
                         </div>
                         <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
-                            <a name="parttime" href="[[rootPath]]parttime">
+                            <a name="parttime" href="[[rootPath]]?p=parttime">
                                 <paper-button>パート・アルバイト</paper-button>
                             </a>
-                            <a name="view2" href="[[rootPath]]view2">
+                            <a name="view2" href="[[rootPath]]?p=view2">
                                 <paper-button>新卒採用</paper-button>
                             </a>
-                            <a name="view1" href="[[rootPath]]view1">
+                            <a name="view1" href="[[rootPath]]?p=view1">
                                 <paper-button>中途採用</paper-button>
                             </a>
-                            <a name="top" href="[[rootPath]]top">
+                            <a name="top" href="[[rootPath]]">
                                 <paper-button>TOP</paper-button>
                             </a>
                         </iron-selector>
                     </app-toolbar>
                     <app-toolbar class="toolbar toolbar-sub layout horizontal end-justified" hidden$="{{!subRouteActive}}">
                         <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
-                            <a name="parttime-stores" href="[[rootPath]]parttime/stores">
+                            <a name="parttime-stores" href="[[rootPath]]?p=parttime/stores">
                                 <paper-button>募集店舗</paper-button>
                             </a>
-                            <a name="parttime-works" href="[[rootPath]]parttime/works">
+                            <a name="parttime-works" href="[[rootPath]]?p=parttime/works">
                                 <paper-button>どんな仕事なの？</paper-button>
                             </a>
-                            <a name="parttime-voice" href="[[rootPath]]parttime/voice">
+                            <a name="parttime-voice" href="[[rootPath]]?p=parttime/voice">
                                 <paper-button>先輩たちの声</paper-button>
                             </a>
-                            <a name="parttime-merit" href="[[rootPath]]parttime/merit">
+                            <a name="parttime-merit" href="[[rootPath]]?p=parttime/merit">
                                 <paper-button>働くメリット</paper-button>
                             </a>
-                            <a name="parttime-dangerous" href="[[rootPath]]parttime/dangerous">
+                            <a name="parttime-dangerous" href="[[rootPath]]?p=parttime/dangerous">
                                 <paper-button>乙四について</paper-button>
                             </a>
-                            <a name="top" href="[[rootPath]]parttime/quizanswer">
+                            <a name="top" href="[[rootPath]]?p=parttime/quizanswer">
                                 <paper-button>よくある質問</paper-button>
                             </a>
                         </iron-selector>
@@ -22664,27 +22738,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             static get observers() {
                 return [
-                    '_routePageChanged(routeData.page)',
-                    '_subRoutePageChanged(subRouteActive, subRouteData.subPage)'
+                    '_pageParamsChanged(queryParams.p)',
                 ];
             }
-            _routePageChanged(page) {
-                // If subRoute is actived we will not change page by this observer.
-                if (this.subRouteActive) return;
-                // debug log: console.log('[PAGE]');
-                this.page = page || 'top';
+
+            _pageParamsChanged(page) {
+                let parts = page ? page.split("/") : '';
+                let main = parts[0] || undefined;
+                let subPage = parts[1] || undefined;
+
+                if(main && !subPage) {
+                    // no subPage query meters
+                    this.page = main;
+                    this.subRouteActive = false;
+                } else
+                if(main && subPage) {
+                    // has subPage query meters
+                    this.page = main + '-' + subPage;
+                    this.subRouteActive = true;
+                } else {
+                    // no match
+                    this.page = 'top';
+                    this.subRouteActive = false;
+                }
 
                 // Close a non-persistent drawer when the page & route are changed.
                 if (!this.$.drawer.persistent) {
                     this.$.drawer.close();
                 }
-            }
-
-            _subRoutePageChanged(active, subPage) {
-                if (!active || subPage === undefined) return;
-                // debug log: console.log('[SUBPAGE] ' + subPage + ' active: ' + active);
-                this.page = this.routeData.page + '-' + this.subRouteData.subPage;
-                this.subPage = this.subRouteData.subPage;
             }
 
             _pageChanged(page) {
