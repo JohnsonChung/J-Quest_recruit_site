@@ -262,15 +262,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     imgs: {
                         type: Array,
                         value() {
-                            let arr = Array.from(Array(31).keys());
-                            let twodigi = (arr) => {
-                                let newarr = [];
-                                for (let n of arr) {
-                                    newarr.push({"id": n > 9 ? "" + n : "0" + n});
-                                }
-                                return newarr;
-                            };
-                            return twodigi(arr);
+                            var arr = [];
+                            for (var n = 0; n < 31; n++) {
+                                arr.push({"id": n > 9 ? "" + n : "0" + n});
+                            }
+                            return arr;
                         }
                     },
                 }

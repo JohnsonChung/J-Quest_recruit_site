@@ -36,16 +36,22 @@
       "name": "docs",
       "bundle": true,
       "basePath": "/J-Quest_recruit_site/",
-      "js": {"minify": true},
+      "js": {"minify": true, "compile": true},
       "css": {"minify": true},
-      "html": {"minify": true}
+      "html": {"minify": true},
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "insertPrefetchLinks": true
     },
     {
       "name": "local-test",
       "bundle": true,
-      "js": {"minify": true},
+      "js": {"minify": true, "compile": true},
       "css": {"minify": true},
-      "html": {"minify": true}
+      "html": {"minify": true},
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "insertPrefetchLinks": true
     }
   ]
 }
