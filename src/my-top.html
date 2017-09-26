@@ -18,10 +18,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/google-map/google-map.html">
 <link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="shared-styles-md.html">
 
 <dom-module id="my-top">
     <template>
-        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
+        <style is="custom-style" include="shared-styles shared-styles-md iron-flex iron-flex-alignment">
             :host {
                 display: block;
                 @apply(--layout-vertical);
@@ -103,39 +104,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 z-index: -1;
             }
 
-            #md-news [slot="markdown-html"] {
-                font-size: 15px;
-            }
 
-            #md-news [slot="markdown-html"] strong {
-                padding: 0 14px 0 0;
-            }
-
-            #md-news [slot="markdown-html"] p {
-                display: inline;
-            }
-
-            #md-news [slot="markdown-html"] ul {
-                padding: 0;
-                margin: 0;
-            }
-
-            #md-news [slot="markdown-html"] li {
-                padding: 14px 0;
-                list-style-type: none;
-                border-bottom: 1px solid #29b8e4;
-            }
-
-            #md-news [slot="markdown-html"] li:before {
-                content: 'news';
-                padding: 0 20px;
-                margin-right: 10px;
-                display: inline;
-                background-color: var(--paper-yellow-600);
-                font-size: 15px;
-                color: #fff;
-                vertical-align: 1px;
-            }
             @media (max-width: 640px) {
                 #headerContent {
                     display: none;
@@ -148,7 +117,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <p id="subSlogan" class="wf-sawarabimincho">お客様から期待された以上の価値を提供する</p>
                 <hr></hr>
                 <div class="underline" width="100%"></div>
-                <a href="[[rootPath]]?p=recruitform">
+                <a href="[[rootPath]]?p=parttime/stores">
                     <paper-button raised class="pink cube padding shining wf-mplus1p">応募はこちら</paper-button>
                 </a>
             </div>

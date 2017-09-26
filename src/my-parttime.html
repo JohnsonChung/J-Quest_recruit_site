@@ -54,7 +54,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 position: relative;
                 background-color: var(--paper-yellow-300);
                 margin-bottom: 64px;
-
             }
 
             #slogan::before {
@@ -71,6 +70,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             #slogan p {
                 max-width: 35em;
                 line-height: 1.8;
+                text-indent: 2em;
+                letter-spacing: 0.1em;
+                color: var(--paper-grey-700);
             }
 
             #hero-img-slogan {
@@ -108,6 +110,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 padding-bottom: 35px;
             }
 
+            #subTitles > .container {
+                max-width: 1000px;
+            }
+
             #subTitles .card {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
@@ -115,6 +121,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 box-sizing: border-box;
                 width: 320px;
                 padding: 10px 10px;
+                margin: 0 5px 16px 0;
                 z-index: 15;
                 background: #fff;
             }
@@ -131,6 +138,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             #subTitles p {
                 @apply(--layout-flex);
+                /* Fix ie flex collapse bug. */
+                flex-basis: auto;
             }
 
             #quizanswer {
@@ -224,49 +233,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
         <div id="shape_bg_left" src="./images/photo/recruit_shape_bg_1.png" alt=""></div>
         <div id="shape_bg_right" alt=""></div>
-        <div id="subTitles" class="layout horizontal around-justified wrap">
-            <div class="card">
-                <iron-image src="./images/photo/sm_160107-56.jpg" sizing="cover"></iron-image>
-                <p>J-Questであなたにしていただきたい仕事はお客様への「最高のおもてなし」。</p>
-                <a href="[[rootPath]]?p=parttime/works">
-                    <paper-button class="border slashed yellow clip anchor">どんな仕事なの？</paper-button>
-                </a>
-            </div>
-            <div class="card">
-                <iron-image src="./images/photo/02-5.jpg" sizing="cover"></iron-image>
-                <p>募集中店舗情報集め、簡単にサーチ！</p>
-                <a href="[[rootPath]]?p=parttime/stores">
-                    <paper-button class="border slashed yellow clip anchor">募集店舗</paper-button>
-                </a>
-            </div>
-            <div class="card">
-                <iron-image src="./images/photo/sm_160107-99.jpg" sizing="cover"></iron-image>
-                <p>楽しい仲間がいっぱい！ 未経験者でもＯＫ！</p>
-                <a href="[[rootPath]]?p=parttime/voice">
-                    <paper-button class="border slashed yellow clip anchor">先輩たちの声</paper-button>
-                </a>
-            </div>
-            <div class="card">
-                <iron-image src="./images/photo/02-7.jpg" sizing="cover"></iron-image>
-                <p>
-                    ライフスタイルに合った勤務スタイル<br>
-                    楽しい仲間がいっぱい！ 未経験者でもＯＫ！</p>
-                <a href="[[rootPath]]?p=parttime/merit">
-                    <paper-button class="border slashed yellow clip anchor">働くメリット</paper-button>
-                </a>
-            </div>
-            <div class="card">
-                <iron-image src="./images/photo/lg_160107-66.jpg" sizing="cover"></iron-image>
-                <p>採用プロセスは？お店はどこにあるの？アルバイト（ガソリンスタンド）が初めてなんですけど・・・</p>
-                <a href="[[rootPath]]?p=parttime/quizanswer">
-                    <paper-button class="border slashed yellow clip anchor">よくある質問</paper-button>
-                </a></div>
-            <div class="card">
-                <iron-image src="./images/photo/sm_160107-121.jpg" sizing="cover"></iron-image>
-                <p>募集中店舗情報集め、簡単にサーチ！</p>
-                <a href="[[rootPath]]?p=parttime/dangerous">
-                    <paper-button class="border slashed yellow clip anchor">乙四について</paper-button>
-                </a>
+        <div id="subTitles" class="layout vertical center">
+            <div class="container layout horizontal around-justified wrap">
+                <div class="card">
+                    <iron-image src="./images/photo/sm_160107-56.jpg" sizing="cover"></iron-image>
+                    <p>J-Questであなたにしていただきたい仕事はお客様への「最高のおもてなし」。</p>
+                    <a href="[[rootPath]]?p=parttime/works">
+                        <paper-button class="border slashed yellow clip anchor">どんな仕事なの？</paper-button>
+                    </a>
+                </div>
+                <div class="card">
+                    <iron-image src="./images/photo/02-5.jpg" sizing="cover"></iron-image>
+                    <p>募集中店舗情報集め、簡単にサーチ！</p>
+                    <a href="[[rootPath]]?p=parttime/stores">
+                        <paper-button class="border slashed yellow clip anchor">募集店舗</paper-button>
+                    </a>
+                </div>
+                <div class="card">
+                    <iron-image src="./images/photo/sm_160107-99.jpg" sizing="cover"></iron-image>
+                    <p>楽しい仲間がいっぱい！ 未経験者でもＯＫ！</p>
+                    <a href="[[rootPath]]?p=parttime/voice">
+                        <paper-button class="border slashed yellow clip anchor">先輩たちの声</paper-button>
+                    </a>
+                </div>
+                <div class="card">
+                    <iron-image src="./images/photo/02-7.jpg" sizing="cover"></iron-image>
+                    <p>
+                        ライフスタイルに合った勤務スタイル<br>
+                        楽しい仲間がいっぱい！ 未経験者でもＯＫ！</p>
+                    <a href="[[rootPath]]?p=parttime/merit">
+                        <paper-button class="border slashed yellow clip anchor">働くメリット</paper-button>
+                    </a>
+                </div>
+                <div class="card">
+                    <iron-image src="./images/photo/lg_160107-66.jpg" sizing="cover"></iron-image>
+                    <p>採用プロセスは？お店はどこにあるの？アルバイト（ガソリンスタンド）が初めてなんですけど・・・</p>
+                    <a href="[[rootPath]]?p=parttime/quizanswer">
+                        <paper-button class="border slashed yellow clip anchor">よくある質問</paper-button>
+                    </a></div>
+                <div class="card">
+                    <iron-image src="./images/photo/sm_160107-121.jpg" sizing="cover"></iron-image>
+                    <p>募集中店舗情報集め、簡単にサーチ！</p>
+                    <a href="[[rootPath]]?p=parttime/dangerous">
+                        <paper-button class="border slashed yellow clip anchor">乙四について</paper-button>
+                    </a>
+                </div>
             </div>
         </div>
         <div  id="quizanswer" class="container">

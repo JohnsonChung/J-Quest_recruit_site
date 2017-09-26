@@ -14,58 +14,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="../bower_components/granite-bootstrap/granite-bootstrap.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="shared-styles-md.html">
 
 <dom-module id="my-recruitform">
   <template>
-    <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment granite-bootstrap">
+    <style is="custom-style" include="shared-styles shared-styles-md iron-flex iron-flex-alignment granite-bootstrap">
       :host {
         @apply(--layout-vertical);
         @apply(--layout-center);
         padding: 10px;
       }
-      #md-crecruit-content [slot="markdown-html"] {
-        font-size: 18px;
-      }
-      #md-crecruit-content [slot="markdown-html"] ul{
-        @apply(--layout-horizontal);
-        padding-left: 0;
-      }
-      #md-crecruit-content [slot="markdown-html"] > ul > li{
-        background-color: var(--app-primary-color);
-        color: #fff;
-        padding: 0 10px;
-        margin-right: 6px;
-        font-size: 15px;
-        list-style: none;
-      }
-      #md-crecruit-content [slot="markdown-html"] > ol  {
-        padding-left: 0;
-      }
-      #md-crecruit-content [slot="markdown-html"] > ol li {
-        border-bottom: 1px solid var(--paper-blue-grey-200);
-        padding: 0.6em 0;
-        list-style: none;
-      }
-      #md-crecruit-content [slot="markdown-html"] table {
-        font-size: 18px;
-      }
-      #md-crecruit-content [slot="markdown-html"] table td {
-        min-width: 6em;
-        border-bottom: 1px solid var(--paper-blue-grey-200);
-        padding: 0.7em 0;
-      }
-      #md-crecruit-content [slot="markdown-html"] h4 , h4{
-        border-bottom: 3px solid var(--app-primary-color);
-        font-size: 25px;
-        margin-top: 45px;
-        margin-bottom: 15px;
-        padding: 6px 0;
-      }
+
 
     </style>
     <div class="card">
       <h2>アルバイト募集店舗</h2>
-      <marked-element id="md-crecruit-content">
+      <marked-element id="md-recruit-content">
         <div slot="markdown-html"></div>
         <script type="text/markdown" src="./md/recruit-content.md"></script>
       </marked-element>
