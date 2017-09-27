@@ -195,6 +195,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: var(--paper-yellow-400);
         color: var(--paper-grey-900);
       }
+      /**
+      * IE 11 BUGS PATCH
+      */
+      .container .flex,
+      .card .flex {
+        /* Fix ie 11 flex collapse bug. */
+        flex-basis: auto;
+      }
 
       @media (max-width: 960px) {
         .card {

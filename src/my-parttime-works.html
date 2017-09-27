@@ -21,11 +21,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-center);
                 padding: 10px;
             }
-        </style>
 
+        </style>
         <div class="card">
             <div class="container"><h3>どんな仕事なの？</h3></div>
+            <div class="container layout vertical center">
+                <img name="pentagon" src="./images/recruit/pentagon.jpg" width="626" height="400" border="0" id="pentagon" usemap="#m_pentagon" alt="">
+                <map name="m_pentagon" id="m_pentagon">
+                    <area shape="rect" coords="438,338,590,373" href="[[rootPath]]?p=parttime/voice#chief" title="チーフスタッフ" alt="チーフスタッフ">
+                    <area shape="rect" coords="438,298,590,333" href="[[rootPath]]?p=parttime/voice#gakusei" title="学生編" alt="学生編">
+                    <area shape="rect" coords="438,258,590,293" href="[[rootPath]]?p=parttime/voice#shufu" title="主婦編" alt="主婦編">
+                    <area shape="poly" coords="58,255,191,255,191,333,58,333,58,255" href="#goannai'" title="お客様へのご案内" alt="お客様へのご案内">
+                    <area shape="poly" coords="207,253,326,253,326,333,207,333,207,253" href="#omisedukuri'" title="お店創りへの参加" alt="お店創りへの参加">
+                    <area shape="poly" coords="262,140,380,140,380,221,262,221,262,140" href="#cleanliness" title="クリンリネス" alt="クリンリネス">
+                    <area shape="poly" coords="148,65,264,65,264,128,148,128,148,65" href="#omotenashi" alt="おもてなし" title="おもてなし">
+                    <area shape="poly" coords="33,127,152,127,152,207,33,207,33,127" href="#counter" title="カウンター業務" alt="カウンター業務">
+                </map>
+            </div>
             <div class="card">
+                <iron-image src="./images/photo/sm_160107-56.jpg" sizing="cover"></iron-image>
                 <h4>最高のおもてなし</h4>
                 <p>J-Questであなたにしていただきたい仕事はお客様への「最高のおもてなし」。
                     「どうしたらお客様に喜んでいただけるか？」を考えてお客様と接することで、お客様に「またJ-Questに来たいな！」と思っていただくことがあなたの役目です！
@@ -64,6 +78,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             static get is() {
                 return 'my-parttime-works';
             }
+
         }
 
         window.customElements.define(MyParttimeWorks.is, MyParttimeWorks);

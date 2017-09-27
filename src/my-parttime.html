@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../bower_components/paper-styles/shadow.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
@@ -143,39 +144,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 width: 100%;
             }
 
-            #quizanswer {
-                background-color: #e0f8ff;
-                background-image: url(../images/pattern-inspiration-geometry.png);
-            }
-            #quizanswer .container {
-                margin: 0 auto;
-                max-width: 960px;
-            }
-
-            #quizanswer .card {
-                box-sizing: border-box;
-                width: 50%;
-            }
-            #quizanswer .card p {
-                font-size: 17px;
-            }
-            #quizanswer .card h4::before {
-                content: 'Q';
-                display: inline-block;
-                height: 48px;
-                width: 48px;
-                background-color: var(--google-yellow-300);
-                text-align: center;
-                line-height: 48px;
-                border-radius: 24px;
-                margin-right: 0.5em;
-            }
-            #quizanswer .card:nth-child(3n+1) h4::before {
-                background-color: var(--paper-green-a200);
-            }
-            #quizanswer .card:nth-child(5n+1) h4::before {
-                background-color: var(--paper-green-400);
-            }
             /* Animation */
 
             .animated {
@@ -216,7 +184,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
         </style>
-
+        <app-location route="{{route}}" use-hash-as-path></app-location>
         <div id="slogan" class="layout vertical center">
             <div class="parttime-hero-img-1">
                 <div id="hero-img-slogan" class="wf-kokoro animated rotateIn">すべてはお客様のため。</div>
@@ -281,89 +249,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
             </div>
         </div>
-        <div  id="quizanswer" class="container">
-            <div class="container layout horizontal wrap wf-mplus1p">
-                <div class="flex layout vertical center-center">
-                    <h3>教えて JQ ♪</h3>
-                </div>
-                <div class="card">
-                    <h4>男女比は？</h4>
-                    <p>
-                        パートタイマースタッフの皆さんは２０１７年３月現在では男性６４８名、女性６８４名と男性も女性も活躍しています。</p>
-                </div>
-                <div class="card">
-                    <h4>年齢構成は？</h4>
-                    <p> 同じくパートタイマーのスタッフの皆さんは２０１７年３月現在では１８歳～６９歳と幅広い年齢のスタッフのみなさんが活躍しています。</p>
-                </div>
-                <div class="card">
-                    <h4>採用プロセスは？ </h4>
-                    <p>
-                        こちらのホームページからのご応募でも直接ご希望のお店へのお電話でのご応募でもOK！！</p>
-                </div>
-
-                <div class="card">
-                    <h4>お店はどこにあるの？</h4>
-                    <p>
-                        J-Questのお店は１都１道１府１６県　８７店舗（２０１７年４月現在）があります。 あなたのお住まいのそばにありますか？
-                        →店舗情報ページ</p>
-                </div>
-                <div class="card">
-                    <h4>キャリアプランは？ </h4>
-                    <p>　　
-                        パートタイマースタッフとして働いていただく中で、よりお店の経営に色濃く携わっていただきたいチーフスタッフや必要なスキルを備えていただき社員登用のチャンスなどの様々な活躍していただけるステージをご用意しています。</p>
-                </div>
-                <div class="card">
-                    <h4>ガソリンスタンドって安全なの？ </h4>
-                    <p>
-                        J-Questではお客様に安全にご利用いただくのはもちろん、あなた自身の安全もしっかりと守るために危険物資格を取得していただき施設なども安全に使っていただけるように点検・整備をしています。</p>
-                </div>
-                <div class="card">
-                    <h4>ほかのガソリンスタンドとの違いは？</h4>
-                    <p>　　
-                        大きな違いとしてセルフスタイルの精算方式に違いがあります。J-Questは給油終了後にお客様にSHOP内のレジまで来ていただき精算をしていただいています。
-                        また、お客様に「最高のおもてなし」を提供しています。</p>
-                </div>
-                <div class="card">
-                    <h4>昇給はありますか？ </h4>
-                    <p>
-                        ありますよ！J-Questの昇給システムはあなたとストアマネジャー（店長）とで個々に目標を設定し、その到達具合を月に１回話し合います。見事！！目標をクリアすれば、毎月昇給できるチャンスがあります！まさにあなたの努力が成果としてしっかりと評価されるシステムですのでやりがいを持って勤務できますよね♪</p>
-                </div>
-                <div class="card">
-                    <h4>やっぱり作業着なんですか？</h4>
-                    <p> 　　　
-                        いいえ！オシャレなカフェのユニフォームに似ています（笑）一部貸与ですのでご自身で用意していただくものもあります。</p>
-                </div>
-                <div class="card">
-                    <h4>マイカー通勤はOK？ </h4>
-                    <p>
-                        もちろん大丈夫です！！車の運転って運転しない人にはなかなか分かり辛いものですよね？お客様はお車で来店されますのでお客様のお気持ちがわかるためにも車の運転は必要ですね。</p>
-                </div>
-                <div class="card">
-                    <h4>わたし高校生なんですけど？</h4>
-                    <p> 　　　
-                        ごめんなさい！！J-Questの採用基準として１８歳以上（高校生不可）の方と一緒にお店を創っていきたいと考えております。（車の運転などお客様の気持ちになっていただきたいため）ぜひ卒業後のご応募お待ちしております。</p>
-                </div>
-                <div class="card">
-                    <h4>ガソリン代の割引きってありますか？ 　　　</h4>
-                    <p>
-                        ありますよ。楽しく働けてガソリンも安く給油できて最高ですね♪</p>
-                </div>
-                <div class="card">
-                    <h4>アルバイト（ガソリンスタンド）が初めてなんですけど・・・ </h4>
-                    <p>
-                        心配ありませんよ。ほとんどのパートタイマースタッフのみなさんはほとんど未経験からのスタートですよ。ご安心ください。先輩スタッフが優しくていねいに教えてくれるので安心してくださいね♪</p>
-                </div>
-                <div class="card">
-                    <h4>危険物取扱者（乙４）</h4>
-                    <p>
-                        消防法に基づく危険物を取扱い、またはその取扱いに立ち会うために必要な国家資格です。
-                        なかでも当社で必要なのは「引火性液体」の取り扱いが可能になる乙種第4類の免許です。
-                        お客様に「安全かつ快適な」店舗をご提供し続けるためにも、一人ひとり危険物に対する知識を持っていただきたいと思っています。
-                        資格の取得は入社後バックアップしておりますので、今お持ちでなくてもどうかご安心くださいね♪
-                        　⇒ 「資格取得補助」</p>
-                </div>
-            </div>
-        </div>
     </template>
 
     <script>
@@ -371,6 +256,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             static get is() {
                 return 'my-parttime';
             }
+
         }
 
         window.customElements.define(MyParttime.is, MyParttime);

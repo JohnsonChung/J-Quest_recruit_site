@@ -21,14 +21,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-center);
                 padding: 10px;
             }
+
+            #quizanswer {
+                background-color: #e0f8ff;
+                background-image: url(../images/pattern-inspiration-geometry.png);
+            }
+            #quizanswer .container {
+                margin: 0 auto;
+                max-width: 960px;
+            }
+
+            #quizanswer .card {
+                box-sizing: border-box;
+                width: 50%;
+            }
+            #quizanswer .card p {
+                font-size: 17px;
+            }
+            #quizanswer .card h4::before {
+                content: 'Q';
+                display: inline-block;
+                height: 48px;
+                width: 48px;
+                background-color: var(--google-yellow-300);
+                text-align: center;
+                line-height: 48px;
+                border-radius: 24px;
+                margin-right: 0.5em;
+            }
+            #quizanswer .card:nth-child(3n+1) h4::before {
+                background-color: var(--paper-green-a200);
+            }
+            #quizanswer .card:nth-child(5n+1) h4::before {
+                background-color: var(--paper-green-400);
+            }
         </style>
 
-        <div class="card">
-            <div class="container">
-                <h3>教えて JQ ♪</h3>
-            </div>
-            <div class="container layout vertical center-center">
-
+        <div  id="quizanswer" class="container">
+            <div class="container layout horizontal wrap wf-mplus1p">
+                <div class="flex layout vertical center-center">
+                    <h3>教えて JQ ♪</h3>
+                </div>
                 <div class="card">
                     <h4>男女比は？</h4>
                     <p>
