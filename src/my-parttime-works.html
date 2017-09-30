@@ -22,11 +22,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-center);
                 padding: 10px;
             }
+            #pentagon {
+                width: 640px;
+                max-width: 100%;
+            }
         </style>
         <div class="container layout vertical center">
             <div class="container"><h3>どんな仕事なの？</h3></div>
             <div class="container layout vertical center">
-                <img name="pentagon" src="./images/recruit/pentagon.jpg" width="626" height="400" border="0" id="pentagon" usemap="#m_pentagon" alt="">
+                <img name="pentagon" src="./images/recruit/pentagon.jpg"  border="0" id="pentagon" usemap="#m_pentagon" alt="">
                 <map name="m_pentagon" id="m_pentagon">
                     <area shape="rect" coords="438,338,590,373" href="[[rootPath]]?p=parttime/voice#chief" title="チーフスタッフ" alt="チーフスタッフ">
                     <area shape="rect" coords="438,298,590,333" href="[[rootPath]]?p=parttime/voice#gakusei" title="学生編" alt="学生編">
@@ -81,11 +85,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             ready() {
                 super.ready();
                 setTimeout(function() {
-                var target = this.shadowRoot.querySelector('#m_pentagon');
-                imageMapResize(target); //  Cannot read property 'addEventListener' of null : imageMapResize.js 49
+                    var target = this.shadowRoot.querySelector('#m_pentagon');
+                    imageMapResize(target); //  Cannot read property 'addEventListener' of null : imageMapResize.js 49
                 }.bind(this),0);
             }
-
         }
         window.customElements.define(MyParttimeWorks.is, MyParttimeWorks);
     </script>
