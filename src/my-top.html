@@ -15,11 +15,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-icons/image-icons.html">
-<link rel="import" href="../bower_components/google-map/google-map.html">
 <link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="shared-styles-md.html">
 
+<link rel="lazy-import" href="../bower_components/google-map/google-map.html">
 <dom-module id="my-top">
     <template>
         <style is="custom-style" include="shared-styles shared-styles-md iron-flex iron-flex-alignment">
@@ -31,27 +31,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             header {
+                position: relative;
                 height: calc(430px + 64px);
                 width: 100%;
                 padding: 20px 45px;
                 margin: 0;
                 margin-bottom: 40px;
                 box-sizing: border-box;
+                color: white;
+                text-align: right;
+            }
+            header::before {
+                content: '';
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
                 background-position: center 25%;
                 background-image: url('../images/hero_unit.jpg');
                 backgrond-repeat: no-repeat;
                 background-size: cover;
-                color: white;
-                text-align: right;
+                z-index: -1;
             }
 
-            header > .container {
+            header #headerContent {
                 max-width: 960px;
                 padding-left: 490px;
                 box-sizing: border-box;
             }
 
-            header #slogan {
+            header #headerContent #slogan {
                 font-size: 56px;
                 font-weight: 300;
                 margin: 0;
@@ -104,10 +114,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 z-index: -1;
             }
 
-
             @media (max-width: 640px) {
-                #headerContent {
-                    display: none;
+                header::before {
+                    filter: blur(4px);
+                }
+                header #headerContent {
+                    max-width: 960px;
+                    padding-left: 0px;
+                    box-sizing: border-box;
+                }
+
+                header #headerContent #slogan {
+                    font-size: 1.5em;
+                    font-weight: 300;
+                    margin: 0;
+                    text-shadow: 0 1px 4px rgba(0, 0, 0, 1 ), 0 1px 50px rgba(0, 0, 0, 0.8);
+                }
+
+                header #slogan::first-letter {
+                    font-size: 1.8em;
+                    vertical-align: -0.3em;
+                }
+
+                header #subSlogan {
+                    text-shadow: 0 1px 8px rgba(0, 0, 0, 1), 0 1px 50px rgba(0, 0, 0, 0.8);
+                }
+
+                header #recruitBtn {
+                    padding-left: 1em;
+                    padding-right: 1em;
                 }
             }
         </style>
@@ -118,12 +153,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <hr></hr>
                 <div class="underline" width="100%"></div>
                 <a href="[[rootPath]]?p=parttime/stores">
-                    <paper-button raised class="pink cube padding shining wf-mplus1p">応募はこちら</paper-button>
+                    <paper-button id="recruitBtn" raised class="pink cube padding shining wf-mplus1p">応募はこちら</paper-button>
                 </a>
             </div>
         </header>
 
-        <div class="card skyblue">
+        <div id="subTitle" class="card skyblue">
             <div class="layout horizontal center-center">
                 <h4 class="wf-mplus1p " style="font-weight: 400; font-size: 25px;"><span
                         style="font-size: 1.4em">\ </span>各種ご応募はこちらから <span style="font-size: 1.4em"> /</span></h4>

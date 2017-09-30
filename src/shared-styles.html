@@ -87,14 +87,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .img-thumbnail p:last-child {
         font-weight: bold;
       }
+      @media (max-width: 640px ) {
 
+        .img-thumbnail {
+          @apply(--layout-vertical);
+          @apply(--layout-center-center);
+          @apply(--layout-flex);
+          position: relative;
+          height: 276px;
+          background: url(http://via.placeholder.com/500x276);
+          background-position: center center;
+          background-size: cover;
+          transition: background ease 0.5s;
+          min-width: calc(276px * (4 / 3));
+          color: #fff;
+        }
+        .img-thumbnail::after {
+          transition: none;
+        }
+        .img-thumbnail:hover {
+          background-size: cover;
+        }
+      }
       /**
-          * Google web font Japanese
-          **/
+      * Google web font Japanese
+      **/
 
       .wf-kokoro { font-family: "Kokoro"; }
       .wf-mplus1p { font-family: "Mplus 1p"; }
       .wf-sawarabimincho { font-family: "Sawarabi Mincho"; }
+
+      /**
+      *
+      **/
 
       a {
         color: inherit;
@@ -195,6 +220,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: var(--paper-yellow-400);
         color: var(--paper-grey-900);
       }
+
+      @media (max-width: 640px ) {
+        paper-button.padding {
+          padding-right: 1em;
+          padding-left: 1em;
+        }
+      }
+
       /**
       * IE 11 BUGS PATCH
       */
