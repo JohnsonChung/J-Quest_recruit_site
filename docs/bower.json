@@ -22,7 +22,8 @@
     "google-map": "^2.0.2",
     "marked-element": "PolymerElements/marked-element#^2.3.0",
     "granite-bootstrap": "^3.3.7-5",
-    "grain-masonry": "daKmoR/grain-masonry#^0.8.2"
+    "grain-masonry": "daKmoR/grain-masonry#^0.8.2",
+    "image-map-resizer": "davidjbradshaw/image-map-resizer#^1.0.3"
   },
   "resolutions": {
     "polymer": "^2.0.0"

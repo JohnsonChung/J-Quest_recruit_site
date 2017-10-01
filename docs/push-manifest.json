@@ -11,5 +11,6 @@
   "src/my-parttime-voice.html": {},
   "src/my-parttime-works.html": {},
   "src/my-recruitform.html": {},
-  "src/my-view404.html": {}
+  "src/my-view404.html": {},
+  "bower_components/google-map/google-map.html": {}
 }
