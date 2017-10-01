@@ -13,6 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-styles/shadow.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/granite-bootstrap/granite-bootstrap.html">
+<link rel="import" href="../src/image-map-resizer.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-parttime-stores">
@@ -184,6 +185,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             {
                 return ['_hashPathChanged(route.path)']
             }
+
+            ready() {
+                super.ready();
+                setTimeout(function() {
+                    var target = this.shadowRoot.querySelector('map');
+                    var img = this.shadowRoot.querySelector('#map');
+                    imageMapResize(target, img);
+                }.bind(this),0);
+            }
+
             _hashPathChanged(path) {
                 if(path === "") return;
                 var target = this.shadowRoot.querySelector("[name*=" + path + "]") || undefined;

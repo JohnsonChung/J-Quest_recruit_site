@@ -86,7 +86,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 super.ready();
                 setTimeout(function() {
                     var target = this.shadowRoot.querySelector('#m_pentagon');
-                    imageMapResize(target); //  Cannot read property 'addEventListener' of null : imageMapResize.js 49
+                    var img = this.shadowRoot.querySelector('#pentagon');
+                    imageMapResize(target, img);
                 }.bind(this),0);
             }
         }

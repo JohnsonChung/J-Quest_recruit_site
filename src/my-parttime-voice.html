@@ -224,15 +224,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             static get observers() {
                 return ['_hashPathChanged(route.path)']
             }
-
             _hashPathChanged(path) {
-                if (path === "") return;
-                var target = this.shadowRoot.querySelector("[name*=" + path + "]") || undefined;
-                if (!target) {
-                    throw '[Anchor href name attribute not exist.]';
-                    return
-                };
-                target.scrollIntoView();
+                setTimeout(function() {
+                    if (path === "") return;
+                    var target = this.shadowRoot.querySelector("[name*=" + path + "]") || undefined;
+                    if (!target) {
+                        throw '[Anchor href name attribute not exist.]';
+                        return
+                    };
+                    target.scrollIntoView( {"behavior":"smooth"} );
+                }.bind(this), 0);
             }
         }
         window.customElements.define(MyParttimeVoice.is, MyParttimeVoice);
