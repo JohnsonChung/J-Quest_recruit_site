@@ -1,0 +1,97 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-nav-data">
+    <template>
+        <style></style>
+    </template>
+    <script>
+        (function() {
+            let navData = [
+                {
+                    path: "parttime",
+                    title: "パート・アルバイト",
+                    subNavs: [
+                        {
+                            path: "parttime/dangerous",
+                            title: "乙四について"
+                        },{
+                            path: "parttime/merit",
+                            title: "働くメリット"
+                        },{
+                            path: "parttime/quizanswer",
+                            title: "よくある質問"
+                        },{
+                            path: "parttime/stores",
+                            title: "募集店舗"
+                        },{
+                            path: "parttime/voice",
+                            title: "先輩たちの声"
+                        },{
+                            path: "parttime/works",
+                            title: "どんな仕事なの"
+                        },{
+                            path: "parttime/recruitform",
+                            title: "パートタイム募集情報"
+                        }
+                    ]
+                },{
+                    path: "graduate",
+                    title: "新卒採用",
+                    subNavs: [
+                        {
+                            path: "graduate/process",
+                            title: "選考プロセス"
+                        },{
+                            path: "graduate/career",
+                            title: "キャリアプラン・育成制度"
+                        },{
+                            path: "graduate/interview",
+                            title: "先輩インタビュー"
+                        },{
+                            path: "graduate/blog",
+                            title: "採用担当ブログ"
+                        }
+                    ]
+                },{
+                    path: "midcareer",
+                    title: "中途採用"
+                },{
+                    path: "top",
+                    title: "トップ"
+                },
+            ];
+
+            class MyNavData extends Polymer.Element {
+                static get is() {
+                    return 'my-nav-data';
+                }
+
+                static get properties() {
+                    return {
+                        // This shouldn't be neccessary, but the Analyzer isn't picking up
+                        // Polymer.Element#rootPath
+                        rootPath: String,
+                        navs: {
+                            type: Array,
+                            value: navData,
+                            readOnly: true,
+                            notify: true
+                        },
+                    };
+                }
+            }
+
+            window.customElements.define(MyNavData.is, MyNavData);
+        })();
+    </script>
+</dom-module>
