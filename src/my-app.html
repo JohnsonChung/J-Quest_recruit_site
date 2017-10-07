@@ -282,28 +282,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </template>
                         </iron-selector>
                     </app-toolbar>
-                    <app-toolbar class="toolbar toolbar-sub layout horizontal end-justified" hidden$="{{!subRouteActive}}">
-                        <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
-                            <a name="parttime-stores" href="[[rootPath]]?p=parttime/stores">
-                                <paper-button>募集店舗</paper-button>
-                            </a>
-                            <a name="parttime-works" href="[[rootPath]]?p=parttime/works">
-                                <paper-button>どんな仕事なの？</paper-button>
-                            </a>
-                            <a name="parttime-voice" href="[[rootPath]]?p=parttime/voice">
-                                <paper-button>先輩たちの声</paper-button>
-                            </a>
-                            <a name="parttime-merit" href="[[rootPath]]?p=parttime/merit">
-                                <paper-button>働くメリット</paper-button>
-                            </a>
-                            <a name="parttime-dangerous" href="[[rootPath]]?p=parttime/dangerous">
-                                <paper-button>乙四について</paper-button>
-                            </a>
-                            <a name="top" href="[[rootPath]]?p=parttime/quizanswer">
-                                <paper-button>よくある質問</paper-button>
-                            </a>
-                        </iron-selector>
-                    </app-toolbar>
+                    <template is="dom-if" if="{{subRouteActive}}">
+                        <app-toolbar class="toolbar toolbar-sub layout horizontal end-justified">
+                            <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
+                                <template is="dom-repeat" items="{{_subRouteNavs(queryParams.p)}}">
+                                    <a name="[[item.path]]" href="[[rootPath]]?p=[[item.path]]">
+                                        <paper-button>[[item.title]]</paper-button>
+                                    </a>
+                                </template>
+                            </iron-selector>
+                        </app-toolbar>
+                    </template>
                 </app-header>
 
                 <iron-pages
@@ -440,7 +429,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 // When page changed reset contentContainer back to Top
                 var layout = this.shadowRoot.querySelector("app-header-layout");
                 layout.shadowRoot.querySelector('#contentContainer').scrollTop = 0;
-            };
+            }
+            _subRouteNavs(query) {
+                var mainNav = this.queryParams.p.split('/')[0];
+                var result = this.navs.find(x => x.path === mainNav).subNavs;
+                console.log(result);
+                return result;
+            }
         }
 
         window.customElements.define(MyApp.is, MyApp);

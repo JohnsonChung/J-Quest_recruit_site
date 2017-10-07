@@ -4,7 +4,7 @@
   "fragments": [
     "src/my-app.html",
     "src/my-top.html",
-    "src/my-view2.html",
+    "src/my-graduate.html",
     "src/my-view3.html",
     "src/my-parttime.html",
     "src/my-parttime-dangerous.html",
@@ -13,7 +13,8 @@
     "src/my-parttime-stores.html",
     "src/my-parttime-voice.html",
     "src/my-parttime-works.html",
-    "src/my-recruitform.html",
+    "src/my-parttime-recruitform.html",
+    "src/my-nav-data",
     "src/my-view404.html"
   ],
   "sources": [
