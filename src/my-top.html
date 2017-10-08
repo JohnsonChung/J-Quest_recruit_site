@@ -41,7 +41,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: white;
                 text-align: right;
             }
-            header::before {
+            header::after {
                 content: '';
                 position: absolute;
                 right: 0;
@@ -50,6 +50,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 height: 100%;
                 background-position: center 25%;
                 background-image: url('../images/hero_unit.jpg');
+                backgrond-repeat: no-repeat;
+                background-size: cover;
+                z-index: -1;
+            }
+            header::before {
+                content: '';
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                background-position: center 25%;
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAACxElEQVQokTXLW28UZRgH8P/zvs+87+zOzM526W6LtELp1hQpipyCEBM1RCyJF4R4ZWL8FMYPYcAPQCAmkJiYcIGnG2JASrQmoiEFWbGULm26s7WH3S1zPnjF7/5H8osARQEiEAoCBEiCGIJhSBhMzDAkFKPEZBswGUSkBLQoWDmUgwCIl1kIyglCgiWUhMHQEoakqom9FcQZvUjAAloQO47ICQCIMN7/+7Ofv8zff+vy8KdreYUFlISWsA1YTEfqWPOxxwJLrAdATlyrUlqg4T09FVw5UP/pRCYnvd9nh9Zv7f3kRm+3JytSEItCCvrXx+4yRm14IQqGIqLZr9dO3fzq+O2rzufviuaZ6vTR4sVOdu9uutXPR8ZXGuKautAtDTNBC6pquFwEGSkBDdAPpz+yjzVLZ9+jWjUvsiDwDUNEgW+arFe9cfXQfdSfqx34lg8N3jyrROEyHIkoJwXQrR+/D5KQCGkSayW73urY+FiSBhV7iITMi9hm3uUtul7rifv6vebH2+WGAJigAbr0MCklAzPpB52lqojSzUVTWVbFCf2wbBpsyCSODZmZSrtFNBptb9jNfxonA12RAH3zNCVQlqRKcZZn2HgmGxNWrx3kFGx2896yKCR2/hMCZcuWiO2yPapLvjM5GJniw8YWmzoM49gf5Czm2g+cYLtade2lJYfCDhvlg2fmvrs09cZsachVQgrWD9pLeda3ghX6689Wo2Y+W/iN159HGyt3RNOQUfPQnnqlOegVv9y98+v9+ebMOyY9X15sfzh7vtvpzOx/jQU9ebzAadLP2FWvTNQnJiO/07p8e6vrnX571NGPL16fn//jPjFV9vXGjDDw/LqRHTk+PfLqPlXIY4f3M+vhrdXNZS9Ky9Gj9Z5aac+kYUtPbS92aso6d+KgpfIPTtamj54rlWzHdvJ0IYpacbrL3xn+H6LRH8v0PY0lAAAAAElFTkSuQmCC);
                 backgrond-repeat: no-repeat;
                 background-size: cover;
                 z-index: -1;
@@ -115,7 +128,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             @media (max-width: 640px) {
-                header::before {
+                header::after {
                     filter: blur(4px);
                 }
                 header #headerContent {

@@ -23,7 +23,8 @@
     "marked-element": "PolymerElements/marked-element#^2.3.0",
     "granite-bootstrap": "^3.3.7-5",
     "grain-masonry": "daKmoR/grain-masonry#^0.8.2",
-    "image-map-resizer": "davidjbradshaw/image-map-resizer#^1.0.3"
+    "image-map-resizer": "davidjbradshaw/image-map-resizer#^1.0.3",
+    "lazyload-image": "^2.1.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"
