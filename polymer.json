@@ -14,8 +14,9 @@
     "src/my-parttime-voice.html",
     "src/my-parttime-works.html",
     "src/my-parttime-recruitform.html",
-    "src/my-nav-data",
-    "src/my-view404.html"
+    "src/my-nav-data.html",
+    "src/my-view404.html",
+    "src/lazy-resources.html"
   ],
   "sources": [
     "src/**/*",
@@ -47,9 +48,9 @@
     {
       "name": "local-test",
       "bundle": true,
-      "js": {"minify": true, "compile": true},
-      "css": {"minify": true},
-      "html": {"minify": true},
+      "js": {},
+      "css": {},
+      "html": {},
       "addServiceWorker": true,
       "addPushManifest": true,
       "insertPrefetchLinks": true

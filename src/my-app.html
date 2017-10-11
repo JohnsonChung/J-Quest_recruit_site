@@ -10,29 +10,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-route/app-route-converter.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/lazyload-image/lazyload-image.html">
+
 <link rel="import" href="my-nav-data.html">
 <link rel="import" href="my-icons.html">
 
-<link rel="lazy-import" href="my-view404.html">
-<link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/earlyaccess/sawarabimincho.css" rel="stylesheet"/>
+
+<link rel="lazy-import" href="my-view404.html">
 
 <dom-module id="my-app">
     <template>
@@ -42,6 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 --app-secondary-color: #29b8e4;
                 display: block;
             }
+
             iron-pages > * {
                 padding-top: 64px;
             }
@@ -79,12 +74,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 color: black;
                 font-weight: bold;
             }
+
             .drawer-list a[name*="/"] {
                 font-size: 0.8em;
                 text-indent: 0.5em;
                 color: var(--paper-grey-800);
             }
-            .toolbar {}
+
+            .toolbar {
+            }
+
             .tabs a {
                 font-size: 15px;
                 text-decoration: none;
@@ -100,6 +99,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 content: '|';
                 padding: 0px 0px;
             }
+
             .toolbar-sub {
                 top: 64px;
                 right: 0;
@@ -108,7 +108,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 height: 43px;
                 background-color: #fff;
             }
-            .toolbar-sub .tabs a{
+
+            .toolbar-sub .tabs a {
                 color: var(--paper-grey-600);
             }
 
@@ -185,8 +186,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             /* transparent black overlay*/
             #img-thumbnail-circle {
-                background-color: rgba(0,0,0,0.25);
+                background-color: rgba(0, 0, 0, 0.25);
             }
+
             .img-thumbnail::after {
                 content: '';
                 position: absolute;
@@ -203,13 +205,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .img-thumbnail:hover::after {
                 background-color: rgba(0, 0, 0, 0.4);
             }
+
             /* circle */
-            .img-thumbnail-circle{
+            .img-thumbnail-circle {
                 border-radius: 120px;
                 width: 240px;
                 height: 240px;
                 margin: 1em 1em;
             }
+
             .img-thumbnail-circle::after {
                 border-radius: 120px;
             }
@@ -230,9 +234,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 iron-pages > * {
                     padding-top: 0px;
                 }
+
                 .toolbar .tabs {
                     display: none;
                 }
+
                 .toolbar-sub {
                     display: none !important;
                 }
@@ -250,52 +256,55 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <app-drawer-layout drawer fullbleed force-narrow>
             <!-- Drawer content -->
-            <app-drawer id="drawer" slot="drawer" swipe-open>
-                <app-toolbar>J-Quest</app-toolbar>
-                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <template is="dom-repeat" items="{{navs}}">
-                        <a name="[[item.path]]" href="[[rootPath]]?p=[[item.path]]">[[item.title]]</a>
-                        <template is="dom-repeat" items="{{item.subNavs}}" as="sub">
-                            <a name="[[sub.path]]" href="[[rootPath]]?p=[[sub.path]]">[[sub.title]]</a>
+            <template is="dom-if" if="{{loadComplete}}">
+                <app-drawer id="drawer" slot="drawer" swipe-open>
+                    <app-toolbar>J-Quest</app-toolbar>
+                    <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                        <template is="dom-repeat" items="{{navs}}">
+                            <a name="[[item.path]]" href="[[rootPath]]?p=[[item.path]]">[[item.title]]</a>
+                            <template is="dom-repeat" items="{{item.subNavs}}" as="sub">
+                                <a name="[[sub.path]]" href="[[rootPath]]?p=[[sub.path]]">[[sub.title]]</a>
+                            </template>
                         </template>
-                    </template>
-                </iron-selector>
-            </app-drawer>
+                    </iron-selector>
+                </app-drawer>
+            </template>
 
             <!-- Main content -->
             <app-header-layout has-scrolling-region>
-
-                <app-header  slot="header" reveals effects="waterfall">
-                    <app-toolbar class="toolbar">
-                        <paper-icon-button drawer-toggle icon="menu" ></paper-icon-button>
-                        <div class="layout horizontal center" main-title>
-                            <img id="brandLogo" src="./images/jquest_logo.png" alt="j-quest">
-                            <div id="brandTitle">
-                                <span>Recruitment</span>
-                                <span>採用情報</span>
+                <template is="dom-if" if="{{loadComplete}}">
+                    <app-header slot="header" reveals effects="waterfall">
+                        <app-toolbar class="toolbar">
+                            <paper-icon-button drawer-toggle icon="menu"></paper-icon-button>
+                            <div class="layout horizontal center" main-title>
+                                <img id="brandLogo" src="./images/jquest_logo.png" alt="j-quest">
+                                <div id="brandTitle">
+                                    <span>Recruitment</span>
+                                    <span>採用情報</span>
+                                </div>
                             </div>
-                        </div>
-                        <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation" >
-                            <template is="dom-repeat" items="{{navs}}">
-                                <a name="[[item.path]]" href="[[rootPath]]?p=[[item.path]]">
-                                    <paper-button>[[item.title]]</paper-button>
-                                </a>
-                            </template>
-                        </iron-selector>
-                    </app-toolbar>
-                    <template is="dom-if" if="{{subRouteActive}}">
-                        <app-toolbar class="toolbar toolbar-sub layout horizontal end-justified">
                             <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs" role="navigation">
-                                <template is="dom-repeat" items="{{_subRouteNavs(queryParams.p)}}">
+                                <template is="dom-repeat" items="{{navs}}">
                                     <a name="[[item.path]]" href="[[rootPath]]?p=[[item.path]]">
                                         <paper-button>[[item.title]]</paper-button>
                                     </a>
                                 </template>
                             </iron-selector>
                         </app-toolbar>
-                    </template>
-                </app-header>
-
+                        <template is="dom-if" if="{{subRouteActive}}">
+                            <app-toolbar class="toolbar toolbar-sub layout horizontal end-justified">
+                                <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs"
+                                               role="navigation">
+                                    <template is="dom-repeat" items="{{_subRouteNavs(queryParams.p)}}">
+                                        <a name="[[item.path]]" href="[[rootPath]]?p=[[item.path]]">
+                                            <paper-button>[[item.title]]</paper-button>
+                                        </a>
+                                    </template>
+                                </iron-selector>
+                            </app-toolbar>
+                        </template>
+                    </app-header>
+                </template>
                 <iron-pages
                         selected="[[page]]"
                         attr-for-selected="name"
@@ -315,43 +324,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <my-parttime-recruitform name="parttime-recruitform"></my-parttime-recruitform>
                     <my-view404 name="view404"></my-view404>
                 </iron-pages>
-                <div class="container layout horizontal">
-                    <div id="banner-sm" class="layout flex horizontal center-center center-justified wrap">
-                        <img src="./images/banner_sm_biogus.jpg" alt="">
-                        <img src="./images/banner_sm_eneosdenki.gif" alt="">
-                        <img src="./images/banner_sm_keeper.gif" alt="">
-                        <img src="./images/banner_sm_vigo.jpg" alt="">
+                <template is="dom-if" if="[[loadComplete]]">
+                    <div class="container layout horizontal">
+                        <div id="banner-sm" class="layout flex horizontal center-center center-justified wrap">
+                            <img src="./images/banner_sm_biogus.jpg" alt="">
+                            <img src="./images/banner_sm_eneosdenki.gif" alt="">
+                            <img src="./images/banner_sm_keeper.gif" alt="">
+                            <img src="./images/banner_sm_vigo.jpg" alt="">
+                        </div>
                     </div>
-                </div>
-                <div id="img-thumbnail-circle" class="container layout horizontal around-justified wrap ">
-                    <a class="" href="[[rootPath]]?p=parttime">
-                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(./images/photo/sm_160107-16.jpg)">
-                            <p>part time employee</p>
-                            <p>パートタイマースタッフ</p>
-                        </div>
-                    </a>
-                    <a  class="" href="[[rootPath]]?p=graduate">
-                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(./images/photo/sm_160107-88.jpg)">
-                            <p>New graduate</p>
-                            <p>新卒採用はこちら</p>
-                        </div>
-                    </a>
-                    <a class="">
-                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(./images/photo/02-3.jpg)">
-                            <p>mid-career recruitment</p>
-                            <p>中途採用はこちら</p>
-                        </div>
-                    </a>
-                    <a href="https://www.j-quest.jp/" target="_blank">
-                        <div class="img-thumbnail img-thumbnail-circle" style="background-image: url(./images/jquest_logo.png)">
-                            <p>J-Quest Homepage</p>
-                            <p>ホームページ</p>
-                        </div>
-                    </a>
-                </div>
-                <footer id="footer">
-                    <div>Copyright @ 2017 J-Quest Corporation</div>
-                </footer>
+
+                    <div id="img-thumbnail-circle" class="container layout horizontal around-justified wrap ">
+                        <a class="" href="[[rootPath]]?p=parttime">
+                            <div class="img-thumbnail img-thumbnail-circle"
+                                 style="background-image: url(./images/photo/sm_160107-16.jpg)">
+                                <p>part time employee</p>
+                                <p>パートタイマースタッフ</p>
+                            </div>
+                        </a>
+                        <a class="" href="[[rootPath]]?p=graduate">
+                            <div class="img-thumbnail img-thumbnail-circle"
+                                 style="background-image: url(./images/photo/sm_160107-88.jpg)">
+                                <p>New graduate</p>
+                                <p>新卒採用はこちら</p>
+                            </div>
+                        </a>
+                        <a class="">
+                            <div class="img-thumbnail img-thumbnail-circle"
+                                 style="background-image: url(./images/photo/02-3.jpg)">
+                                <p>mid-career recruitment</p>
+                                <p>中途採用はこちら</p>
+                            </div>
+                        </a>
+                        <a href="https://www.j-quest.jp/" target="_blank">
+                            <div class="img-thumbnail img-thumbnail-circle"
+                                 style="background-image: url(./images/jquest_logo.png)">
+                                <p>J-Quest Homepage</p>
+                                <p>ホームページ</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <footer id="footer">
+                        <div>Copyright @ 2017 J-Quest Corporation</div>
+                    </footer>
+
+                </template>
             </app-header-layout>
         </app-drawer-layout>
     </template>
@@ -378,6 +396,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     // This shouldn't be neccessary, but the Analyzer isn't picking up
                     // Polymer.Element#rootPath
                     rootPath: String,
+                    loadComplete: {
+                        type: Boolean,
+                        value() {
+                            return false;
+                        }
+                    },
                 };
             }
 
@@ -392,12 +416,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 let main = parts[0] || undefined;
                 let subPage = parts[1] || undefined;
 
-                if(main && !subPage) {
+                if (main && !subPage) {
                     // no subPage query meters
                     this.page = main;
                     this.subRouteActive = false;
-                } else
-                if(main && subPage) {
+                } else if (main && subPage) {
                     // has subPage query meters
                     this.page = main + '-' + subPage;
                     this.subRouteActive = true;
@@ -406,34 +429,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this.page = 'top';
                     this.subRouteActive = false;
                 }
-
-                // Close a non-persistent drawer when the page & route are changed.
-                if (!this.$.drawer.persistent) {
-                    this.$.drawer.close();
+                // Close a drawer when the page & route are changed.
+                if( this.loadComplete ) {
+                    this.shadowRoot.querySelector('#drawer').close();
                 }
             }
 
             _pageChanged(page) {
                 // Load page import on demand. Show 404 page if fails
-                var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+                let resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+                let cb = this._pageLoaded();
                 Polymer.importHref(
                     resolvedPageUrl,
-                    null,
+                    cb,
                     this._showPage404.bind(this),
                     true);
+            }
+
+            _pageLoaded() {
+                if (!this.loadComplete) {
+                    Polymer.RenderStatus.afterNextRender(this, () => {
+                        Polymer.importHref(this.resolveUrl('lazy-resources.html'), () => {
+                            // Register service worker if supported.
+                            if ('serviceWorker' in navigator) {
+                                navigator.serviceWorker.register('service-worker.js', {scope: '/'});
+                            }
+                            this.loadComplete = true;
+                        });
+                    });
+                }
             }
 
             _showPage404() {
                 this.page = 'view404';
             }
-            _ironPagesChanged (target) {
+
+            _ironPagesChanged(target) {
                 // When page changed reset contentContainer back to Top
                 var layout = this.shadowRoot.querySelector("app-header-layout");
                 layout.shadowRoot.querySelector('#contentContainer').scrollTop = 0;
             }
+
             _subRouteNavs(query) {
                 var mainNav = this.queryParams.p.split('/')[0];
-                var result = this.navs.find(x => x.path === mainNav).subNavs;
+                var result = this.navs.find(x => x.path === mainNav
+                ).subNavs;
                 console.log(result);
                 return result;
             }
