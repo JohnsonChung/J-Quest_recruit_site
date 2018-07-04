@@ -90,12 +90,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 text-shadow: 0 4px 6px rgba(0, 0, 0, 0.68);
             }
 
+            header #recruitBtn {
+                font-size: 17px;
+            }
             .card.skyblue {
                 background: #E7F9FB;
             }
 
             a {
                 text-decoration: none;
+            }
+
+            img.icon {
+                width: 22px;
+                height: 22px;
             }
 
             #company-info {
@@ -126,7 +134,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 opacity: 0.1;
                 z-index: -1;
             }
-
             @media (max-width: 640px) {
                 header::after {
                     filter: blur(4px);
@@ -174,7 +181,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div id="subTitle" class="card skyblue">
             <div class="layout horizontal center-center">
                 <h4 class="wf-mplus1p " style="font-weight: 400; font-size: 25px;"><span
-                        style="font-size: 1.4em">\ </span>各種ご応募はこちらから <span style="font-size: 1.4em"> /</span></h4>
+                        style="font-size: 1.5em">\ </span>各種ご応募はこちらから <span style="font-size: 1.5em"> /</span></h4>
             </div>
             <div class="layout horizontal center-center wrap">
 
@@ -186,7 +193,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </a>
                 <a name="view2" href="[[rootPath]]?p=graduate">
                     <paper-button class="border slashed yellow clip anchor">
-                        <iron-icon icon="home"></iron-icon>
+                        <img class="icon" src="../images/icons/shin.png" alt="">
                         新卒採用
                     </paper-button>
                 </a>
