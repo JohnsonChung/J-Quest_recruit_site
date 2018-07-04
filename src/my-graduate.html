@@ -40,9 +40,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 line-height: 0;
                 font-size: 0;
             }
+
             header img:nth-child(8n+1) {
-                width: calc( 14.28571428571429% * 1.5);
+                width: calc(14.28571428571429% * 1.5);
             }
+
             #recrutingHero {
                 position: absolute;
                 top: 0;
@@ -58,6 +60,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 animation-name: cd-bounce-left;
                 animation-duration: 0.6s;
             }
+
             @keyframes cd-bounce-left {
                 0% {
                     opacity: .2;
@@ -76,21 +79,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             #subTitles {
 
             }
-            #subTitles paper-button{
+
+            #subTitles paper-button {
                 @apply(--layout-flex);
                 padding: 4em 2em;
                 font-size: 24px;
                 letter-spacing: 0.2em;
             }
 
-            #recruitContent {
-                background: #fff;
-            }
+
             @media (min-width: 641px) {
                 #slogan {
                     position: relative;
                     margin-top: 1em;
                 }
+
                 #slogan .card:first-child::before {
                     content: '';
                     position: absolute;
@@ -99,9 +102,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     width: 910px;
                     max-width: 100%;
                     height: 1em;
-                    background: linear-gradient(to right, #fff133 25%,#d7c6ff 26%,#d7c6ff 50%,#ffbdbe 51%,#ffbdbe 75%,#c3ff8c 76%);
+                    background: linear-gradient(to right, #fff133 25%, #d7c6ff 26%, #d7c6ff 50%, #ffbdbe 51%, #ffbdbe 75%, #c3ff8c 76%);
                     z-index: -1;
                 }
+
                 #slogan .card {
                     background: #fff;
                     width: 910px;
@@ -110,6 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     margin: 0 auto;
                     margin-bottom: 16px;
                 }
+
                 #slogan .card:nth-child(2) {
                     box-sizing: border-box;
                     max-width: 100%;
@@ -117,22 +122,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     letter-spacing: 0.3em;
                     line-height: 1.8;
                 }
+
                 #slogan h2 {
                     font-size: 26px;
                 }
+
                 #slogan h2:first-child:first-letter {
                     font-size: 42px;
                 }
+
                 #slogan p {
                     max-width: 640px;
                     padding: 0;
                     margin: 0;
                     text-align: center;
                 }
+
                 .vertical-section > p,
-                .vertical-section > h2{
-                    text-orientation: upright;   writing-mode: vertical-lr; text-align: left;
+                .vertical-section > h2 {
+                    text-orientation: upright;
+                    writing-mode: vertical-lr;
+                    text-align: left;
                 }
+
                 #shape_bg_left {
                     position: absolute;
                     left: 0;
@@ -142,6 +154,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     background-image: url(../images/recruit_shape_bg_1.png);
                     height: 100%;
                 }
+
                 #shape_bg_right {
                     position: absolute;
                     right: 0;
@@ -152,14 +165,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     height: 100%;
                 }
             }
+
             @media (max-width: 640px) {
                 header grain-masonry, #recrutingHero {
                     display: none;
                 }
+
                 header {
                     position: relative;
                     height: 480px;
                 }
+
                 header::after {
                     content: '';
                     position: absolute;
@@ -168,22 +184,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     width: 100%;
                     height: 100%;
                     background-size: cover;
-                    background-position:  center  center;
-                    background-image: url(../images/recruit/gra_recruit_photo_montage.png) ;
+                    background-position: center center;
+                    background-image: url(../images/recruit/gra_recruit_photo_montage.png);
                     z-index: 20;
                 }
 
-                #subTitles paper-button{
+                #subTitles paper-button {
                     @apply(--layout-flex);
                     padding: 1em 1em;
                     font-size: 16px;
                     letter-spacing: 0.2em;
                 }
+
                 #slogan .vertical-section {
                     line-height: 1em !important;
                 }
+
                 .vertical-section > p,
-                .vertical-section > h2{
+                .vertical-section > h2 {
                     text-orientation: inherit;
                     writing-mode: vertical-rl;
                     margin: 0.5em;
@@ -200,18 +218,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <div id="recrutingHero"></div>
         </header>
         <div id="shape_bg_left" src="./images/recruit_shape_bg_1.png" alt=""></div>
-        <div id="shape_bg_right"  alt=""></div>
+        <div id="shape_bg_right" alt=""></div>
         <div id="subTitles" class="container layout horizontal center-center wf-mplus1p">
-            <a>
-                <paper-button class="">選考プロセス</paper-button>
+            <a href="[[rootPath]]?p=graduate/details">
+                <paper-button>募集要項<br>給与・福利厚生</paper-button>
             </a>
-            <a >
-                <paper-button>キャリアプラン・育成制度</paper-button>
+            <a href="[[rootPath]]?p=graduate/process">
+                <paper-button>選考プロセス</paper-button>
             </a>
-            <a >
+            <a href="[[rootPath]]?p=graduate/career">
+                <paper-button>キャリアプラン<br>育成制度</paper-button>
+            </a>
+            <a href="[[rootPath]]?p=graduate/interview">
                 <paper-button>先輩インタビュー</paper-button>
             </a>
-            <a >
+            <a href="[[rootPath]]?p=graduate/blog">
                 <paper-button>採用担当ブログ</paper-button>
             </a>
         </div>
@@ -221,17 +242,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <p>
                     ガソリンスタンドやコンビニでの<br>仕事をイメージされがちです・・・<br>&nbsp
                 </p>
-                <h2 >
+                <h2>
                     ですが実際はまったく異なります！
                 </h2>
                 <p>&nbsp<br>
-                   車検やオイル交換・タイヤ交換は<br>&nbsp
+                    車検やオイル交換・タイヤ交換は<br>&nbsp
                 </p>
                 <h2>一切ありません！</h2>
             </div>
             <div class="card layout vertical center">
                 <p>☆★☆★☆</p>
-                <p> <br>
+                <p><br>
                     制服はエプロンで清潔感のある身だしなみ。<br>
                     接客だけでなくお客様が満足されるサービスは何か？<br>
                     また訪れたくなる環境を作るにはどうしたらいいか？<br>
@@ -239,20 +260,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </p>
                 <p>例えば、女性のお客様が多い店舗では、トイレに綿棒やコットン等のアメニティーグッズを用意したり、お花を生けてみたり・・・<br><br>
 
-                お陰様で、ご来店されるお客様は・・・<br>
-                業界平均のなんと４倍以上！！<br><br>
+                    お陰様で、ご来店されるお客様は・・・<br>
+                    業界平均のなんと４倍以上！！<br><br>
 
-                「おもてなしでお客様に支持される」店舗を目指し頑張っています
+                    「おもてなしでお客様に支持される」店舗を目指し頑張っています
                     <br>&nbsp
                 </p>
                 <p>☆★☆★☆</p>
             </div>
-        </div>
-        <div id="recruitContent" class="card">
-            <marked-element id="md-recruit-content">
-                <div slot="markdown-html"></div>
-                <script type="text/markdown" src="./md/gra-recruit-table.md"></script>
-            </marked-element>
         </div>
     </template>
 
@@ -277,6 +292,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             }
         }
+
         window.customElements.define(MyGraduate.is, MyGraduate);
     </script>
 </dom-module>
