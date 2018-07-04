@@ -9,7 +9,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../bower_components/paper-styles/shadow.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-styles/typography.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="shared-styles.html">
 
@@ -20,11 +23,73 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-vertical);
                 @apply(--layout-center);
                 padding: 10px;
+                background: var(--my-color-yellow);
+            }
+            .card {
+                @apply(--layout-vertical);
+                @apply(--layout-center);
+                @apply(--shadow-elevation-2dp);
+                box-sizing: border-box;
+                width: 320px;
+                padding: 10px 10px;
+                margin: 0 5px 16px 0;
+                z-index: 15;
+                background: #fff;
+            }
+
+            .text-fill-animation {
+            /* Clip Background Image */
+                color:#000;
+                background-color: red;
+                background: url(../images/effect/textfill.gif) repeat-y;
+                -webkit-background-clip: text;
+                background-clip: text;
+
+                /* Animate Background Image */
+
+                -webkit-text-fill-color: transparent;
+                -webkit-animation: aitf 90s linear infinite;
+
+                /* Activate hardware acceleration for smoother animations */
+
+                -webkit-transform: translate3d(0,0,0);
+                -webkit-backface-visibility: hidden;
+
+
+            }
+
+            /* Animate Background Image */
+
+            @-webkit-keyframes aitf {
+                0% { background-position: 0% 50%; }
+                100% { background-position: 100% 50%; }
             }
         </style>
         <div class="container">
             <h3>乙四について</h3>
-            <p>Lorem</p>
+        </div>
+        <div class="container layout horizontal around-justified wrap">
+            <div class="card">
+                <!-- liquid wave animation -->
+                <svg width="180" height="180" viewbox="0 0 180 180">
+                    <defs>
+                        <pattern id="wave" x="0" y=".34" width="1" height="10">
+                            <path id="wavePath" d="M-60 4 Q-45 0 -30 4 T0 4 T30 4 T60 4 T90 4 T120 4 T150 4 T180 4 V20 H-60z" fill="#3ea1ff">
+                                <animateTransform attributeName="transform" begin="0s" dur="1.5s" type="translate" from="0,0" to="60,0" repeatCount="indefinite"
+                                />
+                            </path>
+                            <rect x="0" y="19" width="100%" height="100" fill="#3ea1ff"/>
+                        </pattern>
+                    </defs>
+                    <circle cx="90" cy="90" r="86" fill="url(#wave)"/>
+                    <circle cx="90" cy="90" r="89" stroke="#d1e8ff" stroke-width="3" fill="transparent"/>
+                    <text text-anchor="middle" x="90" y="98" font-size="68" fill="#333">危</text>
+                </svg>
+
+                <p class="text-fill-animation">
+                    第4類危険物として指定されている引火性液体とは、引火しやすい液体の総称です。<br>
+                    引火性液体は、可燃性蒸気を発生させ、空気と混合し点火源を与えることで引火・爆発する危険性があります。</p>
+            </div>
         </div>
     </template>
 
