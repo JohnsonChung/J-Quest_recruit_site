@@ -10,6 +10,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/image-icons.html">
 <link rel="import" href="../bower_components/paper-styles/shadow.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-styles/typography.html">
@@ -22,73 +24,230 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
-                padding: 10px;
-                background: var(--my-color-yellow);
+                padding: 0px !important;
+                background-color: var(--my-color-yellow);
+                color: var(--my-color-black);
             }
             .card {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
                 @apply(--shadow-elevation-2dp);
                 box-sizing: border-box;
-                width: 320px;
-                padding: 10px 10px;
                 margin: 0 5px 16px 0;
                 z-index: 15;
                 background: #fff;
             }
 
-            .text-fill-animation {
-            /* Clip Background Image */
-                color:#000;
-                background-color: red;
-                background: url(../images/effect/textfill.gif) repeat-y;
-                -webkit-background-clip: text;
-                background-clip: text;
-
-                /* Animate Background Image */
-
-                -webkit-text-fill-color: transparent;
-                -webkit-animation: aitf 90s linear infinite;
-
-                /* Activate hardware acceleration for smoother animations */
-
-                -webkit-transform: translate3d(0,0,0);
-                -webkit-backface-visibility: hidden;
-
-
+            .card.center {
+                margin: 0 auto;
             }
 
-            /* Animate Background Image */
+            .card p {
+                line-height: 38px;
+                margin-top: 16px;
+                margin-bottom: 20px;
+            }
+            .card-group {
+                max-width: 1280px;
+            }
+            .card-border-top {
 
-            @-webkit-keyframes aitf {
-                0% { background-position: 0% 50%; }
-                100% { background-position: 100% 50%; }
+                border-top: 10px solid;
+                border-image: linear-gradient(45deg, #EE617D 25%, #3D6F8E 25%, #3D6F8E 50%, #EE617D 50%, #EE617D 75%, #3D6F8E 75%, #3D6F8E 100%) 45;
+            }
+
+            p, li{
+                line-height: 38px;
+            }
+            li {
+                background-color: #fff;
+                padding: 5px 20px;
+                margin-bottom: 10px;
+                border-top: 5px solid var(--my-color-blue);
+            }
+            li b {
+                display: block;
+            }
+            p.first-letter::first-letter {
+                font-size: 1.8em;
+            }
+
+            body {
+                background-color: #0e3c5a;
+            }
+            #liquidContainer {
+                position: relative;
+            }
+            #liquidContainer::before {
+                content:'';
+                display: block;
+                position: absolute;
+                top: -78px;
+                height: 120px;
+                width: 93px;
+                margin-left: auto;
+                margin-right: auto;
+                left: -213px;
+                right: 0;
+                transform: rotate(-60deg);
+                z-index: 1;
+                background-image: url('../images/icons/fire.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+            #topPattern {
+                margin: 0;
+                height: 250px;
+                margin-bottom: -110px;
+                background-color: #FFFFFF;
+                background-image: url('../images/pattern-stripes-light.png');
+            }
+
+            /* Liquid container */
+            .audiobox {
+                position: relative;
+                margin: 0 auto;
+                transform: translateY(-55px);
+                height: 240px;
+                width: 240px;
+                background-color: rgb(255, 255, 255);
+                border-radius: 200px;
+                border-bottom: 3px solid var(--my-color-yellow);
+                overflow: hidden;
+                /*background-image: url('../images/pattern_gplay.png');*/
+            }
+
+            .audiobox span {
+                position: relative;
+                display: block;
+                font-size: 42px;
+                font-weight: bold;
+                width: 100%;
+                margin: 0;
+                top: 64px;
+                text-align: center;
+                z-index: 10;
+                color: rgba(221, 16, 42, 0.64);
+
+                animation: textFloat 7.5s linear -1s infinite;
+            }
+
+            .wave {
+                top: 45%;
+                left: -125%;
+                width: 1000px;
+                height: 1025px;
+                background-color: var(--my-color-blue);
+                opacity: 0.6;
+                position: absolute;
+                border-radius: 40%;
+            }
+
+            .wave.one {
+                animation: wave 15s linear -1s infinite;
+                background-color: var(--my-color-pink);
+            }
+
+            .wave.two {
+                animation: wave 18s linear -1s infinite;
+            }
+
+            .wave.three {
+                animation: wave 21s linear -1s infinite;
+            }
+
+            @keyframes wave {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes textFloat {
+                0% {
+                    transform: translateY(-14px);
+                }
+                50% {
+                    transform: translateY(0px);
+                }
+                100% {
+                    transform: translateY(-14px);
+                }
             }
         </style>
-        <div class="container">
-            <h3>乙四について</h3>
-        </div>
-        <div class="container layout horizontal around-justified wrap">
-            <div class="card">
-                <!-- liquid wave animation -->
-                <svg width="180" height="180" viewbox="0 0 180 180">
-                    <defs>
-                        <pattern id="wave" x="0" y=".34" width="1" height="10">
-                            <path id="wavePath" d="M-60 4 Q-45 0 -30 4 T0 4 T30 4 T60 4 T90 4 T120 4 T150 4 T180 4 V20 H-60z" fill="#3ea1ff">
-                                <animateTransform attributeName="transform" begin="0s" dur="1.5s" type="translate" from="0,0" to="60,0" repeatCount="indefinite"
-                                />
-                            </path>
-                            <rect x="0" y="19" width="100%" height="100" fill="#3ea1ff"/>
-                        </pattern>
-                    </defs>
-                    <circle cx="90" cy="90" r="86" fill="url(#wave)"/>
-                    <circle cx="90" cy="90" r="89" stroke="#d1e8ff" stroke-width="3" fill="transparent"/>
-                    <text text-anchor="middle" x="90" y="98" font-size="68" fill="#333">危</text>
-                </svg>
+        <div id="topPattern" class="container">
 
-                <p class="text-fill-animation">
-                    第4類危険物として指定されている引火性液体とは、引火しやすい液体の総称です。<br>
-                    引火性液体は、可燃性蒸気を発生させ、空気と混合し点火源を与えることで引火・爆発する危険性があります。</p>
+        </div>
+        <div class="container layout vertical center ">
+            <div class="card layout horizontal start card-border-top">
+                <div id="liquidContainer" class="container ">
+                    <div class="audiobox">
+                        <span>危険物<br>取扱者</span>
+                        <div class="wave one"></div>
+                        <div class="wave two"></div>
+                        <div class="wave three"></div>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-fill-animation first-letter">
+                        <b>乙種第4類危険物</b>（俗に「乙4（おつよん）」)として指定されている引火性液体とは、引火しやすい液体の総称です。<br>
+                        引火性液体は、可燃性蒸気を発生させ、空気と混合し点火源を与えることで引火・爆発する危険性があります。</p>
+                </div>
+            </div>
+        </div>
+        <div class="container restricted">
+            <h2>
+                <iron-icon icon="icons:invert-colors"></iron-icon> 乙4特徴</h2>
+            <p>火災の危険性を高める数々の性質を有しています。</p>
+            <ul>
+                <li><b>引火しやすい。</b>
+                    蒸気が空気より重い。（蒸気比重が1より大きい。）よって、低所に滞留しやすい。
+                    引火性液体から発生する可燃性蒸気は空気より重いため、低い場所に溜まりやすい。
+                </li>
+                <li><b>水に溶けない（非水溶性）ものが多い。</b>
+                    水に浮く（液比重が1より小さい）ものが多い。よって、火災のとき注水すると、水の上に広がり燃焼面積が広がる危険性がある。
+                    注水消火は、火面を広げるだけで逆効果です。
+                </li>
+                <li><b>電気の不良導体であり、静電気を発生させやすい。</b>
+                    第4類危険物は、静電気を蓄積しやすい。
+                    酸化剤と混合すると、発火の危険がある。（参考：混合危険）
+                </li>
+            </ul>
+        </div>
+        <div class="card-group container layout horizontal center-justified wrap">
+            <div class="card">
+                <iron-image src="./images/photo/sm_160107-99.jpg" sizing="cover"></iron-image>
+                <p>
+                    危険物取扱者乙種第4類（乙４）ってどんな資格？
+                </p>
+            </div>
+            <div class="card">
+                <iron-image src="./images/photo/sm_160107-99.jpg" sizing="cover"></iron-image>
+                <p>
+                    すべてのスタッフさんに「乙４」を取得して頂く理由
+                </p>
+            </div>
+            <div class="card">
+                <iron-image src="./images/photo/sm_160107-99.jpg" sizing="cover"></iron-image>
+                <p>
+                    実際の問題にチャレンジ！！
+                </p>
+            </div>
+            <div class="card">
+                <iron-image src="./images/photo/sm_160107-99.jpg" sizing="cover"></iron-image>
+                <p>
+                    既に乙４をお持ちの方
+                </p>
+            </div>
+
+            <div class="card">
+                <iron-image src="./images/photo/sm_160107-99.jpg" sizing="cover"></iron-image>
+                <p>
+                    合格者のVOICE
+                </p>
             </div>
         </div>
     </template>
