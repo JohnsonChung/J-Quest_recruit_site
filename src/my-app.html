@@ -359,7 +359,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <p>新卒採用はこちら</p>
                             </div>
                         </a>
-                        <a class="">
+                        <a class="" href="[[rootPath]]?p=midterm">
                             <div class="img-thumbnail img-thumbnail-circle"
                                  style="background-image: url(./images/photo/02-3.jpg)">
                                 <p>mid-career recruitment</p>
@@ -449,11 +449,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 // Load page import on demand. Show 404 page if fails
                 let resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
                 let cb = this._pageLoaded();
-                Polymer.importHref(
+                // 頁面延遲問題 需要解決
+                setTimeout(() =>
+                    Polymer.importHref(
                     resolvedPageUrl,
                     cb,
                     this._showPage404.bind(this),
-                    true);
+                    true)
+                ,50);
             }
 
             _pageLoaded() {
