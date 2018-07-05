@@ -118,18 +118,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 max-width: 1000px;
             }
 
-            #subTitles .card {
-                @apply(--layout-vertical);
-                @apply(--layout-center);
-                @apply(--shadow-elevation-2dp);
-                box-sizing: border-box;
-                width: 320px;
-                padding: 10px 10px;
-                margin: 0 5px 16px 0;
-                z-index: 15;
-                background: #fff;
-            }
-
             #subTitles iron-image {
                 width: 300px;
                 height: calc(300px * 0.75);
@@ -205,7 +193,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
         <div id="shape_bg_left" src="./images/photo/recruit_shape_bg_1.png" alt=""></div>
         <div id="shape_bg_right" alt=""></div>
-        <div id="subTitles" class="layout vertical center">
+        <div id="subTitles" class="card-group layout vertical center">
             <div class="container layout horizontal around-justified wrap">
                 <div class="card">
                     <iron-image src="./images/photo/sm_160107-56.jpg" sizing="cover"></iron-image>
