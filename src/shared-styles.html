@@ -18,7 +18,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
         width: 100%;
       }
+      .container.restricted {
+        padding: 16px;
+        max-width: 910px;
+        width: 100%;
+        margin: 0 auto;
+      }
       .card {
+        position: relative;
         padding: 16px;
         margin-bottom: 25px;
         max-width: 910px;
@@ -27,7 +34,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: 500
         /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);*/
       }
-
+      .card-group .card {
+        @apply(--layout-vertical);
+        @apply(--layout-center);
+        @apply(--shadow-elevation-2dp);
+        box-sizing: border-box;
+        width: 320px;
+        padding: 10px 10px;
+        margin: 0 5px 16px 0;
+        z-index: 15;
+        background: #fff;
+      }
+      .card iron-image[sizing="cover"] {
+        height: 8em;
+        width: 300px;
+      }
       .circle {
         display: inline-block;
         width: 64px;
