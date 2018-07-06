@@ -9,20 +9,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="shared-styles.html">
-<link rel="import" href="shared-styles-md.html">
 
 <dom-module id="my-graduate-career">
     <template>
-        <style is="custom-style" include="shared-styles shared-styles-md iron-flex iron-flex-alignment">
+        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
                 position: relative;
             }
+
             #recruitContent {
                 background: #fff;
             }
@@ -30,14 +28,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div id="shape_bg_left" src="./images/recruit_shape_bg_1.png" alt=""></div>
         <div id="shape_bg_right" alt=""></div>
 
-
-        <div id="recruitContent" class="card">
-            <marked-element id="md-recruit-content">
-                <div slot="markdown-html"></div>
-                <script type="text/markdown" src="./md/gra-recruit-table.md"></script>
-            </marked-element>
+        <div class="container">
+            <h3>キャリアプラン・育成制度</h3>
         </div>
+        <div class="card simple">
+            <h4>入社1年目</h4>
+            魅力的な人材最高な仲間があなたを待っています♪<br><br>
 
+            J-Questには社員約１００名、パートタイマースタッフ約１１００名が勤務しています。<br>
+            そのスタッフ全てが「ミッションステートメント」に共感し、お客様に対し、日々全力を注いでいます。<br><br>
+
+            １店舗当たりのスタッフ数は１０名から１５名。<br><br>
+
+            ストアマネジャーはそのスタッフの皆さんとともに、お店に来てくださるお客様へ最高のおもてなしをするプロ集団を創っていきます。<br><br>
+
+            スタッフの皆さんは本当に高い志を持った人たちばかり。あなたにとっても最高の刺激になるでしょう！<br>
+
+            みなさんにはこんな仕事をしていただきます。<br>
+        </div>
+        <div class="card simple">
+            <h4>入社2年目</h4>各店舗にてお客様への”おもてなし”やクレンリネス、必要な管理業務習得からスタート。
+        </div>
+        <div class="card simple">
+            <h4>入社3年目</h4>
+            アシスタントマネジャー（副店長）になるための必要なスキル <br> <br>
+
+            （人材採用育成・シフトコントロール・戦略立案など）を身につけていきます。
+        </div>
     </template>
 
     <script>

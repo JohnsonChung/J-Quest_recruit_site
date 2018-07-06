@@ -11,13 +11,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="shared-styles.html">
-<link rel="import" href="shared-styles-md.html">
 
 <dom-module id="my-graduate-process">
     <template>
-        <style is="custom-style" include="shared-styles shared-styles-md iron-flex iron-flex-alignment">
+        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
@@ -26,15 +24,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             #recruitContent {
                 background: #fff;
             }
+            .card.custom {
+                border: 5px solid var(--my-color-blue);
+            }
         </style>
         <div id="shape_bg_left" src="./images/recruit_shape_bg_1.png" alt=""></div>
         <div id="shape_bg_right" alt=""></div>
+        <div class="container">
+            <h3>選考プロセス</h3>
+        </div>
+        <div class="card simple custom ">
+            <h4>STEP1</h4>
+            １次選考（個人面接）
+        </div>
 
-        <div id="recruitContent" class="card">
-            <marked-element id="md-recruit-content">
-                <div slot="markdown-html"></div>
-                <script type="text/markdown" src="./md/gra-recruit-table.md"></script>
-            </marked-element>
+        <div class="card simple custom ">
+            <h4>STEP2</h4>
+            ２次選考（個人面接）
+        </div>
+
+        <div class="card simple custom ">
+            <h4>STEP3</h4>
+            最終面接
+        </div>
+
+        <div class="card simple custom ">
+            <h4>STEP4</h4>
+            内々定
+        </div>
+
+        <div class="card simple">
+            選考開始から内々定めまではおおよそ一ヶ月程度です
         </div>
 
     </template>
