@@ -1,7 +1,12 @@
 {
-  "src/my-app.html": {},
+  "src/my-app.html": {
+    "src/my-nav-data.html": {
+      "type": "document",
+      "weight": 1
+    }
+  },
   "src/my-top.html": {},
-  "src/my-view2.html": {},
+  "src/my-graduate.html": {},
   "src/my-view3.html": {},
   "src/my-parttime.html": {},
   "src/my-parttime-dangerous.html": {},
@@ -10,6 +15,8 @@
   "src/my-parttime-stores.html": {},
   "src/my-parttime-voice.html": {},
   "src/my-parttime-works.html": {},
-  "src/my-recruitform.html": {},
-  "src/my-view404.html": {}
+  "src/my-parttime-recruitform.html": {},
+  "src/my-nav-data.html": {},
+  "src/my-view404.html": {},
+  "src/lazy-resources.html": {}
 }
