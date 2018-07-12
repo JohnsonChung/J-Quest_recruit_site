@@ -105,6 +105,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .person {
                 margin-bottom: 3em;
             }
+
+            @media (max-width: 1279px) {
+                .layout.horizontal, .layout.vertical {
+                    flex-direction: column !important;
+                    align-items: center;
+                }
+                .person .card {
+                    margin: 0 !important;
+                    padding: 52px 16px !important;
+                }
+                .avatar.card {
+                    margin: -25px 0 -53px !important;
+                    z-index: 10;
+                }
+            }
         </style>
 
         <div id="topPattern" class="container"></div>
@@ -193,7 +208,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <div class="left-column flex-3">
                 <div class="layout horizontal center ">
                     <div class="flex-2 card simple green profile-header">
-                        <h4>幾世橋　純子</h4>
+                        <h4>佐藤　祐一</h4>
                         <div>
                             <p><iron-icon icon="icons:label"></iron-icon>宮子ベイシア前店/前橋みなみ店</p>
                             <p>ストアマネジャー</p>
