@@ -34,6 +34,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             :host {
                 --app-primary-color: #14a65f;
                 --app-secondary-color: #29b8e4;
+                --app-drawer-content-container: {
+                    overflow: auto !important;
+                };
                 display: block;
             }
 
@@ -242,6 +245,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 .toolbar-sub {
                     display: none !important;
                 }
+                #img-thumbnail-circle {
+                    padding: 10px 0;
+                }
+                .img-thumbnail-circle {
+                    width: 45vw;
+                    height: 45vw;
+                    text-align: center;
+                    font-size: 0.8em;
+                    line-height: 0em;
+                    margin: 1em 0.2em;
+                }
             }
         </style>
 
@@ -257,19 +271,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-drawer-layout id="appDrawerLayout" drawer fullbleed force-narrow>
             <!-- Drawer content -->
             <template is="dom-if" if="{{loadComplete}}">
-                <app-drawer id="drawer" slot="drawer" swipe-open>
-                    <app-toolbar>J-Quest</app-toolbar>
-                    <!-- fix swipe-open scroll-y not work -->
-                    <div style="height: 100%; overflow: auto;">
-                        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                            <template is="dom-repeat" items="{{navs}}">
-                                <a name="[[item.path]]" href="[[rootPath]]?p=[[item.path]]">[[item.title]]</a>
-                                <template is="dom-repeat" items="{{item.subNavs}}" as="sub">
-                                    <a name="[[sub.path]]" href="[[rootPath]]?p=[[sub.path]]">[[sub.title]]</a>
-                                </template>
+                <app-drawer id="drawer" slot="drawer" swipe-open disable-swipe no-focus-trap>
+                    <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                        <template is="dom-repeat" items="{{navs}}">
+                            <a name="[[item.path]]" href="[[rootPath]]?p=[[item.path]]">[[item.title]]</a>
+                            <template is="dom-repeat" items="{{item.subNavs}}" as="sub">
+                                <a name="[[sub.path]]" href="[[rootPath]]?p=[[sub.path]]">[[sub.title]]</a>
                             </template>
-                        </iron-selector>
-                    </div>
+                        </template>
+                    </iron-selector>
                 </app-drawer>
             </template>
 
