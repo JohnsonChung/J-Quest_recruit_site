@@ -161,7 +161,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     top: 10em;
                     width: 10em;
                     z-index: 10;
-                    background-image: url(../images/recruit_shape_bg_2.png);
+                    background-image: url("../images/recruit_shape_bg_2.png");
                     height: 100%;
                 }
             }
@@ -185,7 +185,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     height: 100%;
                     background-size: cover;
                     background-position: center center;
-                    background-image: url(../images/recruit/gra_recruit_photo_montage.png);
+                    background-image: url("../images/recruit/gra_recruit_photo_montage.jpg");
                     z-index: 20;
                 }
 
@@ -194,6 +194,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     padding: 1em 1em;
                     font-size: 16px;
                     letter-spacing: 0.2em;
+                    width: 100%;
+                }
+                #subTitles a {
+                    border-bottom: 1px solid var(--paper-grey-400) !important;
+                    width: 100%;
+                }
+
+                #subTitles.horizontal {
+                    flex-direction: column;
                 }
 
                 #slogan .vertical-section {

@@ -16,6 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style>
       .container {
         display: block;
+        box-sizing: border-box;
         width: 100%;
       }
       .container.restricted {
@@ -196,7 +197,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       table {
         font-size: 14px;
       }
-
+      ul {
+        padding: 1.5em;
+      }
       paper-button.padding {
         padding-right: 4.5em;
         padding-left: 4.5em;
@@ -275,6 +278,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .card .flex {
         /* Fix ie 11 flex collapse bug. */
         flex-basis: auto;
+        -ms-flex: 0 1 auto;
       }
 
       @media (max-width: 960px) {

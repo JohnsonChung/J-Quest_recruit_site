@@ -55,6 +55,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             #quizanswer .card:nth-child(5n+1) h4::before {
                 background-color: var(--paper-green-400);
             }
+            @media (max-width: 640px) {
+                .card {
+                    margin: 0 !important;
+                    padding: 5px;
+                    line-height: 1.5em;
+                }
+                h4 {
+                    font-size: 1em;
+                }
+                p {
+                    padding: 0 !important;
+                    margin: 5px;
+                }
+                #quizanswer .card h4::before {
+                    display: block;
+                    margin-bottom: 15px;
+                }
+            }
         </style>
 
         <div  id="quizanswer" class="container">
