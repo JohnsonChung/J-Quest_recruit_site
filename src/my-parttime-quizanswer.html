@@ -15,7 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-parttime-quizanswer">
     <template>
-        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
+        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment iron-flex-factors">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
@@ -35,8 +35,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 box-sizing: border-box;
                 width: 50%;
             }
+            #quizanswer .card.fill {
+                width: 100%;
+            }
             #quizanswer .card p {
                 font-size: 17px;
+                line-height: 2em;
             }
             #quizanswer .card h4::before {
                 content: 'Q';
@@ -67,6 +71,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 p {
                     padding: 0 !important;
                     margin: 5px;
+                    font-size: 0.8em !important;
                 }
                 #quizanswer .card h4::before {
                     display: block;
@@ -76,7 +81,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
 
         <div  id="quizanswer" class="container">
-            <div class="container layout horizontal wrap wf-mplus1p">
+            <div class="container layout horizontal center-justified wrap wf-mplus1p">
                 <div class="flex layout vertical center-center">
                     <h3>教えて JQ ♪</h3>
                 </div>
@@ -85,7 +90,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <p>
                         パートタイマースタッフの皆さんは２０１７年３月現在では男性６４８名、女性６８４名と男性も女性も活躍しています。</p>
                 </div>
-                <div class="card">
+                <div class="card ">
                     <h4>年齢構成は？</h4>
                     <p> 同じくパートタイマーのスタッフの皆さんは２０１７年３月現在では１８歳～６９歳と幅広い年齢のスタッフのみなさんが活躍しています。</p>
                 </div>
@@ -101,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         J-Questのお店は１都１道１府１６県　８７店舗（２０１７年４月現在）があります。 あなたのお住まいのそばにありますか？
                         →店舗情報ページ</p>
                 </div>
-                <div class="card">
+                <div class="card fill">
                     <h4>キャリアプランは？ </h4>
                     <p>　　
                         パートタイマースタッフとして働いていただく中で、よりお店の経営に色濃く携わっていただきたいチーフスタッフや必要なスキルを備えていただき社員登用のチャンスなどの様々な活躍していただけるステージをご用意しています。</p>
@@ -117,7 +122,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         大きな違いとしてセルフスタイルの精算方式に違いがあります。J-Questは給油終了後にお客様にSHOP内のレジまで来ていただき精算をしていただいています。
                         また、お客様に「最高のおもてなし」を提供しています。</p>
                 </div>
-                <div class="card">
+                <div class="card fill">
                     <h4>昇給はありますか？ </h4>
                     <p>
                         ありますよ！J-Questの昇給システムはあなたとストアマネジャー（店長）とで個々に目標を設定し、その到達具合を月に１回話し合います。見事！！目標をクリアすれば、毎月昇給できるチャンスがあります！まさにあなたの努力が成果としてしっかりと評価されるシステムですのでやりがいを持って勤務できますよね♪</p>
@@ -132,7 +137,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <p>
                         もちろん大丈夫です！！車の運転って運転しない人にはなかなか分かり辛いものですよね？お客様はお車で来店されますのでお客様のお気持ちがわかるためにも車の運転は必要ですね。</p>
                 </div>
-                <div class="card">
+                <div class="card fill">
                     <h4>わたし高校生なんですけど？</h4>
                     <p> 　　　
                         ごめんなさい！！J-Questの採用基準として１８歳以上（高校生不可）の方と一緒にお店を創っていきたいと考えております。（車の運転などお客様の気持ちになっていただきたいため）ぜひ卒業後のご応募お待ちしております。</p>
@@ -147,7 +152,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <p>
                         心配ありませんよ。ほとんどのパートタイマースタッフのみなさんはほとんど未経験からのスタートですよ。ご安心ください。先輩スタッフが優しくていねいに教えてくれるので安心してくださいね♪</p>
                 </div>
-                <div class="card">
+                <div class="card fill">
                     <h4>危険物取扱者（乙４）</h4>
                     <p>
                         消防法に基づく危険物を取扱い、またはその取扱いに立ち会うために必要な国家資格です。

@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-parttime-dangerous">
     <template>
-        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment">
+        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment ">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
@@ -33,15 +33,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-center);
                 @apply(--shadow-elevation-2dp);
                 box-sizing: border-box;
-                margin: 0 5px 16px 0;
+                /*margin: 0 5px 16px 0;*/
                 z-index: 15;
                 background: #fff;
             }
-
-            .card.center {
-                margin: 0 auto;
-            }
-
             .card p {
                 line-height: 38px;
                 margin-top: 16px;

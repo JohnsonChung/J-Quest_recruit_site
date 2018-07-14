@@ -150,7 +150,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     left: 0;
                     top: 10em;
                     width: 10em;
-                    z-index: 10;
+
                     background-image: url(../images/recruit_shape_bg_1.png);
                     height: 100%;
                 }
@@ -160,7 +160,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     right: 0;
                     top: 10em;
                     width: 10em;
-                    z-index: 10;
+
                     background-image: url("../images/recruit_shape_bg_2.png");
                     height: 100%;
                 }
@@ -195,14 +195,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     font-size: 16px;
                     letter-spacing: 0.2em;
                     width: 100%;
+                    margin: 0;
+                    height: 5em;
+                    border: 1px solid var(--paper-grey-400) !important;
                 }
                 #subTitles a {
-                    border-bottom: 1px solid var(--paper-grey-400) !important;
-                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 5px 5px 0 0 ;
+                    width: 50%;
                 }
 
                 #subTitles.horizontal {
-                    flex-direction: column;
+                    @apply(--layout-wrap);
+                    padding-left: 5px;
                 }
 
                 #slogan .vertical-section {
