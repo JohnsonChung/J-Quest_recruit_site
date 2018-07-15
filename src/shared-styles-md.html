@@ -92,6 +92,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                  margin-bottom: 15px;
                  padding: 6px 0;
              }
+            @media (max-width: 640px) {
+                #md-recruit-content [slot="markdown-html"] table td:first-child {
+                    min-width: 1.2em;
+                    border-bottom: 1px solid var(--paper-blue-grey-200);
+                    padding: 0.7em 0.8em 0 0;
+                    vertical-align: top;
+                    font-weight: bold;
+                }
+            }
         </style>
     </template>
 </dom-module>

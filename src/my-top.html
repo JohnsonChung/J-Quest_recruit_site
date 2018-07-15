@@ -93,6 +93,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             header #recruitBtn {
                 font-size: 17px;
             }
+            #subTitle {
+                padding: 0 0 2em 0;
+            }
+            #subTitle h4 {
+                white-space: nowrap;
+                max-width: 100%;
+            }
+            #subTitle a {
+                margin-bottom: 5px;
+            }
             .card.skyblue {
                 background: #E7F9FB;
             }
@@ -178,7 +188,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
         </header>
 
-        <div id="subTitle" class="card skyblue">
+        <div id="subTitle" class="card skyblue container">
             <div class="layout horizontal center-center">
                 <h4 class="wf-mplus1p " style="font-weight: 400; font-size: 25px;"><span
                         style="font-size: 1.5em">\ </span>各種ご応募はこちらから <span style="font-size: 1.5em"> /</span></h4>
@@ -191,13 +201,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         パート・アルバイト
                     </paper-button>
                 </a>
-                <a name="view2" href="[[rootPath]]?p=graduate">
+                <a name="graduate" href="[[rootPath]]?p=graduate">
                     <paper-button class="border slashed yellow clip anchor">
                         <img class="icon" src="../images/icons/shin.png" alt="">
                         新卒採用
                     </paper-button>
                 </a>
-                <a name="view1" href="[[rootPath]]?p=midterm">
+                <a name="midterm" href="[[rootPath]]?p=midterm">
                     <paper-button class="border slashed yellow clip anchor">
                         <iron-icon icon="group-work"></iron-icon>
                         中途採用
