@@ -499,7 +499,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <label for="staff13">Q13:参考書は自分で準備するのですか？</label>
                     <p>社内テキスト（無料）がありますので、準備しなくて大丈夫です。</p></div>
             </div>
-            <div name="question" class="container questions layout vertical center"> ...</div>
+            <div name="question" class="container questions layout vertical center">
+                <div class="card"> 作成中 </div>
+            </div>
             <div name="qualifier" class="container questions layout vertical center">
                 <div class="card">
                     <input type="checkbox" name="qualifier" id="qualifier1">
@@ -669,7 +671,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 if (!pages[newVal].className.includes('animated')) {
                     pages[newVal].className += ' animated';
                 }
-                if (typeof oldVal !== 'undefined') {
+                if (typeof oldVal !== 'undefined' && oldVal !== "") {
                     // Stop the animation of hidden pages
                     pages[oldVal].className = pages[oldVal].className.split(' animated').join('');
                 }
