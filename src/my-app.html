@@ -13,6 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-route/app-route-converter.html">
@@ -286,7 +287,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!-- Main content -->
             <app-header-layout>
                 <template id="appHeaderLayout" is="dom-if" if="{{loadComplete}}">
-                    <app-header slot="header" reveals effects="waterfall">
+                    <app-header id="header" slot="header" reveals effects="waterfall">
                         <app-toolbar class="toolbar">
                             <paper-icon-button drawer-toggle icon="menu"></paper-icon-button>
                             <div class="layout horizontal center" main-title>
@@ -491,6 +492,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             _ironPagesChanged(target) {
+                // If there has hash for page nav then return.
+                if(! (window.location.hash === "")) return;
                 // When page changed reset contentContainer back to Top
                 // Reset the list view scrollTop if the category changed.
                 this.scrollIntoView();

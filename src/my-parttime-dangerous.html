@@ -12,15 +12,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/paper-styles/shadow.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-styles/typography.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-parttime-dangerous">
     <template>
-        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment ">
+        <style is="custom-style" include="shared-styles iron-flex iron-positioning iron-flex-alignment ">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
@@ -28,6 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 background-color: var(--my-color-yellow);
                 color: var(--my-color-black);
             }
+
             .card {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
@@ -37,43 +41,63 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 z-index: 15;
                 background: #fff;
             }
+
             .card p {
-                line-height: 38px;
+                line-height: 28px;
                 margin-top: 16px;
                 margin-bottom: 20px;
             }
+
             .card-group {
                 max-width: 1280px;
             }
+
+            .card-group .card {
+                width: 200px;
+                height: 200px;
+                font-size: 17px;
+                padding: 0;
+                max-width: 45vw;
+                max-height: 45vw;
+            }
+            .card-group iron-image {
+                max-width: 100%;
+            }
+
             .card-border-top {
                 border-top: 10px solid;
                 border-image: linear-gradient(45deg, #EE617D 25%, #3D6F8E 25%, #3D6F8E 50%, #EE617D 50%, #EE617D 75%, #3D6F8E 75%, #3D6F8E 100%) 45;
             }
 
-            p, li{
+            p, li {
                 line-height: 38px;
             }
+
             li {
                 background-color: #fff;
                 padding: 5px 20px;
                 margin-bottom: 10px;
                 border-top: 5px solid var(--my-color-blue);
             }
+
             li b {
                 display: block;
             }
+
             p.first-letter::first-letter {
                 font-size: 1.8em;
             }
 
             body {
                 background-color: #0e3c5a;
-            }            
+            }
+
             #liquidContainer {
                 position: relative;
             }
+
             #liquidContainer::before {
-                content:'';
+                content: '';
                 display: block;
                 position: absolute;
                 top: -78px;
@@ -90,6 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 background-position: center;
                 background-size: cover;
             }
+
             #topPattern {
                 margin: 0;
                 height: 250px;
@@ -97,8 +122,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 background-color: #7c8790;
                 background-image: url('../images/pattern_gplay.png');
             }
+
             .pattern-inspiration-geometry {
                 background-image: url('../images/pattern-inspiration-geometry.png');
+            }
+            #heroUnit .card p{
+                line-height: 38px !important;
             }
             /* Liquid container */
             .audiobox {
@@ -174,9 +203,63 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     transform: translateY(-14px);
                 }
             }
+
+            .container.questions p, .container.questions pre {
+                max-height: 0px;
+                overflow: hidden;
+                transition: max-height 0.25s;
+            }
+
+            .container.questions input[type=checkbox] {
+                display: none;
+            }
+
+            .container.questions .card {
+                margin-bottom: 5px;
+            }
+
+            .container.questions label {
+                margin: 0 0 0 0;
+                padding: 0 0 0 10px;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            .container.questions label:hover {
+                border-left: 5px solid #29b8e4;
+                padding: 0 0 0 5px;
+
+            }
+
+            .container.questions p, .container.questions pre {
+                margin: 0 0 0 0;
+                text-align: left;
+                width: 100%;
+                font-size: 15px;
+            }
+
+            input[type=checkbox]:checked + label {
+                border-bottom: 1px solid grey;
+                margin-bottom: 10px;
+                padding: 0 0 10px 0;
+            }
+
+            input[type=checkbox]:checked + label:hover {
+                padding: 0 0 10px 5px;
+            }
+
+            input[type=checkbox]:checked + label + p,
+            input[type=checkbox]:checked + label + pre {
+                max-height: 1080px;
+                transition: max-height 0.25s ease-in;
+            }
+
             @media (max-width: 640px) {
                 #heroUnit .layout.horizontal {
                     flex-direction: column;
+                }
+                .card-group .card {
+                    font-size: 12px;
                 }
             }
         </style>
@@ -198,9 +281,314 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
             </div>
         </div>
+        <div id="nav">
+            <div class="card-group container layout horizontal center-justified wrap">
+                <a href="[[rootPath]]?p=parttime/dangerous#explain">
+                    <div class="card">
+                        <iron-image src="./images/thumb/document_syorui_pen.png" sizing="cover"
+                                    position="bottom"></iron-image>
+                        <p>
+                            危険物取扱者乙種第4類（乙４）ってどんな資格？
+                        </p>
+                    </div>
+                </a>
+                <a href="[[rootPath]]?p=parttime/dangerous#staff">
+                    <div class="card">
+                        <iron-image src="./images/thumb/hanashiai_kids.png" sizing="cover"></iron-image>
+                        <p>
+                            すべてのスタッフさんに「乙４」を取得して頂く理由
+                        </p>
+                    </div>
+                </a>
+                <a href="[[rootPath]]?p=parttime/dangerous#question">
+                    <div class="card">
+                        <iron-image src="./images/thumb/study_mondai.png" sizing="contain" width="300"
+                                    height="225"></iron-image>
+                        <p>
+                            実際の問題にチャレンジ！！
+                        </p>
+                    </div>
+                </a>
+                <a href="[[rootPath]]?p=parttime/dangerous#qualifier">
+                    <div class="card">
+                        <iron-image src="./images/thumb/study_check.png" sizing="contain" width="300"
+                                    height="225"></iron-image>
+                        <p>
+                            既に乙４をお持ちの方
+                        </p>
+                    </div>
+                </a>
+                <a href="[[rootPath]]?p=parttime/dangerous#voice">
+                    <div class="card">
+                        <iron-image src="./images/thumb/test_print_happy_schoolgirl.png" sizing="cover"></iron-image>
+                        <p>
+                            合格者のVOICE
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <app-location
+                route="{{selected}}"
+                use-hash-as-path>
+        </app-location>
+        <iron-pages
+                id="ironpages"
+                selected="[[selected.path]]"
+                attr-for-selected="name"
+                fallback-selection="view404"
+                role="main"
+                class="container">
+            <div name="explain" class="container questions layout vertical center">
+                <div class="card">
+                    <input type="checkbox" name="explain" id="explain1">
+                    <label for="explain1">Q1:危険物取扱者乙種４類（乙４）って？</label>
+                    <p>法律で指定された「燃えやすい」「爆発しやすい」性質の強いものを『危険物』といい ます。危険物取扱者乙種は全部で6種類ありますが、その4番目にあたる乙種4類は引火性
+                        液体（ガソリン・灯油・軽油など）の取扱・管理ができる国家資格です。 危険物を扱っているところ（ガソリンスタンドや工場など）では、安全の為、危険物の 知識をもった人が必要です。</p>
+                </div>
+                <div class="card">
+                    <input type="checkbox" name="explain" id="explain2">
+                    <label for="explain2">Q2:受験資格はありますか？</label>
+                    <p>受験資格はありません。どなたでも受験できます。</p>
+                </div>
+                <div class="card">
+                    <input type="checkbox" name="explain" id="explain3">
+                    <label for="explain3">Q3:どんな試験ですか？</label>
+                    <p>★試験の方法 <br>
+                        ・マーク式筆記試験：五肢択一式 <br>
+                        ・記述試験 ：ありません <br>
+                        ・試験時間 ：２時間 <br>
+                        ★試験科目および問題数 <br>
+                        試験科目：問題数 <br>
+                        ・危険物に関する法令：15問 <br>
+                        ・基礎的な物理額及び基礎的な科学：10問 <br>
+                        ・危険物の性質並びにその火災予防及び消化の方法：10問 <br>
+                        ★合格基準 <br>
+                        試験科目ごとの成績が、それぞれ６０％以上の方を合格とします。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="explain" id="explain4">
+                    <label for="explain4">Q4:合格率はどのくらい？</label>
+                    <p>
+                        年度：合格率 <br>
+                        2017年度：28.9％ <br>
+                        2018年度：29.4％
+                    </p></div>
+                <div class="card">
+                    <input type="checkbox" name="explain" id="explain5">
+                    <label for="explain5">Q5:試験はいつ実施していますか？</label>
+                    <p>東京では月4回、他の県でも年２～３回実施されています。他県で受けるのも可能です 。あなたの勉強のペースに合わせて、最適な試験日をご案内します。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="explain" id="explain6">
+                    <label for="explain6">Q6:退職後は返納しなければなりませんか？</label>
+                    <p>乙４は社内資格ではなく、国家資格です。退職の際にも返納などの必要はありません。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="explain" id="explain7">
+                    <label for="explain7">Q7:将来的にガソリンスタンド以外の仕事を考えています。乙４は役に立ちますか？</label>
+                    <p>そんなことありません！タンクローリーの運転手、食品工場、研究所、石油メーカー、危険物貯蔵倉庫等では資格を役立てることができるでしょう。
+                        また、上記以外でも、努力して取得した経験はきっとあなたの役に立つでしょう。履歴書にも自信を持って記載してくださいね！
+                        以外なところで、介護施設やホテル、旅館等は暖房等に必要な大きなボイラーがあり、その灯油等のタンクの容量が大きければ、保安監督者が必要になります。</p></div>
+            </div>
+            <div name="staff" class="container questions layout vertical center">
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff1">
+                    <label for="staff1">Q1:なぜジェイ・クエストでは全員取得するの？</label>
+                    <p>
+                        「安全」はジェイ・クエストの重要なミッションの一つ。お客様とあなた自身の安全を 守るため、全スタッフにガソリン・軽油・灯油取扱のプロフェッショナになって頂きたい <br>
+                        と考えております。乙４を取得して頂くことで、安心・安全にお仕事をして頂けます。</p>
+                </div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff2">
+                    <label for="staff2">Q2:乙４を持っていると危険な仕事を任されるのでしょうか？</label>
+                    <p>
+                        乙４を持っていないとできないお仕事がいくつかありますが、乙４の知識があれば安全 に遂行できるお仕事ばかりです。<br>
+                        例えば・・携行缶（ガソリンを運ぶ20L程度の缶）に給油をする ローリーからガソリン等を荷降ろしする際に、周囲に危険がないか立ち会う など</p></div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff3">
+                    <label for="staff3">Q3:乙4以外の資格を求められることはありますか？</label>
+                    <p>ありません。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff4">
+                    <label for="staff4">Q4:初出勤日までにとる必要はありますか？</label>
+                    <p>ありません。入社後に取得していただければOKです。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff5">
+                    <label for="staff5">Q5:いつまでに取得する必要がありますか？</label>
+                    <p>入社後２年を目安としております。まずはジェイ・クエストのお仕事に慣れてください ね！</p></div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff6">
+                    <label for="staff6">Q6:入社から取得までのスケジュールを教えてください。</label>
+                    <p>入社後２～３カ月：ジェイ・クエストのお仕事に慣れる <br>
+                        ３カ月～：乙４取得について目線合わせ（勉強方法や試験を受ける時期など） <br>
+                        以降も随時、勉強方法等の見直しを実施します。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff7">
+                    <label for="staff7">Q7:取得できないとどうなりますか？</label>
+                    <p>入社後２年を経過しても取得できない場合は、乙４がないとできない仕事がある為、大変心苦しいですが、雇用契約を満了とさせて頂きます。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff8">
+                    <label for="staff8">Q8:1回で合格しないとだめですか？</label>
+                    <p>そんなことはありません。1回～2回目の受験で合格している人が多いです。合格できるまでチャレンジし続けることが大事です。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff9">
+                    <label for="staff9">Q9:取得するにお金はかかるの？</label>
+                    <p>受講に係るお金は全額会社負担です。社内講習会も無料で受講できます。
+
+                        <img src="../images/table/dangerous_staff_q9.jpeg" alt="" style="max-width: 100%">
+                    </p>
+                </div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff10">
+                    <label for="staff10">Q10:★独学報奨金</label>
+                    <p>独学・社内通信教育・社内講習会で見事合格された方には報奨金を支給！15,000円～5,000円（条件あり）</p></div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff11">
+                    <label for="staff11">Q11:どのくらいの勉強時間が必要ですか？</label>
+                    <p>６０時間くらい（例えば1日1時間、2ヶ月間）勉強している人が多いです。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff12">
+                    <label for="staff12">Q12:どのような勉強をすればよいでしょうか？</label>
+                    <p>過去問を何回も繰り返しやっている人が多いです。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="staff" id="staff13">
+                    <label for="staff13">Q13:参考書は自分で準備するのですか？</label>
+                    <p>社内テキスト（無料）がありますので、準備しなくて大丈夫です。</p></div>
+            </div>
+            <div name="question" class="container questions layout vertical center"> ...</div>
+            <div name="qualifier" class="container questions layout vertical center">
+                <div class="card">
+                    <input type="checkbox" name="qualifier" id="qualifier1">
+                    <label for="qualifier1">Q1:乙４は持っているけれど、書換えをしていません。</label>
+                    <p>
+                        入社後に書換えの手続きをして頂ければ大丈夫ですよ！<br>
+                        免状更新手数料は会社で負担します。</p></div>
+                <div class="card">
+                    <input type="checkbox" name="qualifier" id="qualifier2">
+                    <label for="qualifier2">Q2:乙４は持っているけれど、最近、保安講習を受けていません。</label>
+                    <p>入社後に保安講習を受けて頂ければ大丈夫ですよ！<br>
+                        保安講習受講手数料は会社で負担します。</p></div>
+            </div>
+            <div name="voice" class="container questions layout vertical center">
+                <div class="card">
+                    <input type="checkbox" name="voice" id="voice1">
+                    <label for="voice1">主婦１</label>
+                    <pre>
+               ①　1日どのくらいの時間、勉強しましたか？（例：30分、1時間、2時間・・・）
+               ⇒1日１０時間、（2日間：2時間～3時間くらい）
+
+               ②　どのくらの期間、勉強しましたか？（例：１ヶ月・２ヶ月、その他）
+               ⇒1週間弱
+
+               ③　忙しい毎日の中で、いつ、勉強していましたか？（例：朝・昼・晩・すきま時間・仕事中・・・）
+               ⇒料理中、入浴中、子どもが寝たあと、じっくりやった、ふとんの中でスマホアプリで、全問正解するまで寝ないと決めてやり続けた
+
+               ④　勉強時間を作るための工夫は？
+               ⇒家事、育児は段取りよく、子供を早く寝かせて、自分の時間を作ることに専念した（いつもは夜泣きなんてしなかったのに、その1週間は何故か、毎日、夜泣きした）
+
+               ⑤　教材は何を使いましたか？（例：市販の参考書購入、社内テキスト、その他）
+               ⇒社内テキスト、スマホアプリ
+
+               ⑥　どういう勉強方法をしましたか？（例：独学・社内講習会・社内通信・脇本・その他）
+               ⇒社内講習会に参加した
+               ⇒反復←自分を信じない←覚えていないだろう
+
+               ⑦　実際に受験してみてどうでしたか？
+               ⇒すごく緊張した
+               ⇒見直しはしないで、潔く、退室した
+
+               ⑧　受験するまでの間で不安だったことはありますか？
+               ⇒合格できるかどうか
+               ⇒こんなに勉強して落ちたら、また勉強地獄があると思うとやだった
+
+               ⑨　合格した感想を教えて下さい。
+               ⇒最高
+
+               ⑩　これから受験するスタッフさんへのメッセージを一言！
+               ⇒勉強すれば、誰でも受かる。やられば受からん
+               ⇒地頭、関係なし</pre>
+                </div>
+                <div class="card">
+                    <input type="checkbox" name="voice" id="voice2">
+                    <label for="voice2">主婦２</label>
+                    <pre>
+              ①　1日どのくらいの時間、勉強しましたか？（例：30分、1時間、2時間・・・）
+              ⇒1日2時間
+
+              ②　どのくらの期間、勉強しましたか？（例：１ヶ月・２ヶ月、その他）
+              ⇒1ヶ月
+
+              ③　忙しい毎日の中で、いつ、勉強していましたか？（例：朝・昼・晩・すきま時間・仕事中・・・）
+              ⇒夜
+
+              ④　勉強時間を作るための工夫は？
+              ⇒寝ない
+
+              ⑤　教材は何を使いましたか？（例：市販の参考書購入、社内テキスト、その他）
+              ⇒社内テキスト
+
+              ⑥　どういう勉強方法をしましたか？（例：独学・社内講習会・社内通信・脇本・その他）
+              ⇒社内講習会
+
+              ⑦　実際に受験してみてどうでしたか？
+              ⇒難しい時と簡単なときががある
+              ⇒ひっかけ問題が多かったと思う。なので最後まで読まないといけない
+
+              ⑧　受験するまでの間で不安だったことはありますか？
+              ⇒合格できるか心配だった
+
+              ⑨　合格した感想を教えて下さい。
+              ⇒良かった
+
+              ⑩　これから受験するスタッフさんへのメッセージを一言！
+              ⇒最後まで文章を読んでから答えよう
+              ⇒慌ててはいけない</pre>
+                </div>
+                <div class="card">
+                    <input type="checkbox" name="voice" id="voice3">
+                    <label for="voice3">Wワーク</label>
+                    <pre>
+①　1日どのくらいの時間、勉強しましたか？（例：30分、1時間、2時間・・・）
+⇒1日2時間～3時間
+
+②　どのくらの期間、勉強しましたか？（例：１ヶ月・２ヶ月、その他）
+⇒本腰入れて、勉強したのは２～3週間←半年前からちょこちょことテキストの流し読みをしていた
+
+③　忙しい毎日の中で、いつ、勉強していましたか？（例：朝・昼・晩・すきま時間・仕事中・・・）
+⇒夜、寝る前
+
+④　勉強時間を作るための工夫は？
+⇒Ｗワークの仕事がちょうど、ひと段落して落ち着いた頃の受験（6月受験）だったため、比較的、時間に余裕があった。
+⇒受験のタイミングが良かった。
+
+⑤　教材は何を使いましたか？（例：市販の参考書購入、社内テキスト、その他）
+⇒社内テキスト、（お店で貸し出している参考書：乙種第4類危険物取扱者・・当日の電車の中でやった）
+
+⑥　どういう勉強方法をしましたか？（例：独学・社内講習会・社内通信・脇本・その他）
+⇒独学
+⇒社内テキストがイラスト多めですごくわかりやすかった。
+
+⑦　実際に受験してみてどうでしたか？
+⇒予想外の問題（捨て問）が２～3問出て、めんくらって、動揺した。
+
+⑧　受験するまでの間で不安だったことはありますか？
+⇒勉強したから大丈夫だと思ったけど、試験当日、お腹を下した。
+⇒会場までの道順が不安だった。
+
+⑨　合格した感想を教えて下さい。
+⇒うれしかった（時給は上がるし、久しぶりに周りの人は褒めてくれるし）
+⇒一生もんの資格
+⇒受験費用・交通費まで出してもらって、落ちるわけにはいかない
+
+⑩　これから受験するスタッフさんへのメッセージを一言！
+⇒とにかく、繰り返し、飽きるほど（覚えるほど）、やる。</pre>
+                </div>
+            </div>
+        </iron-pages>
+
         <div class="container restricted">
             <h2>
-                <iron-icon icon="icons:invert-colors"></iron-icon> 乙4特徴</h2>
+                <iron-icon icon="icons:invert-colors"></iron-icon>
+                乙4特徴
+            </h2>
             <p>火災の危険性を高める数々の性質を有しています。</p>
             <ul>
                 <li><b>引火しやすい。</b>
@@ -217,45 +605,95 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </li>
             </ul>
         </div>
-        <div class="card-group container layout horizontal center-justified wrap">
-            <div class="card">
-                <iron-image src="./images/thumb/document_syorui_pen.png" sizing="cover" position="bottom"></iron-image>
-                <p>
-                    危険物取扱者乙種第4類（乙４）ってどんな資格？
-                </p>
-            </div>
-            <div class="card">
-                <iron-image src="./images/thumb/hanashiai_kids.png" sizing="cover"></iron-image>
-                <p>
-                    すべてのスタッフさんに「乙４」を取得して頂く理由
-                </p>
-            </div>
-            <div class="card">
-                <iron-image src="./images/thumb/study_mondai.png" sizing="contain" width="300" height="225"></iron-image>
-                <p>
-                    実際の問題にチャレンジ！！
-                </p>
-            </div>
-            <div class="card">
-                <iron-image src="./images/thumb/study_check.png" sizing="contain" width="300" height="225"></iron-image>
-                <p>
-                    既に乙４をお持ちの方
-                </p>
-            </div>
 
-            <div class="card">
-                <iron-image src="./images/thumb/test_print_happy_schoolgirl.png" sizing="cover"></iron-image>
-                <p>
-                    合格者のVOICE
-                </p>
-            </div>
-        </div>
+        <style>
+            .container.questions {
+                position: relative;
+            }
+
+            /* Define the animation here. You can do pretty much anything you want. */
+            @keyFrames slideOut {
+                from {
+                    left: 0%;
+                }
+                to {
+                    left: 70%;
+                }
+            }
+
+            @keyframes slideIn {
+                from {
+                    left: -70%;
+                }
+                to {
+                    left: 0;
+                }
+            }
+
+            /* Adding this class starts the animation, removing it cuts it short */
+            .animated {
+                animation-duration: 1s;
+                animation-name: slideIn;
+            }
+
+            .slideOut {
+                animation-duration: 1s;
+                animation-name: slideOut;
+            }
+
+        </style>
     </template>
 
     <script>
         class MyParttimeDangerous extends Polymer.Element {
             static get is() {
                 return 'my-parttime-dangerous';
+            }
+
+            static get properties() {
+                return {
+                    selected: {
+                        type: Object,
+                        notify: true,
+                    },
+                    path: {
+                        type: String,
+                        observer: '_newPageSelected'
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    '_parseObj(selected.path)'
+                ]
+            }
+
+            _parseObj(val) {
+                this.path = val;
+            }
+
+            _newPageSelected(newVal, oldVal) {
+                let pages = this.shadowRoot.querySelector('#ironpages').children;
+
+                if (newVal === "") return;
+                // Run the animation on the newly selected page
+                if (!pages[newVal].className.includes('animated')) {
+                    pages[newVal].className += ' animated';
+                }
+                if (typeof oldVal !== 'undefined') {
+                    // Stop the animation of hidden pages
+                    pages[oldVal].className = pages[oldVal].className.split(' animated').join('');
+                }
+                // Scroll
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                let pagesRect = this.shadowRoot.querySelector('#nav').getBoundingClientRect();
+                window.scroll({
+                    top: pagesRect.y + pagesRect.height + scrollTop - 150,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+
             }
         }
 
