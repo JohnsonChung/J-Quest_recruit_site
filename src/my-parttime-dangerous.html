@@ -162,7 +162,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 left: -125%;
                 width: 1000px;
                 height: 1025px;
-                background-color: var(--my-color-blue);
+                background-color: #29b8e4;
                 opacity: 0.6;
                 position: absolute;
                 border-radius: 40%;
@@ -170,7 +170,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             .wave.one {
                 animation: wave 15s linear -1s infinite;
-                background-color: var(--my-color-pink);
+                background-color: #ff4081;
 
             }
 
@@ -261,6 +261,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     font-size: 12px;
                 }
             }
+            .container.questions {
+                position: relative;
+            }
+
+            /* Define the animation here. You can do pretty much anything you want. */
+            @keyFrames slideOut {
+                from {
+                    left: 0%;
+                }
+                to {
+                    left: 70%;
+                }
+            }
+
+            @keyframes slideIn {
+                from {
+                    left: -70%;
+                }
+                to {
+                    left: 0;
+                }
+            }
+
+            /* Adding this class starts the animation, removing it cuts it short */
+            .animated {
+                animation-duration: 1s;
+                animation-name: slideIn;
+            }
+
+            .slideOut {
+                animation-duration: 1s;
+                animation-name: slideOut;
+            }
+
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                /* IE10+ CSS styles go here */
+                .card-group .card {
+                    width: 200px;
+                    height: 300px;
+                    font-size: 17px;
+                    padding: 0;
+                    max-width: 45vw;
+                    max-height: 45vw;
+                }
+            }
         </style>
         <div id="topPattern" class="container"></div>
         <div id="heroUnit" class="container layout vertical center ">
@@ -280,6 +325,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
             </div>
         </div>
+        <style>
+        </style>
         <div id="nav">
             <div class="card-group container layout horizontal center-justified wrap">
                 <a href="[[rootPath]]?p=parttime/dangerous#explain">
@@ -582,65 +629,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
             </div>
         </iron-pages>
-
-        <div class="container restricted">
-            <h2>
-                <iron-icon icon="icons:invert-colors"></iron-icon>
-                乙4特徴
-            </h2>
-            <p>火災の危険性を高める数々の性質を有しています。</p>
-            <ul>
-                <li><b>引火しやすい。</b>
-                    蒸気が空気より重い。（蒸気比重が1より大きい。）よって、低所に滞留しやすい。
-                    引火性液体から発生する可燃性蒸気は空気より重いため、低い場所に溜まりやすい。
-                </li>
-                <li><b>水に溶けない（非水溶性）ものが多い。</b>
-                    水に浮く（液比重が1より小さい）ものが多い。よって、火災のとき注水すると、水の上に広がり燃焼面積が広がる危険性がある。
-                    注水消火は、火面を広げるだけで逆効果です。
-                </li>
-                <li><b>電気の不良導体であり、静電気を発生させやすい。</b>
-                    第4類危険物は、静電気を蓄積しやすい。
-                    酸化剤と混合すると、発火の危険がある。（参考：混合危険）
-                </li>
-            </ul>
-        </div>
-
-        <style>
-            .container.questions {
-                position: relative;
-            }
-
-            /* Define the animation here. You can do pretty much anything you want. */
-            @keyFrames slideOut {
-                from {
-                    left: 0%;
-                }
-                to {
-                    left: 70%;
-                }
-            }
-
-            @keyframes slideIn {
-                from {
-                    left: -70%;
-                }
-                to {
-                    left: 0;
-                }
-            }
-
-            /* Adding this class starts the animation, removing it cuts it short */
-            .animated {
-                animation-duration: 1s;
-                animation-name: slideIn;
-            }
-
-            .slideOut {
-                animation-duration: 1s;
-                animation-name: slideOut;
-            }
-
-        </style>
+        <div class="container card"> </div>
     </template>
 
     <script>
