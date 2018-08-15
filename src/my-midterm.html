@@ -17,11 +17,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="shared-styles.html">
-<link rel="import" href="shared-styles-md.html">
 
 <dom-module id="my-midterm">
     <template>
-        <style is="custom-style" include="shared-styles shared-styles-md iron-flex iron-flex-alignment typography">
+        <style is="custom-style" include="shared-styles iron-flex iron-flex-alignment typography">
             :host {
                 @apply(--layout-vertical);
                 padding: 10px;
@@ -121,10 +120,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 padding-bottom: 35px;
             }
 
-            #subTitles > .container {
-                max-width: 1000px;
-            }
-
             #subTitles .card {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
@@ -215,13 +210,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </a>
             </div>
         </div>
-        <div class="container">
-        <div id="recruitContent" class="card">
-            <marked-element id="md-recruit-content">
-                <div slot="markdown-html"></div>
-                <script type="text/markdown" src="./md/gra-recruit-table.md"></script>
-            </marked-element>
-        </div>
+        <div id="subTitles" class="card-group layout vertical center">
+            <div class="container layout horizontal center-justified wrap">
+                <div class="card">
+                    <iron-image src="./images/photo/sm_160107-56.jpg" sizing="cover"></iron-image>
+                    <a href="[[rootPath]]?p=midterm/works">
+                        <paper-button class="border slashed yellow clip anchor">募集要項・給与・福利厚生</paper-button>
+                    </a>
+                </div>
+                <div class="card">
+                    <iron-image src="./images/photo/02-5.jpg" sizing="cover"></iron-image>
+                    <a href="[[rootPath]]?p=midterm/process">
+                        <paper-button class="border slashed yellow clip anchor">選考プロセス</paper-button>
+                    </a>
+                </div>
+                <div class="card">
+                    <iron-image src="./images/photo/sm_160107-99.jpg" sizing="cover"></iron-image>
+                    <a href="[[rootPath]]?p=midterm/interview">
+                        <paper-button class="border slashed yellow clip anchor">先輩インタビュー</paper-button>
+                    </a>
+                </div>
+                <div class="card">
+                    <iron-image src="./images/photo/02-7.jpg" sizing="cover"></iron-image>
+                    <a href="https://www.j-quest.jp/search_recruit/?menu=entry_mid" target="_blank">
+                        <paper-button class="border slashed yellow clip anchor">応募フォーム</paper-button>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div id="shape_bg_left" src="./images/photo/recruit_shape_bg_1.png" alt=""></div>
