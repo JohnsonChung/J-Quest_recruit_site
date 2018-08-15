@@ -18,7 +18,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-graduate">
     <template>
-        <style is="custom-style" include="shared-styles shared-styles-md iron-flex iron-flex-alignment">
+        <style is="custom-style" include="shared-styles shared-styles-md iron-flex iron-flex-alignment iron-flex-reverse">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
@@ -141,7 +141,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 .vertical-section > p,
                 .vertical-section > h2 {
                     text-orientation: upright;
-                    writing-mode: vertical-lr;
+                    writing-mode: vertical-rl;
                     text-align: left;
                 }
 
@@ -251,7 +251,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </a>
         </div>
         <div id="slogan" class="container">
-            <div class="vertical-section card layout horizontal center-center ">
+            <div class="vertical-section card layout horizontal-reverse center-center ">
                 <h2>私たちの仕事は、</h2>
                 <p>
                     ガソリンスタンドやコンビニでの<br>仕事をイメージされがちです・・・<br>&nbsp
