@@ -18,7 +18,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-graduate">
     <template>
-        <style is="custom-style" include="shared-styles shared-styles-md iron-flex iron-flex-alignment iron-flex-reverse">
+        <style is="custom-style"
+               include="shared-styles shared-styles-md iron-flex iron-flex-alignment iron-flex-reverse">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-center);
@@ -77,14 +78,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             #subTitles {
-
+                padding: 2em 0;
             }
+            #subTitles paper-button{
+                font-size: 1em;
+                padding: 0em 2em;
+                width: auto;
 
-            #subTitles paper-button {
-                @apply(--layout-flex);
-                padding: 4em 2em;
-                font-size: 24px;
-                letter-spacing: 0.2em;
             }
 
 
@@ -188,7 +188,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     background-image: url("../images/recruit/gra_recruit_photo_montage.jpg");
                     z-index: 20;
                 }
-
+                #subTitles {
+                    padding: 0;
+                }
                 #subTitles paper-button {
                     @apply(--layout-flex);
                     padding: 1em 1em;
@@ -198,10 +200,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     margin: 0;
                     height: 5em;
                     border: 1px solid var(--paper-grey-400) !important;
+                    line-height: 1.5em;
                 }
+
                 #subTitles a {
                     box-sizing: border-box;
-                    padding: 5px 5px 0 0 ;
+                    padding: 5px 5px 0 0;
                     width: 50%;
                 }
 
@@ -235,19 +239,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div id="shape_bg_right" alt=""></div>
         <div id="subTitles" class="container layout horizontal center-center wf-mplus1p">
             <a href="[[rootPath]]?p=graduate/details">
-                <paper-button>募集要項<br>給与・福利厚生</paper-button>
+                <paper-button class="border slashed yellow clip ">
+                    募集要項・給与・福利厚生
+                </paper-button>
             </a>
             <a href="[[rootPath]]?p=graduate/process">
-                <paper-button>選考プロセス</paper-button>
+                <paper-button class="border slashed yellow clip ">
+                    選考プロセス
+                </paper-button>
             </a>
             <a href="[[rootPath]]?p=graduate/career">
-                <paper-button>キャリアプラン<br>育成制度</paper-button>
+                <paper-button class="border slashed yellow clip ">
+                    キャリアプラン・育成制度
+                </paper-button>
             </a>
             <a href="[[rootPath]]?p=graduate/interview">
-                <paper-button>先輩インタビュー</paper-button>
+                <paper-button class="border slashed yellow clip ">
+                    先輩インタビュー
+                </paper-button>
             </a>
-            <a href="[[rootPath]]?p=graduate/blog">
-                <paper-button>採用担当ブログ</paper-button>
+            <a href="https://www.j-quest.jp/search_recruit/?menu=entry_mid" target="_blank">
+                <paper-button class="border slashed yellow clip ">
+                    応募フォーム
+                </paper-button>
             </a>
         </div>
         <div id="slogan" class="container">
