@@ -59,6 +59,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="msapplication-TileColor" content="#3f51b5">
     <meta name="msapplication-tap-highlight" content="no">
 
+    <!-- Internet Explorer version alert for ie 8 and ie 9-->
+    <!--[if gte IE 8]>
+    <h1>
+      「お使いのブラウザは古いため、このサイトは表示できません。<br>
+      &nbsp&nbsp&nbsp安全のため、最新のブラウザを使用してください」<br>
+    </h1>
+
+    <![endif]-->
+
+    <!-- Internet Explorer version alert for ie 10 -->
+    <style>
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        body::before {
+          content: '「お使いのブラウザは古いため、このサイトは表示できません。安全のため、最新のブラウザを使用してください」';
+          display: block;
+        }
+      }
+    </style>
+
     <script>
       /**
       * [polymer-root-path]
