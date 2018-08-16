@@ -276,7 +276,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <template is="dom-repeat" items="{{navs}}">
                             <a name="[[item.path]]" href="[[rootPath]]?p=[[item.path]]">[[item.title]]</a>
                             <template is="dom-repeat" items="{{item.subNavs}}" as="sub">
-                                <a name="[[sub.path]]" href="[[rootPath]]?p=[[sub.path]]">[[sub.title]]</a>
+                                <a name="[[sub.path]]" href="[[_computeAnchorHref(sub.path, sub.target)]]" target="[[_computeAnchorTarget(sub.target)]]">[[sub.title]]</a>
                             </template>
                         </template>
                     </iron-selector>
@@ -309,7 +309,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs"
                                                role="navigation">
                                     <template is="dom-repeat" items="{{_subRouteNavs(queryParams.p)}}">
-                                        <a name="[[item.path]]" href="[[rootPath]]?p=[[item.path]]">
+                                        <a name="[[item.path]]" href="[[_computeAnchorHref(item.path, item.target)]]" target="[[_computeAnchorTarget(item.target)]]">
                                             <paper-button>[[item.title]]</paper-button>
                                         </a>
                                     </template>
@@ -509,6 +509,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 ).subNavs;
                 console.log(result);
                 return result;
+            }
+
+            _computeAnchorHref(href, target) {
+                if(target === undefined) {
+                    return this.rootPath + "?p=" + href
+                } else {
+                    return href
+                }
+            }
+            _computeAnchorTarget(target) {
+                if(target === undefined) return ''
+                return target
             }
         }
 

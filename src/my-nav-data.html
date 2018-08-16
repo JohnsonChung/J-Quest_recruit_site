@@ -28,11 +28,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             path: "parttime/voice",
                             title: "先輩たちの声"
                         },{
-                            path: "parttime/stores",
-                            title: "募集店舗"
-                        },{
-                            path: "parttime/recruitform",
-                            title: "パートタイム募集情報"
+                            path: "https://www.j-quest.jp/search_recruit/",
+                            title: "パートタイム募集情報",
+                            target: "_blank",
                         },{
                             path: "parttime/dangerous",
                             title: "乙四について"
@@ -47,20 +45,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     subNavs: [
                         {
                             path: "graduate/details",
-                            title: "募集要項、給与・福利厚生"
+                            title: "募集要項、給与・福利厚生",
                         },
                         {
                             path: "graduate/process",
-                            title: "選考プロセス"
+                            title: "選考プロセス",
                         },{
                             path: "graduate/career",
-                            title: "キャリアプラン・育成制度"
+                            title: "キャリアプラン・育成制度",
                         },{
                             path: "graduate/interview",
-                            title: "先輩インタビュー"
+                            title: "先輩インタビュー",
                         },{
-                            path: "graduate/blog",
-                            title: "採用担当ブログ"
+                            path: "https://www.j-quest.jp/search_recruit/?menu=entry_mid",
+                            title: "応募フォーム",
+                            target: "_blank",
                         }
                     ]
                 },{
@@ -81,9 +80,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         }
                     ]
                 },{
+                    path: "comeback",
+                    title: "カムバック採用",
+                    subNavs: [
+                        {
+                            path: "midterm/works",
+                            title: "募集要項、給与・福利厚生"
+                        },
+                        {
+                            path: "midterm/process",
+                            title: "選考プロセス"
+                        },
+                        {
+                            path: "midterm/interview",
+                            title: "先輩インタビュー"
+                        }
+                    ]
+                },{
                     path: "top",
                     title: "採用TOP"
-                },
+                }
             ];
 
             class MyNavData extends Polymer.Element {
