@@ -11,81 +11,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 <!-- shared styles for all views -->
-<dom-module id="shared-styles-md">
+<dom-module id="shared-styles-table">
     <template>
         <style>
-            /**
-            *   General
-            **/
-            [slot="markdown-html"] {
+            .table {
                 font-size: 18px;
             }
-            [slot="markdown-html"] > ol,
-            [slot="markdown-html"] > ul  {
-                margin: 0;
-                padding: 0;
-            }
-             /**
-              * News Table for my-top
-              **/
-            #md-news [slot="markdown-html"] {
-                font-size: 15px;
-            }
-
-            #md-news [slot="markdown-html"] strong {
-                padding: 0 14px 0 0;
-            }
-
-            #md-news [slot="markdown-html"] p {
-                display: inline;
-            }
-
-            #md-news [slot="markdown-html"] li {
-                padding: 14px 0;
-                list-style-type: none;
-                border-bottom: 1px solid #29b8e4;
-            }
-
-            #md-news [slot="markdown-html"] li:before {
-                content: 'news';
-                padding: 0 20px;
-                margin-right: 10px;
-                display: inline;
-                background-color: var(--paper-yellow-600);
-                font-size: 15px;
-                color: #fff;
-                vertical-align: 1px;
-            }
-
-            /**
-            *   Recruit Tables for recruitform.html
-             */
-             #md-recruit-content [slot="markdown-html"] ul{
-                 @apply(--layout-horizontal);
-             }
-             #md-recruit-content [slot="markdown-html"] > ul > li{
-                 background-color: var(--app-primary-color);
-                 color: #fff;
-                 padding: 0 10px;
-                 margin-right: 6px;
-                 font-size: 15px;
-                 list-style: none;
-             }
-             #md-recruit-content [slot="markdown-html"] > ol li {
-                 border-bottom: 1px solid var(--paper-blue-grey-200);
-                 padding: 0.6em 0;
-                 list-style: none;
-             }
-             #md-recruit-content [slot="markdown-html"] table {
-                 font-size: 18px;
-             }
-             #md-recruit-content [slot="markdown-html"] table td {
+            .table td {
                  min-width: 6em;
                  border-bottom: 1px solid var(--paper-blue-grey-200);
                  padding: 0.7em 0;
              }
-             #md-recruit-content [slot="markdown-html"] h4,
-             #md-recruit-content h4 {
+            h4 {
                  border-bottom: 3px solid var(--app-primary-color);
                  font-size: 25px;
                  margin-top: 45px;
@@ -93,7 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                  padding: 6px 0;
              }
             @media (max-width: 640px) {
-                #md-recruit-content [slot="markdown-html"] table td:first-child {
+                 .table td:first-child {
                     min-width: 1.2em;
                     border-bottom: 1px solid var(--paper-blue-grey-200);
                     padding: 0.7em 0.8em 0 0;
