@@ -69,11 +69,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <![endif]-->
 
     <!-- Internet Explorer version alert for ie 10 -->
+    <script>
+        var doc = document.documentElement;
+        doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
     <style>
-      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-        body::before {
+      html[data-useragent*='MSIE 10.0'] body::before {
           content: '「お使いのブラウザは古いため、このサイトは表示できません。安全のため、最新のブラウザを使用してください」';
-          display: block;
+          font-size: 2em; font-weight: bold; display: block;
         }
       }
     </style>
