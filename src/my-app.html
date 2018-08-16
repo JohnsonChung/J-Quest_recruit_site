@@ -348,6 +348,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <my-midterm-interview name="midterm-interview"></my-midterm-interview>
                     <my-midterm-process name="midterm-process"></my-midterm-process>
                     <my-midterm-works name="midterm-works"></my-midterm-works>
+                    <!--　comeback -->
+                    <my-comeback name="comeback"></my-comeback>
                     <my-view404 name="view404"></my-view404>
                 </iron-pages>
                 <template is="dom-if" if="[[loadComplete]]">
@@ -361,32 +363,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </div>
 
                     <div id="img-thumbnail-circle" class="container layout horizontal around-justified wrap ">
-                        <a class="" href="[[rootPath]]?p=parttime">
+                        <a href="[[rootPath]]?p=parttime">
                             <div class="img-thumbnail img-thumbnail-circle"
                                  style="background-image: url(./images/photo/sm_160107-16.jpg)">
                                 <p>part time employee</p>
                                 <p>パートタイマースタッフ</p>
                             </div>
                         </a>
-                        <a class="" href="[[rootPath]]?p=graduate">
+                        <a href="[[rootPath]]?p=graduate">
                             <div class="img-thumbnail img-thumbnail-circle"
                                  style="background-image: url(./images/photo/sm_160107-88.jpg)">
                                 <p>New graduate</p>
                                 <p>新卒採用はこちら</p>
                             </div>
                         </a>
-                        <a class="" href="[[rootPath]]?p=midterm">
+                        <a href="[[rootPath]]?p=midterm">
                             <div class="img-thumbnail img-thumbnail-circle"
                                  style="background-image: url(./images/photo/02-3.jpg)">
                                 <p>mid-career recruitment</p>
                                 <p>中途採用はこちら</p>
                             </div>
                         </a>
-                        <a href="https://www.j-quest.jp/" target="_blank">
+                        <a href="[[rootPath]]?p=comeback">
                             <div class="img-thumbnail img-thumbnail-circle"
-                                 style="background-image: url(./images/jquest_logo.png)">
-                                <p>J-Quest Homepage</p>
-                                <p>ホームページ</p>
+                                 style="background-image: url(./images/photo/sm_160107-99.jpg)">
+                                <p>Welcome back</p>
+                                <p>カムバック採用はこちら</p>
                             </div>
                         </a>
                     </div>
