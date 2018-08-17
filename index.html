@@ -61,7 +61,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Internet Explorer version alert for ie 8 and ie 9-->
     <!--[if gte IE 8]>
-    <h1>
+    <h1 style="text-align: center;  color: #5c585c;">
       「お使いのブラウザは古いため、このサイトは表示できません。<br>
       &nbsp&nbsp&nbsp安全のため、最新のブラウザを使用してください」<br>
     </h1>
@@ -74,11 +74,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         doc.setAttribute('data-useragent', navigator.userAgent);
     </script>
     <style>
-      html[data-useragent*='MSIE 10.0'] body::before {
-          content: '「お使いのブラウザは古いため、このサイトは表示できません。安全のため、最新のブラウザを使用してください」';
-          font-size: 2em; font-weight: bold; display: block;
+        html[data-useragent*='MSIE 10.0'] body::before {
+            content: '「お使いのブラウザは古いため、このサイトは表示できません。安全のため、最新のブラウザを使用してください」';
+            font-size: 2em; font-weight: bold; display: block;text-align: center;
         }
-      }
     </style>
 
     <script>
