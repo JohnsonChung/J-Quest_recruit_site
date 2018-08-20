@@ -22,7 +22,17 @@
   "src/my-graduate-interview.html": {},
   "src/my-graduate-process.html": {},
   "src/my-midterm.html": {},
+  "src/my-midterm-interview.html": {},
+  "src/my-midterm-process.html": {},
+  "src/my-midterm-works.html": {},
+  "src/my-comeback.html": {
+    "src/table-comeback.html": {
+      "type": "document",
+      "weight": 1
+    }
+  },
   "src/my-nav-data.html": {},
   "src/my-view404.html": {},
+  "src/table-comeback.html": {},
   "src/lazy-resources.html": {}
 }
