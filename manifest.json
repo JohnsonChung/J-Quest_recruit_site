@@ -1,8 +1,8 @@
 {
-  "name": "My App",
-  "short_name": "My App",
-  "description": "My App description",
-  "start_url": "./?homescreen=1",
+  "name": "J-Quest recruit site",
+  "short_name": "JQRecruit",
+  "description": "J-Quest recruit site",
+  "start_url": "./?p=top",
   "display": "standalone",
   "theme_color": "#3f51b5",
   "background_color": "#3f51b5",
