@@ -12,34 +12,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-nav-data">
     <script>
-        (function() {
+        (function () {
             let navData = [
                 {
                     path: "parttime",
                     title: "パート・アルバイト",
-                    subNavs: [
-                        {
+                    subNavs: [{
+                        path: "https://www.j-quest.jp/search_recruit/",
+                        title: "募集店舗",
+                        target: "_blank",
+                        }, {
                             path: "parttime/works",
                             title: "どんな仕事なの"
-                        },{
-                            path: "parttime/merit",
-                            title: "働くメリット"
-                        },{
+                        }, {
                             path: "parttime/voice",
                             title: "先輩たちの声"
-                        },{
-                            path: "https://www.j-quest.jp/search_recruit/",
-                            title: "パートタイム募集情報",
-                            target: "_blank",
-                        },{
+                        }, {
                             path: "parttime/dangerous",
-                            title: "乙四について"
-                        },{
+                            title: "危険物乙種4類について"
+                        }, {
+                            path: "parttime/merit",
+                            title: "働くメリット"
+                        }, {
                             path: "parttime/quizanswer",
                             title: "よくある質問"
                         }
                     ]
-                },{
+                }, {
                     path: "graduate",
                     title: "新卒採用",
                     subNavs: [
@@ -50,19 +49,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         {
                             path: "graduate/process",
                             title: "選考プロセス",
-                        },{
+                        }, {
                             path: "graduate/career",
                             title: "キャリアプラン・育成制度",
-                        },{
+                        }, {
                             path: "graduate/interview",
                             title: "先輩インタビュー",
-                        },{
+                        }, {
                             path: "https://www.j-quest.jp/search_recruit/?menu=entry_mid",
                             title: "応募フォーム",
                             target: "_blank",
                         }
                     ]
-                },{
+                }, {
                     path: "midterm",
                     title: "中途採用",
                     subNavs: [
@@ -79,10 +78,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             title: "先輩インタビュー"
                         }
                     ]
-                },{
+                }, {
                     path: "comeback",
                     title: "カムバック採用",
-                },{
+                }, {
                     path: "top",
                     title: "採用TOP"
                 }
