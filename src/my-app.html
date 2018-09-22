@@ -64,8 +64,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             .drawer-list a {
                 display: block;
-                padding: 0 16px;
-                text-decoration: none;
+                padding: 5px 0 5px 10px;
                 color: var(--app-secondary-color);
                 line-height: 40px;
             }
@@ -76,7 +75,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             .drawer-list a[name*="/"] {
-                font-size: 0.8em;
+                font-size: 0.9em;
                 text-indent: 0.5em;
                 color: var(--paper-grey-800);
             }
@@ -116,8 +115,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             #brandLogo {
                 margin-right: 18px;
                 max-width: 25vw;
+                height: 60px;
+                line-height: 60px;
             }
+            #brandLogo img {
+                width: 100%;    vertical-align: middle;
 
+            }
             #brandTitle {
                 font-size: 12px;
                 text-align: center;
@@ -286,8 +290,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <app-header id="header" slot="header" reveals effects="waterfall">
                         <app-toolbar class="toolbar">
                             <paper-icon-button drawer-toggle icon="menu"></paper-icon-button>
+                            <a id="brandLogo" href="[[rootPath]]?p=top"><img src="./images/jquest_logo.png" alt="j-quest"></a>
                             <div class="layout horizontal center" main-title>
-                                <img id="brandLogo" src="./images/jquest_logo.png" alt="j-quest">
                                 <div id="brandTitle">
                                     <span>Recruitment</span>
                                     <span>採用情報</span>
@@ -352,10 +356,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <template is="dom-if" if="[[loadComplete]]">
                     <div class="container layout horizontal">
                         <div id="banner-sm" class="layout flex horizontal center-center center-justified wrap">
-                            <img src="./images/banner_sm_biogus.jpg" alt="">
-                            <img src="./images/banner_sm_eneosdenki.gif" alt="">
-                            <img src="./images/banner_sm_keeper.gif" alt="">
-                            <img src="./images/banner_sm_vigo.jpg" alt="">
+                            <a href="https://www.j-quest.jp/eneos_denki/" target="_blank"> <img src="./images/banner_sm_eneosdenki.gif" alt="">
+                            </a>
+                            <a href="https://www.j-quest.jp/subpage.php?p=shopKeeperCampaign" target="_blank"><img src="./images/banner_sm_keeper.gif" alt=""></a>
+                            <a href="https://www.noe.jxtg-group.co.jp/consumer/eneos/service/refuel/"><img src="./images/banner_sm_vigo.jpg" target="_blank" alt=""></a>
                         </div>
                     </div>
 
