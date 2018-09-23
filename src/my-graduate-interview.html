@@ -9,6 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
@@ -19,8 +21,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-graduate-interview">
     <template>
-
-
         <style is="custom-style" include="shared-styles  iron-flex iron-flex-alignment iron-flex-factors">
             :host {
                 @apply(--layout-vertical);
@@ -49,7 +49,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .container.layout {
                 max-width: 1280px;
             }
-
+            .person paper-button {
+                background-color: white;
+                float: right;
+            }
             .person .card {
                 margin: 0 16px 16px 0 !important;
                 padding: 1.5em !important;
@@ -112,6 +115,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 max-width: 100%;
             }
 
+
+            #index {
+                @apply(--layout-wrap);
+                @apply(--layout-center);
+            }
+
             @media (max-width: 1279px) {
                 .layout.horizontal, .layout.vertical {
                     flex-direction: column !important;
@@ -126,6 +135,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     z-index: 10;
                 }
             }
+
             @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
                 /* IE10+ CSS styles go here */
                 .person.horizontal {
@@ -133,7 +143,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             }
         </style>
-
+        <app-location route="{{route}}" query-params="{{query}}" path="{{path}}" use-hash-as-path></app-location>
+        <app-route route="{{route}}" data="{{routeData}}"></app-route>
         <div id="topPattern" class="container"></div>
         <div class="container restricted">
             <div class="card simple">
@@ -143,7 +154,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </h3>
             </div>
         </div>
-        <div class="container person layout horizontal ">
+
+        <!-- index -->
+        <div class="container layout horizontal restricted" id="index">
+            <a class="card simple index" href="[[rootPath]]?p=[[query.p]]#1">
+                <iron-image sizing="cover" src="./images/avatar/avatar02.png"></iron-image>
+                <div>
+                    <h4>幾世橋　純子</h4>
+                    <p><iron-icon icon="icons:label"></iron-icon>新津店</p>
+                    <p>ストアマネジャー</p>
+                </div>
+            </a>
+            <a class="card simple index"  href="[[rootPath]]?p=[[query.p]]#2">
+                <iron-image sizing="cover" src="./images/avatar/avatar03.png"></iron-image>
+                <div>
+                    <h4>佐藤　祐一</h4>
+                    <p><iron-icon icon="icons:label"></iron-icon>宮子ベイシア前店/前橋みなみ店</p>
+                    <p>ストアマネジャー</p>
+                </div>
+            </a>
+            <a class="card simple index"  href="[[rootPath]]?p=[[query.p]]#3">
+                <iron-image sizing="cover" src="./images/avatar/avatar04.png"></iron-image>
+                <div>
+                    <h4>飯塚　渓一</h4>
+                    <p><iron-icon icon="icons:label"></iron-icon>木津川店</p>
+                    <p>アシスタントマネジャー</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- interview contents -->
+        <div class="container person layout horizontal" name="1">
             <div class="left-column flex-3">
                 <div class="layout horizontal center ">
                     <div class="flex-2 card simple green profile-header">
@@ -215,10 +256,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     管理運営のお仕事もしながら、実際にお客様と接することが出来るので、接客の喜びも感じながら、マネジメントの面白さも感じられるお仕事です。<br>
                     だからこの仕事が好き！
                 </p>
+                <div>
+                    <a on-click="_scrollToTop"><paper-button>top</paper-button></a>
+                </div>
             </div>
         </div>
         <div class="card simple layout"></div>
-        <div class="container person layout horizontal ">
+        <div class="container person layout horizontal" name="2">
             <div class="left-column flex-3">
                 <div class="layout horizontal center ">
                     <div class="flex-2 card simple green profile-header">
@@ -282,11 +326,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     お客様からお褒めのお言葉を頂いたり、スタッフと協力して作り上げた売場の商品が売れたりするのが仕事のやりがいになりますし、面白い部分でもあります。<br>
                     だからこの仕事が好き！
                 </p>
+                <div>
+                    <a on-click="_scrollToTop"><paper-button>top</paper-button></a>
+                </div>
             </div>
         </div>
 
         <div class="card simple layout"></div>
-        <div class="container person layout horizontal ">
+        <div class="container person layout horizontal" name="3">
             <div class="left-column flex-3">
                 <div class="layout horizontal center ">
                     <div class="flex-2 card simple green profile-header">
@@ -354,6 +401,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     だからこの仕事が好き！</p>
 
                 </p>
+                <div>
+                    <a on-click="_scrollToTop"><paper-button>top</paper-button></a>
+                </div>
             </div>
         </div>
 
@@ -364,6 +414,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         class MyGraduateInterview extends Polymer.Element {
             static get is() {
                 return 'my-graduate-interview';
+            }
+            static get properties() {
+                return {}
+            }
+            static get observers()
+            {
+                return ['_hashPathChanged(route.path)']
+            }
+            ready() {
+                super.ready();
+                this._bindAnchorClick();
+            }
+            _hashPathChanged(path) {
+                var target = this.shadowRoot.querySelector('[name="' + path + '"]') || undefined;
+                if(path === '' || target === undefined) {
+                    window.scrollTo({top: 0 , behavior:'smooth'});
+                    return;
+                };
+                // window.scrollTo({top: target.offsetTop - 20 , behavior:'smooth'});
+            }
+            _scrollToTop() {
+                window.scrollTo({top: 0 , behavior:'smooth'});
+                history.pushState("", document.title, window.location.pathname
+                    + window.location.search);
+            }
+
+            _bindAnchorClick() {
+                let anchors = this.shadowRoot.querySelectorAll('a.card.index');
+                Object.values(anchors).map((anchor)=>{
+                    anchor.addEventListener('click', ()=>{
+                        this._onIndexAnchorClick(anchor);
+                    }, this);
+                })
+            }
+
+            _onIndexAnchorClick(anchor) {
+                let target = this.shadowRoot.querySelector('[name="' + anchor.href.split('#')[1] + '"]') || undefined;
+                window.scrollTo({top: target.offsetTop - 20 , behavior:'smooth'});
             }
         }
 

@@ -37,6 +37,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         z-index: 1;
         /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);*/
       }
+      .card iron-image[sizing="cover"] {
+        height: calc(300px * 0.75);
+        width: 300px;
+      }
       .card.simple {
         @apply(--layout-vertical);
         @apply(--layout-center);
@@ -46,6 +50,40 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px 10px;
         margin: 0 5px 16px 0;
         background: #fff;
+      }
+      .card.index {
+        @apply(--layout-horizontal);
+        min-width: 49%;
+        max-width: 49%;
+        margin-right: 0;
+        padding: 0;
+        cursor: pointer;
+        border: 4px dashed;
+        border-image: repeating-linear-gradient(-45deg, rgb(210, 210, 210), rgb(210, 210, 210) 1%, transparent 1%, transparent 2%) 10;
+        transition: all 0.2s ease;
+      }
+      .card.index:hover {
+        @apply(--shadow-elevation-8dp);
+        background: #ededed;
+        transform: translateY(-7px);
+
+      }
+      .card.index:active {
+        background: #9fc8ed;
+      }
+      .card.index:nth-child(2n+1) {
+        margin-right: 1%;
+      }
+      .card.index  iron-image{
+        height: 160px;
+        width: 160px;
+      }
+      .card.index > div {
+        @apply(--layout-flex);
+        padding: 0 20px;
+      }
+      .card.index h4{
+        margin: 10px 0;
       }
       .card-group .card {
         @apply(--layout-vertical);
@@ -57,10 +95,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 0 5px 16px 0;
         z-index: 15;
         background: #fff;
-      }
-      .card iron-image[sizing="cover"] {
-        height: calc(300px * 0.75);
-        width: 300px;
       }
       .circle {
         display: inline-block;
@@ -142,6 +176,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
         .img-thumbnail:hover {
           background-size: cover;
+        }
+
+        .card.index {
+          width: 100%;
+          max-width: none;
+          font-size: 15px;
         }
       }
       /**
