@@ -15,19 +15,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         (function () {
             let navData = [
                 {
-                    path: "https://j-quest-job.jp/",
+                    path: "parttime",
                     title: "パート・アルバイト",
+                    anchor: "https://j-quest-job.jp/",
                     target: "_blank",
                     subNavs: [{
-                        path: "https://www.j-quest.jp/search_recruit/",
-                        title: "募集店舗",
-                        target: "_blank",
+                            path: "https://www.j-quest.jp/search_recruit/",
+                            title: "募集店舗",
+                            target: "_blank",
                         }, {
                             path: "parttime/works",
                             title: "どんな仕事なの"
                         }, {
-                            path: "building",
-                            title: "先輩たちの声"
+                            path: "parttime/voice",
+                            title: "先輩たちの声",
+                            state: "building"
                         }, {
                             path: "parttime/dangerous",
                             title: "危険物乙種4類について"
@@ -54,8 +56,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             path: "graduate/career",
                             title: "キャリアプラン・育成制度",
                         }, {
-                            path: "building",
+                            path: "graduate/interview",
                             title: "先輩インタビュー",
+                            state: "building"
                         }, {
                             path: "https://www.j-quest.jp/search_recruit/?menu=entry_mid",
                             title: "応募フォーム",
@@ -75,8 +78,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             title: "選考プロセス"
                         },
                         {
-                            path: "building",
-                            title: "先輩インタビュー"
+                            path: "midterm/interview",
+                            title: "先輩インタビュー",
+                            state: "building"
                         }
                     ]
                 }, {

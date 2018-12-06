@@ -277,7 +277,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <template is="dom-repeat" items="{{navs}}">
                             <a name="[[item.path]]" href="[[_computeAnchorHref(item.path, item.target)]]" target="[[_computeAnchorTarget(item.target)]]">[[item.title]]</a>
                             <template is="dom-repeat" items="{{item.subNavs}}" as="sub">
-                                <a name="[[sub.path]]" href="[[_computeAnchorHref(sub.path, sub.target)]]" target="[[_computeAnchorTarget(sub.target)]]">[[sub.title]]</a>
+                                <a name="[[sub.path]]" href="[[_computeAnchorHref(sub.path, sub.target, sub.state)]]" target="[[_computeAnchorTarget(sub.target)]]">[[sub.title]]</a>
                             </template>
                         </template>
                     </iron-selector>
@@ -310,7 +310,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <iron-selector selected="[[page]]" attr-for-selected="name" class="tabs"
                                                role="navigation">
                                     <template is="dom-repeat" items="{{_subRouteNavs(queryParams.p)}}">
-                                        <a name="[[item.path]]" href="[[_computeAnchorHref(item.path, item.target)]]" target="[[_computeAnchorTarget(item.target)]]">
+                                        <a name="[[item.path]]" href="[[_computeAnchorHref(item.path, item.target, item.state)]]" target="[[_computeAnchorTarget(item.target)]]">
                                             <paper-button>[[item.title]]</paper-button>
                                         </a>
                                     </template>
@@ -505,23 +505,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             _subRouteNavs(query) {
-                var mainNav = this.queryParams.p.split('/')[0];
-                var result = this.navs.find(x => x.path === mainNav
-                ).subNavs;
-                // console.log(result);
+                let nav = this.queryParams.p.split('/')
+                var mainNav = nav[0];
+                if(!nav[1]) return;
+                var result = this.navs.find(x => x.path === mainNav).subNavs;
                 return result;
             }
 
-            _computeAnchorHref(href, target) {
+            _computeAnchorHref(href, target, state) {
+                if(state === "building") {
+                    return this.rootPath + "?p=building";
+                }
                 if(target === undefined) {
+                    // no window target
                     return this.rootPath + "?p=" + href
-                } else {
-                    return href
+                } else if (href.search("/") === -1 && target === "_blank") {
+                    // target = _blank open in new tab and mainNav
+                    // 暫時用這個
+                    // console.log(this.navs.find(x => x.anchor).anchor)
+                    return this.navs.find(x => x.anchor).anchor;
+                } else if (target === "_blank") {
+                    // target = _blank and subNav
+                    return href;
                 }
             }
             _computeAnchorTarget(target) {
-                if(target === undefined) return ''
-                return target
+                if(target === undefined) return '';
+                if(target === "_blank") return target;
             }
         }
 
