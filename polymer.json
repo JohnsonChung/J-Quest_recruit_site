@@ -37,7 +37,7 @@
       "js": {"minify": true, "compile": true},
       "css": {"minify": true},
       "html": {"minify": true},
-      "addServiceWorker": true,
+      "addServiceWorker": false,
       "addPushManifest": true,
       "insertPrefetchLinks": true
     },
@@ -58,7 +58,7 @@
       "js": {"minify": true, "compile": true},
       "css": {"minify": true},
       "html": {"minify": true},
-      "addServiceWorker": true,
+      "addServiceWorker": false,
       "addPushManifest": true,
       "insertPrefetchLinks": true
     }
