@@ -15,8 +15,8 @@ module.exports = {
     'index.html',
     'manifest.json',
     'bower_components/webcomponentsjs/*',
-    'src/*',
-    'md/*',
+    'src/my-app.html',
+    'src/lazy-resources.html',
   ],
   navigateFallback: 'index.html',
 };
