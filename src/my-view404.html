@@ -12,69 +12,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-view404">
     <template>
-        <style>
+        <style is="custom-style" include="shared-styles shared-styles-md iron-flex iron-flex-alignment">
             :host {
+                @apply(--layout-vertical);
+                @apply(--layout-center);
                 position: relative;
-                display: block;
                 text-align: center;
-                padding: 10px 20px;
-                height: 480px;
-                color: #081421;
-                font-family: "Courier new";
-                font-size: 28px;
-                line-height: 1.5em;
-                cursor: default;
             }
-            /* Styles of the 404 page of my website. */
-
-            .code-area {
-                position: absolute;
-                width: 620px;
-                min-width: 320px;
-                margin-left: 3.5em;
-                top: 50%;
-                left: 50%;
-                -webkit-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-                text-align: left;
+            h1 {
+                color: #ae9f95;
+                margin-top: -1em;
             }
-
-            .code-area > span {
-                display: block;
+            img {
+                max-width: 80%;
             }
-
-            @media screen and (max-width: 320px) {
-                .code-area {
-                    font-size: 5vw;
-                    min-width: auto;
-                    width: 95%;
-                    margin: auto;
-                    padding: 5px;
-                    padding-left: 10px;
-                    line-height: 6.5vw;
-                }
+            paper-button {
+                @apply(--shadow-elevation-2dp);
+                transition: all .1s ease;
+                border-radius: 0;
             }
-
+            paper-button:hover {
+                transform: translateY(-2px);
+            }
         </style>
 
-        <div class="code-area">
-            <span style="color: #df9400;font-style:italic;">
-                // Oops you hit a 404.
-                </span>
-                <span>
-                    <span style="color:#d65562;">if</span>
-                    (<span style="color:#4ca8ef;">!</span><span style="font-style: italic;color:#bdbdbd;">found</span>){
-                </span>
-                <span>
-                    <span style="padding-left: 15px;color:#2796ec"><i style="width: 10px;display:inline-block"></i>throw
-                </span>
-                <span>
-                    (<span style="color: #a63235">"(╯°□°)╯︵ ┻━┻"</span>);
-                </span>
-	            <span style="display:block">}</span>
-                <a href="[[rootPath]]">Head back to home.</a>
-            </span>
+        <div>
+            <br>
+            <div class="card simple">
+                <img src="./images/thumb/donou.png" alt="">
+                <h1>【ただ今作成中】<br>もうしばらくお待ちください</h1>
+                <br>
+                <a href="[[rootPath]]">
+                    <paper-button class="yellow padding">採用TOPへ</paper-button>
+                </a><br>
+            </div>
         </div>
+        <br>
     </template>
 
     <script>
